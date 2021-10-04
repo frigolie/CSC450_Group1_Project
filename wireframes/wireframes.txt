@@ -1,0 +1,66 @@
+
+User Pages:
+---------------------------------------------
+User Homepage
+- this is the page the user will see AFTER they have already
+  logged in. no special functionality. displays current reservations
+  and past reservations (if any). i would like to have it so the user's
+  name (NAME, not username) will be displayed in the corner, so 
+  it would say "Hello, (user's name)!", and then they have the
+  option to view account details or log out.
+ 
+User Property View:
+- user can view all available listings. i would love to set up some
+  kind of filter, to check locations by different metrics, but that
+  might be too complicated for the sake of this project
+
+View Listing:
+- this is accessible after the user clicks "book now" from the user
+  property view page. it will show the property details, ideally
+  an image carousel, and a form for booking w/ calendar. 
+  i would LIKE to be able to incorporate a cost calculator into 
+  this feature, but, as with the filtering by metrics in property view,
+  the complexity of that may be beyond the scope of this project.
+-----------------------------------------------------------------------------------------
+
+Admin Pages:
+---------------------------------------------
+Admin Homepage
+- basically the same as the user homepage, but the navbar is
+  different, and the corner displays "welcome admin" instead of
+  user. it will show any upcoming reservations at the admin's
+  properties.
+
+Admin Property View
+- very similar to user property view. instead, it displays all the 
+  admin properties, and allows them to make changes. they can
+  also add a new listing if they wish. this feature has not yet been 
+  created, as i didn't create the form for this assignment, since 
+  it wasn't necessarily needed yet. additionally, admins have a 
+  separate contact form visible if their properties are not 
+  appearing.
+-----------------------------------------------------------------------------------------
+
+Misc:
+---------------------------------------------
+Homepage
+- this is the page that any person would see when arriving at the
+  website. it will show a few listings of various properties, and 
+  offer links to create an account or log in. the purpose of this 
+  page is primarily to deliver a solid UX to any site visitor.
+
+Contact
+- self-explanatory page. it is a simple form that users or admins
+  can fill out. this contact page would be sent to the company, not
+  a specific user or admin.
+
+Create Account
+- self-explanatory.
+
+Inbox
+- this page was honestly hastily thrown together, because i
+  overlooked its necessity when creating the other pages. i am
+  really not sure how much complexity is needed here, but ideally
+  it would have intuitive functionality. this page will need the 
+  wireframe updated, and final functionality will be decided at a
+  later point.
