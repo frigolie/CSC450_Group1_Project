@@ -1,0 +1,239 @@
+/*
+  style.css - The stylesheet for the final project of CSC 450
+  CSC450 - Computer Science Capstone
+  Group 1:
+  Elise Frigoli
+  Nolan Harre
+  Joshua Sibert
+  Lor Xiong
+  Written:     10/03/21
+  Revisions:
+*/
+
+/* =========================================
+								Global Styles
+	 ========================================= */
+
+   * {
+     box-sizing: border-box;
+     font-family: 'Nunito Sans', sans-serif;
+     color: #091517;
+     transition: all .25s ease!important;
+   }
+
+   body {
+     background-color: #FFF;
+   }
+
+   section.initialPageContent {
+     padding-top: 200px;
+   }
+
+   .orange-text {
+     color: #FF7B00; /* Primary Orange */
+   }
+
+   .orange-bg {
+     background-color: #FF7B00; /* Primary Orange */
+   }
+
+   .dk-orange-text {
+     color: #E56100; /* Dark Orange */
+   }
+
+   .dk-orange-bg {
+     background-color: #E56100; /* Dark Orange */
+   }
+
+   .blue-text {
+     color: #45D3D6; /* Primary Blue */
+   }
+
+   .blue-bg {
+     background-color: #45D3D6; /* Primary Blue */
+   }
+
+   .black-text {
+     color: #08262b; /* Off-Black */
+   }
+
+   .black-bg {
+     background-color: #08262b; /* Off-Black */
+   }
+
+   .lt-gray-text {
+     color: #F0EEEC; /* Light Gray */
+   }
+
+   .lt-gray-bg {
+     background-color: #F0EEEC; /* Light Gray */
+   }
+
+   .dk-gray-text {
+     color: #C9C3BF; /* Dark Gray */
+   }
+
+   .dk-gray-bg {
+     background-color: #C9C3BF; /* Dark Gray */
+   }
+
+   .white-bg {
+     background-color: #FFF;
+   }
+
+   .box-shadow {
+     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
+   }
+
+   .text-shadow {
+     text-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
+   }
+
+   a, a * {
+     text-decoration: none;
+   }
+
+   a:hover, a:focus, a:active,
+   a:hover *, a:focus *, a:active * {
+     color: #FF7B00;
+   }
+
+   .globalButton {
+     padding: 10px 30px;
+     font-size: 16px;
+     font-weight: 800;
+     border-radius: 54px;
+     box-shadow: none;
+     border: none;
+     color: #FFF;
+   }
+
+   .globalButton.orangeButton {
+     background-color: #FF7B00;
+   }
+
+   .globalButton.blueButton {
+     background-color: #45D3D6;
+   }
+
+   .globalButton:hover, .globalButton:focus, .globalButton:active {
+     background-color: #FFF;
+     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
+   }
+
+   .globalButton.orangeButton:hover, .globalButton.orangeButton:focus, .globalButton.orangeButton:active {
+     color: #FF7B00;
+   }
+
+   .globalButton.blueButton:hover, .globalButton.blueButton:focus, .globalButton.blueButton:active {
+     color: #45D3D6;
+   }
+
+   h1 {
+     font-size: 50px;
+     font-weight: 800;
+   }
+
+   h2 {
+     font-weight: 700;
+   }
+
+   h3 {
+     font-size: 28px;
+     font-weight: 700;
+   }
+
+   h4 {
+     font-size: 20px;
+     font-weight: 600;
+   }
+
+   ul {
+     list-style: none;
+   }
+
+   .max-880 {
+     max-width: 880px;
+   }
+
+   .rounded-custom {
+     border-radius: 15px;
+   }
+
+
+/* =========================================
+								Nav Styles
+	 ========================================= */
+
+   .navbar {
+     background-color: transparent;
+     box-shadow: none;
+   }
+
+   .navbar.stickiedNav {
+     background-color: #08262b;
+     box-shadow: 0px 4px 14px 0px rgba(0,0,0,0.3);
+   }
+
+   .navbar.stickiedNav p {
+     color: #F0EEEC;
+   }
+
+
+ /* =========================================
+ 								Footer Styles
+ 	 ========================================= */
+
+   .attributionBox p {
+     font-size: 12px;
+   }
+
+ /* =========================================
+                 Home Page Styles
+    ========================================= */
+
+    .container-fluid.mountainBg {
+      background-image: url('graphic/mountains.jpg');
+      background-size: cover;
+      background-position: top center;
+    }
+
+    .rentalListing:hover {
+      opacity: .85;
+    }
+
+ /* =========================================
+ 								Responsive Styles
+ 	 ========================================= */
+
+/* X-Small Only */
+@media only screen and (max-width: 576px) {
+
+}
+
+/* Small and Up */
+@media only screen and (min-width: 576px) {
+
+}
+
+/* Medium and Up */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large and Up */
+@media only screen and (min-width: 992px) {
+  section.container.initialPageContent {
+    padding-top: 100px;
+  }
+}
+
+/* X-Large and Up */
+@media only screen and (min-width: 1200px) {
+
+}
+
+/* XX-Large and Up */
+@media only screen and (min-width: 1400px) {
+
+}
