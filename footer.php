@@ -10,7 +10,7 @@
       Joshua Sibert
       Lor Xiong
       Written:     10/03/21
-      Revisions:
+      Revisions:   10/16/21 - Updating footer nav links
       -->
 
       <!-- Linking to external stylesheet -->
