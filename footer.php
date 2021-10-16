@@ -36,7 +36,9 @@
             <div class="col-12 col-md-6 col-lg-4">
               <b class="lt-gray-text">Quick Links</b>
               <ul class="footerLinks lt-gray-text ps-0">
-                <li class="py-2 px-0"><a href="#" class="blue-text">Home</a></li>
+                <li class="py-1 px-0"><a href="/" class="blue-text">Home</a></li>
+                <li class="py-1 px-0"><a href="#" class="blue-text">View Properties</a></li>
+                <li class="py-1 px-0"><a href="#" class="blue-text">Contact</a></li>
               </ul>
             </div>
             <div class="col-12 attributionBox pt-5">

@@ -10,11 +10,12 @@
       Joshua Sibert
       Lor Xiong
       Written:     10/03/21
-      Revisions:
+      Revisions:   10/16/21 - Adding secondary nav bar
       -->
 
       <!-- Boostrap CSS -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
       <!-- Custom CSS -->
       <link rel="stylesheet" type="text/css" href="style.css">
       <!-- Google Fonts -->
@@ -23,19 +24,19 @@
       <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
    </head>
   <body>
-    <nav class="navbar fixed-top py-3">
+    <div class="fixed-top py-2" id="topSiteNav">
       <div class="container-xxl px-xxl-0">
         <div class="row w-100 mx-auto">
-          <div class="col-12 col-lg-5 logoContainer mb-3 mb-lg-0 d-flex justify-content-center justify-content-lg-start">
-            <a class="navbar-brand orange-text" href="#">
+          <div class="col-5 col-lg-4 logoContainer mb-3 mb-lg-0 d-flex justify-content-center justify-content-lg-start">
+            <a class="orange-text" href="#">
               <img src="graphic/logo.png" alt="" width="100" height="auto" class="d-inline-block align-text-middle">
               Site Name
             </a>
           </div>
 
-          <div class="col-12 col-lg-7 loginContainer d-flex align-items-center justify-content-center justify-content-lg-end">
+          <div class="col-7 col-lg-8 loginContainer d-flex align-items-center justify-content-center justify-content-lg-end">
             <div class="row w-100">
-              <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-end">
+              <div class="d-none d-lg-flex col-lg-6 align-items-center justify-content-center justify-content-lg-end">
                 <p class="text-center mb-3 mb-lg-0">Login or create an account to begin!</p>
               </div>
               <div class="col-6 col-lg-3">
@@ -52,7 +53,33 @@
           </div>
         </div>
       </div>
-    </nav>
+
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-xxl px-lg-3">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span><span>&nbsp;&nbsp;Menu</span>
+          </button>
+
+          <div class="collapse navbar-collapse px-4 py-4 pt-2 px-lg-0 py-lg-1" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">View Properties</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="globalButton blueButton" type="submit"><i class="bi-search"></i></button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
 
     <!-- JQuery CDN -->
     <script
@@ -65,11 +92,15 @@
     jQuery(function($){
 
       $(window).scroll(function(){
-        var margin = $('.navbar').height();
+        var margin = $('#topSiteNav').height();
         if($(this).scrollTop()>=margin){
-            $(".navbar").addClass("stickiedNav");
+            $("#topSiteNav").addClass("stickiedNav");
+            $(".navbar").removeClass("navbar-light");
+            $(".navbar").addClass("navbar-dark");
         } else{
-        	$(".navbar").removeClass("stickiedNav");
+        	$("#topSiteNav").removeClass("stickiedNav");
+          $(".navbar").removeClass("navbar-dark");
+          $(".navbar").addClass("navbar-light");
         }
       });
     });

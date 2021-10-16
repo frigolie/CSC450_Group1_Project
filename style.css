@@ -99,13 +99,18 @@
    }
 
    .globalButton {
-     padding: 10px 30px;
+     padding: 10px 15px;
      font-size: 16px;
      font-weight: 800;
      border-radius: 54px;
      box-shadow: none;
      border: none;
      color: #FFF;
+   }
+
+   .globalButton i:before {
+     color: #FFF;
+     font-weight: 800!important;
    }
 
    .globalButton.orangeButton {
@@ -121,11 +126,21 @@
      box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
    }
 
-   .globalButton.orangeButton:hover, .globalButton.orangeButton:focus, .globalButton.orangeButton:active {
+   .globalButton.orangeButton:hover,
+   .globalButton.orangeButton:focus,
+   .globalButton.orangeButton:active,
+   .globalButton.orangeButton:hover i,
+   .globalButton.orangeButton:focus i,
+   .globalButton.orangeButton:active i {
      color: #FF7B00;
    }
 
-   .globalButton.blueButton:hover, .globalButton.blueButton:focus, .globalButton.blueButton:active {
+   .globalButton.blueButton:hover,
+   .globalButton.blueButton:focus,
+   .globalButton.blueButton:active,
+   .globalButton.blueButton:hover i,
+   .globalButton.blueButton:focus i,
+   .globalButton.blueButton:active i {
      color: #45D3D6;
    }
 
@@ -165,20 +180,76 @@
 								Nav Styles
 	 ========================================= */
 
-   .navbar {
+   #topSiteNav .form-control {
+      border-radius: 20px;
+      padding: 10px 15px;
+      font-size: 16px;
+      line-height: 1;
+  }
+
+   #topSiteNav {
      background-color: transparent;
      box-shadow: none;
    }
 
-   .navbar.stickiedNav {
+   #topSiteNav .navbar-toggler span {
+      font-weight: 800;
+      font-size: 16px;
+   }
+
+   .navbar-light .navbar-nav .nav-link,
+   .navbar-light .navbar-nav .show>.nav-link {
+     font-family: 'Nunito Sans', sans-serif;
+     color: #091517;
+     font-weight: 600;
+   }
+
+   #topSiteNav.stickiedNav {
      background-color: #08262b;
      box-shadow: 0px 4px 14px 0px rgba(0,0,0,0.3);
    }
 
-   .navbar.stickiedNav p {
+   #topSiteNav.stickiedNav p,
+   #topSiteNav.stickiedNav .navbar-toggler span,
+   #topSiteNav.stickiedNav a {
      color: #F0EEEC;
+     font-size: 14px;
    }
 
+   #topSiteNav.stickiedNav .navbar-dark p,
+   #topSiteNav.stickiedNav .navbar-dark a,
+   #topSiteNav .navbar-collapse.collapse.show a {
+     color: #45D3D6!important;
+     font-weight: 600;
+   }
+
+   #topSiteNav.stickiedNav .globalButton {
+     padding: 5px 15px!important;
+     font-size: 14px;
+   }
+
+   #topSiteNav.stickiedNav .globalButton[type="submit"] {
+     padding: 5px 10px!important;
+   }
+
+   #topSiteNav.stickiedNav .form-control {
+      padding: 5px 10px;
+  }
+
+  .navbar-toggler {
+    width: 100%;
+    border: 0px;
+    box-shadow: none!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar-collapse {
+    background-color: white;
+    box-shadow: 0px 4px 14px rgb(0 0 0 / 15%);
+    border-radius: 15px;
+  }
 
  /* =========================================
  								Footer Styles
@@ -225,6 +296,11 @@
 @media only screen and (min-width: 992px) {
   section.container.initialPageContent {
     padding-top: 100px;
+  }
+
+  .navbar-collapse {
+    background-color: transparent;
+    box-shadow: none;
   }
 }
 
