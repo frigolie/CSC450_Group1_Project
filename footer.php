@@ -10,7 +10,7 @@
       Joshua Sibert
       Lor Xiong
       Written:     10/03/21
-      Revisions:
+      Revisions:   10/16/21 - Updating footer nav links
       -->
 
       <!-- Linking to external stylesheet -->
@@ -36,12 +36,17 @@
             <div class="col-12 col-md-6 col-lg-4">
               <b class="lt-gray-text">Quick Links</b>
               <ul class="footerLinks lt-gray-text ps-0">
-                <li class="py-2 px-0"><a href="#" class="blue-text">Home</a></li>
+                <li class="py-1 px-0"><a href="/" class="blue-text">Home</a></li>
+                <li class="py-1 px-0"><a href="/view-properties.php" class="blue-text">View Properties</a></li>
+                <li class="py-1 px-0"><a href="/contact.php" class="blue-text">Contact</a></li>
+                <li class="py-1 px-0"><a href="/register.php" class="blue-text">Register</a></li>
+                <li class="py-1 px-0"><a href="/login.php" class="blue-text">Login</a></li>
+                <li class="py-1 px-0"><a href="/edit-account.php" class="blue-text">Login</a></li>
               </ul>
             </div>
             <div class="col-12 attributionBox pt-5">
               <p class="text-center dk-gray-text mb-0">All photos used are from <a href="https://unsplash.com/" class="blue-text">Unsplash</a> and licensed for commercial use.
-                Background Vector by <a href="https://www.vecteezy.com/free-vector/nature" class="blue-text">Nature Vectors by Vecteezy</a>.</p>
+                Background Vectors by <a href="https://www.vecteezy.com/free-vector/nature" class="blue-text">Nature Vectors</a>, <a href="https://www.vecteezy.com/free-vector/abstract-mountain">Abstract Mountain Vectors</a> by Vecteezy.</p>
               <p class="text-center dk-gray-text">&copy; CSC 450 - Group 1, <?php echo date("Y"); ?></p>
             </div>
           </div>
