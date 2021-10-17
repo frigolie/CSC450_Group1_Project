@@ -19,7 +19,7 @@
   </head>
   <body>
   <?php include(getcwd( ) . "/header.php"); ?>
-    <section class="container-fluid initialPageContent mountainBg pb-5 mb-5">
+    <section class="container-fluid initialPageContent greyMountains pb-5 mb-5">
       <section class="container pb-5">
         <div class="row mt-5 mb-0 my-lg-5">
           <div class="col-12 col-md-5">
@@ -37,7 +37,9 @@
       <div class="row py-5">
         <div class="col-12 col-lg-4 mb-4">
           <a href="#">
-            <img class="w-100 rentalListing" src="graphic/penthouse.jpg" alt="Penthouse Rental" title="Photo by Mostafa Safadel">
+            <div class="w-100 rentalListing">
+              <img class="w-100 rentalListing" src="graphic/penthouse.jpg" alt="Penthouse Rental" title="Photo by Mostafa Safadel">
+            </div>
           </a>
           <a href="#">
             <h3 class="mt-2 mb-0">Downtown Penthouse</h3>
@@ -48,7 +50,9 @@
 
         <div class="col-12 col-lg-4 mb-4">
           <a href="#">
-            <img class="w-100 rentalListing" src="graphic/cabana.jpg" alt="Cabana Rental" title="Photo by Mike Swigunski">
+            <div class="w-100 rentalListing">
+              <img class="w-100 rentalListing" src="graphic/cabana.jpg" alt="Cabana Rental" title="Photo by Mike Swigunski">
+            </div>
           </a>
           <a href="#">
             <h3 class="mt-2 mb-0">Oceanside Cabana</h3>
@@ -59,7 +63,9 @@
 
         <div class="col-12 col-lg-4 mb-4">
           <a href="#">
-            <img class="w-100 rentalListing" src="graphic/cabin.jpg" alt="Cabin Rental" title="Photo by Cameron Stewart">
+            <div class="w-100 rentalListing">
+              <img class="w-100 rentalListing" src="graphic/cabin.jpg" alt="Cabin Rental" title="Photo by Cameron Stewart">
+            </div>
           </a>
           <a href="#">
             <h3 class="mt-2 mb-0">Mountain Cabin</h3>
