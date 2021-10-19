@@ -11,11 +11,11 @@
       Joshua Sibert
       Lor Xiong
       Written:     10/03/21
-      Revisions:
+      Revisions:   10/19/21 - Added Title
       -->
 
       <!-- Page title -->
-    <title>Home Page</title> <!-- 10/03/21 - Temporary title, company name still TBD -->
+    <title>HomeAway Rentals LLC</title>
   </head>
   <body>
   <?php include(getcwd( ) . "/header.php"); ?>

@@ -13,6 +13,7 @@
       Revisions:   10/16/21 - Adding secondary nav bar
                             - Adding Page Links
                             - Updating the listing images to be equalized in height
+                   10/19/21 - Adding logo
       -->
 
       <!-- Boostrap CSS -->
@@ -30,9 +31,8 @@
       <div class="container-xxl px-xxl-0">
         <div class="row w-100 mx-auto">
           <div class="col-5 col-lg-4 logoContainer mb-3 mb-lg-0 d-flex justify-content-center justify-content-lg-start">
-            <a class="orange-text" href="#">
-              <img src="graphic/logo.png" alt="" width="100" height="auto" class="d-inline-block align-text-middle">
-              Site Name
+            <a class="orange-text" href="/">
+              <img src="graphic/homeaway.png" alt="HomeAway Rentals LLC" class="d-inline-block align-text-middle navLogo">
             </a>
           </div>
 
