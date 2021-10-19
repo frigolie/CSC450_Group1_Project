@@ -11,6 +11,7 @@
       Lor Xiong
       Written:     10/03/21
       Revisions:   10/16/21 - Updating footer nav links
+                   10/19/21 - Adding logo to footer
       -->
 
       <!-- Linking to external stylesheet -->
@@ -24,11 +25,11 @@
 
           <div class="row py-3">
             <div class="col-12 col-md-6 col-lg-4">
-              <a href="#">
-                <img class="logo w-50 mb-3" src="graphic/logo.png" alt="CSC 450 Final Project" title="CSC 450 Final Project" />
+              <a href="/">
+                <img class="logo w-50 mb-3" src="graphic/homeaway.png" alt="CSC 450 Final Project" title="CSC 450 Final Project" />
               </a>
               <p class="lt-gray-text">
-                Company Name TBA<br>
+                HomeAway Rentals, LLC<br>
                 1234 Main St<br>
                 Minneapolis, MN 55111
               </p>
@@ -41,12 +42,12 @@
                 <li class="py-1 px-0"><a href="/contact.php" class="blue-text">Contact</a></li>
                 <li class="py-1 px-0"><a href="/register.php" class="blue-text">Register</a></li>
                 <li class="py-1 px-0"><a href="/login.php" class="blue-text">Login</a></li>
-                <li class="py-1 px-0"><a href="/edit-account.php" class="blue-text">Login</a></li>
+                <li class="py-1 px-0"><a href="/edit-account.php" class="blue-text">Edit Account</a></li>
               </ul>
             </div>
             <div class="col-12 attributionBox pt-5">
               <p class="text-center dk-gray-text mb-0">All photos used are from <a href="https://unsplash.com/" class="blue-text">Unsplash</a> and licensed for commercial use.
-                Background Vectors by <a href="https://www.vecteezy.com/free-vector/nature" class="blue-text">Nature Vectors</a>, <a href="https://www.vecteezy.com/free-vector/abstract-mountain">Abstract Mountain Vectors</a> by Vecteezy.</p>
+                Background Vectors by <a href="https://www.vecteezy.com/free-vector/nature" class="blue-text">Nature Vectors</a>, <a href="https://www.vecteezy.com/free-vector/abstract-mountain" class="blue-text">Abstract Mountain Vectors</a> by Vecteezy.</p>
               <p class="text-center dk-gray-text">&copy; CSC 450 - Group 1, <?php echo date("Y"); ?></p>
             </div>
           </div>
