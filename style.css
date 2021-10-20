@@ -16,357 +16,364 @@
 								Global Styles
 	 ========================================= */
 
-   * {
-     box-sizing: border-box;
-     font-family: 'Nunito Sans', sans-serif;
-     color: #091517;
-     transition: all .25s ease!important;
-   }
+* {
+  box-sizing: border-box;
+  font-family: "Nunito Sans", sans-serif;
+  color: #091517;
+  transition: all 0.25s ease !important;
+}
 
-   body {
-     background-color: #FFF;
-   }
+body {
+  background-color: #fff;
+}
 
-   section.initialPageContent {
-     padding-top: 200px;
-   }
+section.initialPageContent {
+  padding-top: 200px;
+}
 
-   .orange-text {
-     color: #FF7B00; /* Primary Orange */
-   }
+.orange-text {
+  color: #ff7b00; /* Primary Orange */
+}
 
-   .orange-bg {
-     background-color: #FF7B00; /* Primary Orange */
-   }
+.orange-bg {
+  background-color: #ff7b00; /* Primary Orange */
+}
 
-   .dk-orange-text {
-     color: #E56100; /* Dark Orange */
-   }
+.dk-orange-text {
+  color: #e56100; /* Dark Orange */
+}
 
-   .dk-orange-bg {
-     background-color: #E56100; /* Dark Orange */
-   }
+.dk-orange-bg {
+  background-color: #e56100; /* Dark Orange */
+}
 
-   .blue-text {
-     color: #45D3D6; /* Primary Blue */
-   }
+.blue-text {
+  color: #45d3d6; /* Primary Blue */
+}
 
-   .blue-bg {
-     background-color: #45D3D6; /* Primary Blue */
-   }
+.blue-bg {
+  background-color: #45d3d6; /* Primary Blue */
+}
 
-   .black-text {
-     color: #08262b; /* Off-Black */
-   }
+.black-text {
+  color: #08262b; /* Off-Black */
+}
 
-   .black-bg {
-     background-color: #08262b; /* Off-Black */
-   }
+.black-bg {
+  background-color: #08262b; /* Off-Black */
+}
 
-   .lt-gray-text {
-     color: #F0EEEC; /* Light Gray */
-   }
+.lt-gray-text {
+  color: #f0eeec; /* Light Gray */
+}
 
-   .lt-gray-bg {
-     background-color: #F0EEEC; /* Light Gray */
-   }
+.lt-gray-bg {
+  background-color: #f0eeec; /* Light Gray */
+}
 
-   .dk-gray-text {
-     color: #C9C3BF; /* Dark Gray */
-   }
+.dk-gray-text {
+  color: #c9c3bf; /* Dark Gray */
+}
 
-   .dk-gray-bg {
-     background-color: #C9C3BF; /* Dark Gray */
-   }
+.dk-gray-bg {
+  background-color: #c9c3bf; /* Dark Gray */
+}
 
-   .white-bg {
-     background-color: #FFF;
-   }
+.white-bg {
+  background-color: #fff;
+}
 
-   .box-shadow {
-     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
-   }
+.box-shadow {
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
+}
 
-   .text-shadow {
-     text-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
-   }
+.text-shadow {
+  text-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
+}
 
-   a, a * {
-     text-decoration: none;
-   }
+a,
+a * {
+  text-decoration: none;
+}
 
-   a:hover, a:focus, a:active,
-   a:hover *, a:focus *, a:active * {
-     color: #FF7B00;
-   }
+a:hover,
+a:focus,
+a:active,
+a:hover *,
+a:focus *,
+a:active * {
+  color: #ff7b00;
+}
+.row {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.col {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  min-width: 0;
+  max-width: 100%;
+}
+.globalButton {
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: 800;
+  border-radius: 54px;
+  box-shadow: none;
+  border: none;
+  color: #fff;
+}
 
-   .globalButton {
-     padding: 10px 15px;
-     font-size: 16px;
-     font-weight: 800;
-     border-radius: 54px;
-     box-shadow: none;
-     border: none;
-     color: #FFF;
-   }
+.globalButton i:before {
+  color: #fff;
+  font-weight: 800 !important;
+}
 
-   .globalButton i:before {
-     color: #FFF;
-     font-weight: 800!important;
-   }
+.globalButton.orangeButton {
+  background-color: #ff7b00;
+}
 
-   .globalButton.orangeButton {
-     background-color: #FF7B00;
-   }
+.globalButton.blueButton {
+  background-color: #45d3d6;
+}
 
-   .globalButton.blueButton {
-     background-color: #45D3D6;
-   }
+.globalButton:hover,
+.globalButton:focus,
+.globalButton:active {
+  background-color: #fff;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
+}
 
-   .globalButton:hover, .globalButton:focus, .globalButton:active {
-     background-color: #FFF;
-     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
-   }
+.globalButton.orangeButton:hover,
+.globalButton.orangeButton:focus,
+.globalButton.orangeButton:active,
+.globalButton.orangeButton:hover i,
+.globalButton.orangeButton:focus i,
+.globalButton.orangeButton:active i {
+  color: #ff7b00;
+}
 
-   .globalButton.orangeButton:hover,
-   .globalButton.orangeButton:focus,
-   .globalButton.orangeButton:active,
-   .globalButton.orangeButton:hover i,
-   .globalButton.orangeButton:focus i,
-   .globalButton.orangeButton:active i {
-     color: #FF7B00;
-   }
+.globalButton.blueButton:hover,
+.globalButton.blueButton:focus,
+.globalButton.blueButton:active,
+.globalButton.blueButton:hover i,
+.globalButton.blueButton:focus i,
+.globalButton.blueButton:active i {
+  color: #45d3d6;
+}
 
-   .globalButton.blueButton:hover,
-   .globalButton.blueButton:focus,
-   .globalButton.blueButton:active,
-   .globalButton.blueButton:hover i,
-   .globalButton.blueButton:focus i,
-   .globalButton.blueButton:active i {
-     color: #45D3D6;
-   }
+h1 {
+  font-size: 50px;
+  font-weight: 800;
+}
 
-   h1 {
-     font-size: 50px;
-     font-weight: 800;
-   }
+h2 {
+  font-weight: 700;
+}
 
-   h2 {
-     font-weight: 700;
-   }
+h3 {
+  font-size: 28px;
+  font-weight: 700;
+}
 
-   h3 {
-     font-size: 28px;
-     font-weight: 700;
-   }
+h4 {
+  font-size: 20px;
+  font-weight: 600;
+}
 
-   h4 {
-     font-size: 20px;
-     font-weight: 600;
-   }
+ul {
+  list-style: none;
+}
 
-   ul {
-     list-style: none;
-   }
+.max-880 {
+  max-width: 880px;
+}
 
-   .max-880 {
-     max-width: 880px;
-   }
+.rounded-custom {
+  border-radius: 15px;
+}
 
-   .rounded-custom {
-     border-radius: 15px;
-   }
+.blueMountains {
+  background-image: url("graphic/mountainBG/blue.jpg");
+  background-size: cover;
+  background-position: top center;
+}
 
-   .blueMountains {
-     background-image: url('graphic/mountainBG/blue.jpg');
-     background-size: cover;
-     background-position: top center;
-   }
+.fireTower {
+  background-image: url("graphic/mountainBG/firewatchTower.svg");
+  background-size: cover;
+  background-position: center center;
+}
 
-   .fireTower {
-     background-image: url('graphic/mountainBG/firewatchTower.svg');
-     background-size: cover;
-     background-position: center center;
-   }
+.greenMountains {
+  background-image: url("graphic/mountainBG/green.svg");
+  background-size: cover;
+  background-position: center center;
+}
 
-   .greenMountains {
-     background-image: url('graphic/mountainBG/green.svg');
-     background-size: cover;
-     background-position: center center;
-   }
+.greyMountains {
+  background-image: url("graphic/mountainBG/grey.jpg");
+  background-size: cover;
+  background-position: top center;
+}
 
-   .greyMountains {
-     background-image: url('graphic/mountainBG/grey.jpg');
-     background-size: cover;
-     background-position: top center;
-   }
+.orangeMountains {
+  background-image: url("graphic/mountainBG/orange.jpg");
+  background-size: cover;
+  background-position: top center;
+}
 
-   .orangeMountains {
-     background-image: url('graphic/mountainBG/orange.jpg');
-     background-size: cover;
-     background-position: top center;
-   }
+.pinkMountains {
+  background-image: url("graphic/mountainBG/pink.jpg");
+  background-size: cover;
+  background-position: top center;
+}
 
-   .pinkMountains {
-     background-image: url('graphic/mountainBG/pink.jpg');
-     background-size: cover;
-     background-position: top center;
-   }
+.purpleMountains {
+  background-image: url("graphic/mountainBG/purple.jpg");
+  background-size: cover;
+  background-position: top center;
+}
 
-   .purpleMountains {
-     background-image: url('graphic/mountainBG/purple.jpg');
-     background-size: cover;
-     background-position: top center;
-   }
+.redMountains {
+  background-image: url("graphic/mountainBG/red.jpg");
+  background-size: cover;
+  background-position: top center;
+}
 
-   .redMountains {
-     background-image: url('graphic/mountainBG/red.jpg');
-     background-size: cover;
-     background-position: top center;
-   }
-
-   .yellowMountains {
-     background-image: url('graphic/mountainBG/yellow.svg');
-     background-size: cover;
-     background-position: top center;
-   }
-
+.yellowMountains {
+  background-image: url("graphic/mountainBG/yellow.svg");
+  background-size: cover;
+  background-position: top center;
+}
 
 /* =========================================
-								Nav Styles
-	 ========================================= */
+                  Nav Styles
+     ========================================= */
 
-   #topSiteNav .form-control {
-      border-radius: 20px;
-      padding: 10px 15px;
-      font-size: 16px;
-      line-height: 1;
-  }
+#topSiteNav .form-control {
+  border-radius: 20px;
+  padding: 10px 15px;
+  font-size: 16px;
+  line-height: 1;
+}
 
-   #topSiteNav {
-     background-color: transparent;
-     box-shadow: none;
-   }
+#topSiteNav {
+  background-color: transparent;
+  box-shadow: none;
+}
 
-   #topSiteNav .navbar-toggler span {
-      font-weight: 800;
-      font-size: 16px;
-   }
+#topSiteNav .navbar-toggler span {
+  font-weight: 800;
+  font-size: 16px;
+}
 
-   #topSiteNav .navLogo {
-     height: 60px;
-     width: auto;
-   }
+.navbar-light .navbar-nav .nav-link,
+.navbar-light .navbar-nav .show > .nav-link {
+  font-family: "Nunito Sans", sans-serif;
+  color: #091517;
+  font-weight: 600;
+}
 
-   .navbar-light .navbar-nav .nav-link,
-   .navbar-light .navbar-nav .show>.nav-link {
-     font-family: 'Nunito Sans', sans-serif;
-     color: #091517;
-     font-weight: 600;
-   }
+#topSiteNav.stickiedNav {
+  background-color: #08262b;
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.3);
+}
 
-   #topSiteNav.stickiedNav {
-     background-color: #08262b;
-     box-shadow: 0px 4px 14px 0px rgba(0,0,0,0.3);
-   }
+#topSiteNav.stickiedNav p,
+#topSiteNav.stickiedNav .navbar-toggler span,
+#topSiteNav.stickiedNav a {
+  color: #f0eeec;
+  font-size: 14px;
+}
 
-   #topSiteNav.stickiedNav p,
-   #topSiteNav.stickiedNav .navbar-toggler span,
-   #topSiteNav.stickiedNav a {
-     color: #F0EEEC;
-     font-size: 14px;
-   }
+#topSiteNav.stickiedNav .navbar-dark p,
+#topSiteNav.stickiedNav .navbar-dark a,
+#topSiteNav .navbar-collapse.collapse.show a {
+  color: #45d3d6 !important;
+  font-weight: 600;
+}
 
-   #topSiteNav.stickiedNav .navLogo {
-     height: 45px;
-   }
+#topSiteNav.stickiedNav .globalButton {
+  padding: 5px 15px !important;
+  font-size: 14px;
+}
 
-   #topSiteNav.stickiedNav .navbar-dark p,
-   #topSiteNav.stickiedNav .navbar-dark a,
-   #topSiteNav .navbar-collapse.collapse.show a {
-     color: #45D3D6!important;
-     font-weight: 600;
-   }
+#topSiteNav.stickiedNav .globalButton[type="submit"] {
+  padding: 5px 10px !important;
+}
 
-   #topSiteNav.stickiedNav .globalButton {
-     padding: 5px 15px!important;
-     font-size: 14px;
-   }
+#topSiteNav.stickiedNav .form-control {
+  padding: 5px 10px;
+}
 
-   #topSiteNav.stickiedNav .globalButton[type="submit"] {
-     padding: 5px 10px!important;
-   }
+.navbar-toggler {
+  width: 100%;
+  border: 0px;
+  box-shadow: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-   #topSiteNav.stickiedNav .form-control {
-      padding: 5px 10px;
-  }
-
-  .navbar-toggler {
-    width: 100%;
-    border: 0px;
-    box-shadow: none!important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .navbar-collapse {
-    background-color: white;
-    box-shadow: 0px 4px 14px rgb(0 0 0 / 15%);
-    border-radius: 15px;
-  }
-
- /* =========================================
- 								Footer Styles
- 	 ========================================= */
-
-   .attributionBox p {
-     font-size: 12px;
-   }
-
- /* =========================================
-                 Home Page Styles
-    ========================================= */
-
-    .rentalListing {
-      height: 230px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .rentalListing img {
-      position: absolute;
-      left: 0px;
-      top: 50%;
-      transform: translate(0, -50%);
-    }
-
-    .rentalListing img:hover {
-      opacity: .85;
-    }
+.navbar-collapse {
+  background-color: white;
+  box-shadow: 0px 4px 14px rgb(0 0 0 / 15%);
+  border-radius: 15px;
+}
 
 /* =========================================
-						View Properties Styles
-	 ========================================= */
+                   Footer Styles
+      ========================================= */
 
+.attributionBox p {
+  font-size: 12px;
+}
 
- /* =========================================
- 								Responsive Styles
- 	 ========================================= */
+/* =========================================
+                   Home Page Styles
+      ========================================= */
+
+.rentalListing {
+  height: 230px;
+  overflow: hidden;
+  position: relative;
+}
+
+.rentalListing img {
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.rentalListing img:hover {
+  opacity: 0.85;
+}
+
+/* =========================================
+              View Properties Styles
+     ========================================= */
+
+/* =========================================
+                   Responsive Styles
+      ========================================= */
 
 /* X-Small Only */
 @media only screen and (max-width: 576px) {
-
 }
 
 /* Small and Up */
 @media only screen and (min-width: 576px) {
-
 }
 
 /* Medium and Up */
 @media only screen and (min-width: 768px) {
-
 }
 
 /* Large and Up */
@@ -384,13 +391,12 @@
 /* X-Large and Up */
 @media only screen and (min-width: 1200px) {
   .listingCard {
-    width: 30%!important;
-    margin-left: 1.5%!important;
-    margin-right: 1.5%!important;
+    width: 30% !important;
+    margin-left: 1.5% !important;
+    margin-right: 1.5% !important;
   }
 }
 
 /* XX-Large and Up */
 @media only screen and (min-width: 1400px) {
-
 }
