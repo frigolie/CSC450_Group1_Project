@@ -15,7 +15,6 @@
                             - Updating the listing images to be equalized in height
                    10/19/21 - Adding logo
       -->
-
       <!-- Boostrap CSS -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
@@ -35,7 +34,6 @@
               <img src="graphic/homeaway.png" alt="HomeAway Rentals LLC" class="d-inline-block align-text-middle navLogo">
             </a>
           </div>
-
           <div class="col-7 col-lg-8 loginContainer d-flex align-items-center justify-content-center justify-content-lg-end">
             <div class="row w-100">
               <div class="d-none d-lg-flex col-lg-6 align-items-center justify-content-center justify-content-lg-end">
@@ -59,13 +57,11 @@
           </div>
         </div>
       </div>
-
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-xxl px-lg-3">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span><span>&nbsp;&nbsp;Menu</span>
           </button>
-
           <div class="collapse navbar-collapse px-4 py-4 pt-2 px-lg-0 py-lg-1" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -86,17 +82,14 @@
         </div>
       </nav>
     </div>
-
     <!-- JQuery CDN -->
     <script
 			  src="https://code.jquery.com/jquery-3.6.0.min.js"
 			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 			  crossorigin="anonymous"></script>
-
     <!-- Adding sticky nav class on page scroll -->
     <script>
     jQuery(function($){
-
       $(window).scroll(function(){
         var margin = $('#topSiteNav').height();
         if($(this).scrollTop()>=margin){

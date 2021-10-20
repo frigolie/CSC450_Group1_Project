@@ -15,7 +15,7 @@
       -->
 
       <!-- Page title -->
-    <title>Home Page</title> <!-- 10/03/21 - Temporary title, company name still TBD -->
+      <title>HomeAway Rentals LLC</title>
   </head>
   <body>
   <?php include(getcwd( ) . "/header.php"); ?>
@@ -82,7 +82,7 @@
           <h2 class="text-center">Explore these properties and&nbsp;more!</h2>
         </div>
         <div class="col-12 col-md-6 d-flex justify-content-center justify-content-lg-end">
-          <a href="index.php">
+          <a href="/index.php">
           <button class="globalButton orangeButton mb-2 ">
             Log In as a Guest
           </button>

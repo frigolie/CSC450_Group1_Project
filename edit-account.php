@@ -20,7 +20,7 @@
   <body>
   <?php include(getcwd( ) . "/header.php"); ?>
 
-  <section class="container-fluid initialPageContent purpleMountains pb-5">
+  <section class="container-fluid initialPageContent redMountains pb-5">
       <div class="row pb-5 justify-content-center">
 
         <div class="col-10 col-md-8 col-lg-6 px-5 py-5 white-bg box-shadow rounded-custom">
