@@ -11,11 +11,11 @@
       Joshua Sibert
       Lor Xiong
       Written:     10/03/21
-      Revisions:   10/19/21 - Added Title
+      Revisions:  
       -->
 
       <!-- Page title -->
-    <title>HomeAway Rentals LLC</title>
+    <title>Home Page</title> <!-- 10/03/21 - Temporary title, company name still TBD -->
   </head>
   <body>
   <?php include(getcwd( ) . "/header.php"); ?>
@@ -82,14 +82,19 @@
           <h2 class="text-center">Explore these properties and&nbsp;more!</h2>
         </div>
         <div class="col-12 col-md-6 d-flex justify-content-center justify-content-lg-end">
+          <a href="index.php">
           <button class="globalButton orangeButton mb-2 ">
             Log In as a Guest
           </button>
+          </a>
         </div>
+        
         <div class="col-12 col-md-6 d-flex justify-content-center justify-content-lg-start">
+        <a href="index.php">
           <button class="globalButton blueButton mb-2">
-            List Your Property
+            List Your Property </button>
           </button>
+        </a>
         </div>
       </div>
     </section>
