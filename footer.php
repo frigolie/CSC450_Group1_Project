@@ -1,4 +1,29 @@
-<div class="row py-3">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8" />
+      <!-- footer.php - Global footer for use on each page of the web app
+      CSC450 - Computer Science Capstone
+      Group 1:
+      Elise Frigoli
+      Nolan Harre
+      Joshua Sibert
+      Lor Xiong
+      Written:     10/03/21
+      Revisions:   10/16/21 - Updating footer nav links
+                   10/19/21 - Adding logo to footer
+      -->
+
+      <!-- Linking to external stylesheet -->
+      <link rel="stylesheet" type="text/css" href="style.css">
+
+  </head>
+  <body>
+    <footer>
+      <div class="container-fluid black-bg">
+        <div class="container-xxl py-5">
+
+          <div class="row py-3">
             <div class="col-12 col-md-6 col-lg-4">
               <a href="/">
                 <img class="logo w-50 mb-3" src="graphic/homeaway.png" alt="CSC 450 Final Project" title="CSC 450 Final Project" />
@@ -43,3 +68,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
   </body>
 </html>
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
