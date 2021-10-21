@@ -11,7 +11,7 @@
       Joshua Sibert
       Lor Xiong
       Written:     10/03/21
-      Revisions:  
+      Revisions:
       -->
 
       <!-- Page title -->
@@ -82,19 +82,19 @@
           <h2 class="text-center">Explore these properties and&nbsp;more!</h2>
         </div>
         <div class="col-12 col-md-6 d-flex justify-content-center justify-content-lg-end">
-          <a href="/index.php">
-          <button class="globalButton orangeButton mb-2 ">
-            Log In as a Guest
-          </button>
+          <a href="/view-properties.php">
+            <button class="globalButton orangeButton mb-2 ">
+              View Properties
+            </button>
           </a>
         </div>
-        
+
         <div class="col-12 col-md-6 d-flex justify-content-center justify-content-lg-start">
-        <a href="index.php">
-          <button class="globalButton blueButton mb-2">
-            List Your Property </button>
-          </button>
-        </a>
+          <a href="#"> <!-- Replace with link to My Account page? -->
+            <button class="globalButton blueButton mb-2">
+              List Your Property
+            </button>
+          </a>
         </div>
       </div>
     </section>
