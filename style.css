@@ -273,6 +273,11 @@ ul {
   font-size: 16px;
 }
 
+#topSiteNav .navLogo {
+  height: 60px;
+  width: auto;
+}
+
 .navbar-light .navbar-nav .nav-link,
 .navbar-light .navbar-nav .show > .nav-link {
   font-family: "Nunito Sans", sans-serif;
@@ -290,6 +295,10 @@ ul {
 #topSiteNav.stickiedNav a {
   color: #f0eeec;
   font-size: 14px;
+}
+
+#topSiteNav.stickiedNav .navLogo {
+  height: 45px;
 }
 
 #topSiteNav.stickiedNav .navbar-dark p,
