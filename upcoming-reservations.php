@@ -32,12 +32,12 @@
                 <h3>Reservation #0293843</h3>
               </div>
               <div class="col-12 col-md-6">
-                <a href="#">
+                <a href="/property-details.php">
                   <div class="w-100 rentalListing rounded-custom">
                     <img class="w-100" src="graphic/penthouse.jpg" alt="Penthouse Rental" title="Photo by Mostafa Safadel">
                   </div>
                 </a>
-                <a href="#">
+                <a href="/property-details.php">
                   <h4 class="mt-3 mb-1">Downtown Penthouse</h4>
                 </a>
                 <h5>111 Main Street Apt #117<br/>
@@ -58,8 +58,12 @@
                   <span class="reservationTitle">Total Paid: </span>$345.77
                 </p>
                 <div class="w-100">
-                  <button class="globalButton orangeButton my-2 me-2">Edit Reservation</button>
-                  <button class="globalButton blueButton my-2 ms-2">Contact Guest</button>
+                  <a href="/edit-reservation.php">
+                    <button class="globalButton orangeButton my-2 me-2">Edit Reservation</button>
+                  </a>
+                  <a href="/messages.php">
+                    <button class="globalButton blueButton my-2 ms-2">Contact Guest</button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -72,12 +76,12 @@
                 <h3>Reservation #0484392</h3>
               </div>
               <div class="col-12 col-md-6">
-                <a href="#">
+                <a href="/property-details.php">
                   <div class="w-100 rentalListing rounded-custom">
                     <img class="w-100" src="graphic/cabana.jpg" alt="Cabana Rental" title="Photo by Mike Swigunski">
                   </div>
                 </a>
-                <a href="#">
+                <a href="/property-details.php">
                   <h4 class="mt-3 mb-1">Oceanside Cabana</h4>
                 </a>
                 <h5>987 Breezy Bay Way<br/>
@@ -98,8 +102,12 @@
                   <span class="reservationTitle">Total Paid: </span>$962.44
                 </p>
                 <div class="w-100">
-                  <button class="globalButton orangeButton my-2 me-2">Edit Reservation</button>
-                  <button class="globalButton blueButton my-2 ms-2">Contact Guest</button>
+                  <a href="/edit-reservation.php">
+                    <button class="globalButton orangeButton my-2 me-2">Edit Reservation</button>
+                  </a>
+                  <a href="/messages.php">
+                    <button class="globalButton blueButton my-2 ms-2">Contact Guest</button>
+                  </a>
                 </div>
               </div>
             </div>

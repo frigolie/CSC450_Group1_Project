@@ -47,7 +47,7 @@
           </div>
 
           <div class="pt-3 text-center">
-            <a href="index.php">
+            <a href="#">
             <button type="submit" class="globalButton orangeButton"style="height:50px;width:200px;font-size:1.4em;" onsubmit="">Let's go!</button>
           </div>
         </div>

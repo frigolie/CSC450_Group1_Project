@@ -32,12 +32,12 @@
 
           <!-- This single listing can be created on a foreach loop over data so that it can grow dynamically -->
           <div class="col-12 col-lg-5 col-xl-4 mb-5 p-4 text-center bg-white rounded-custom box-shadow listingCard">
-            <a href="#">
+            <a href="/property-details.php">
               <div class="w-100 rentalListing">
                 <img class="w-100 rounded-custom" src="graphic/townhouse.jpg" alt="Townhouse Rental" title="Photo by Travel-Cents">
               </div>
             </a>
-            <a href="#">
+            <a href="/property-details.php">
               <h3 class="mt-3 mb-1">Classical Townhouse</h3>
             </a>
             <h4>2 bed, 2 bath</h4>
@@ -48,12 +48,12 @@
           <!-- End single listing, following lines are repeating for demo purposes until we get dynamic functionality set up -->
 
           <div class="col-12 col-lg-5 col-xl-4 mb-5 p-4 text-center bg-white rounded-custom box-shadow listingCard">
-            <a href="#">
+            <a href="/property-details.php">
               <div class="w-100 rentalListing">
                 <img class="w-100 rounded-custom" src="graphic/cottage.jpg" alt="Cottage Rental" title="Photo by Bertrand Bouchez">
               </div>
             </a>
-            <a href="#">
+            <a href="/property-details.php">
               <h3 class="mt-3 mb-1">Country Cottage</h3>
             </a>
             <h4>2 bed, 1.5 bath</h4>
@@ -63,12 +63,12 @@
           </div>
 
           <div class="col-12 col-lg-5 col-xl-4 mb-5 p-4 text-center bg-white rounded-custom box-shadow listingCard">
-            <a href="#">
+            <a href="/property-details.php">
               <div class="w-100 rentalListing">
                 <img class="w-100 rounded-custom" src="graphic/ranch.jpg" alt="Ranch House Rental" title="Photo by Janelle Hiroshigi">
               </div>
             </a>
-            <a href="#">
+            <a href="/property-details.php">
               <h3 class="mt-3 mb-1">Mid-Century Ranch House</h3>
             </a>
             <h4>3 bed, 2 bath</h4>

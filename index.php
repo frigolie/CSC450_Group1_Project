@@ -36,12 +36,12 @@
     <section class="container">
       <div class="row py-5">
         <div class="col-12 col-lg-4 mb-4">
-          <a href="#">
+          <a href="/property-details.php">
             <div class="w-100 rentalListing">
               <img class="w-100 rentalListing" src="graphic/penthouse.jpg" alt="Penthouse Rental" title="Photo by Mostafa Safadel">
             </div>
           </a>
-          <a href="#">
+          <a href="/property-details.php">
             <h3 class="mt-2 mb-0">Downtown Penthouse</h3>
           </a>
           <h4>2 beds, 1.5 bath</h4>
@@ -49,12 +49,12 @@
         </div>
 
         <div class="col-12 col-lg-4 mb-4">
-          <a href="#">
+          <a href="/property-details.php">
             <div class="w-100 rentalListing">
               <img class="w-100 rentalListing" src="graphic/cabana.jpg" alt="Cabana Rental" title="Photo by Mike Swigunski">
             </div>
           </a>
-          <a href="#">
+          <a href="/property-details.php">
             <h3 class="mt-2 mb-0">Oceanside Cabana</h3>
           </a>
           <h4>1 bed, 1 bath</h4>
@@ -62,12 +62,12 @@
         </div>
 
         <div class="col-12 col-lg-4 mb-4">
-          <a href="#">
+          <a href="/property-details.php">
             <div class="w-100 rentalListing">
               <img class="w-100 rentalListing" src="graphic/cabin.jpg" alt="Cabin Rental" title="Photo by Cameron Stewart">
             </div>
           </a>
-          <a href="#">
+          <a href="/property-details.php">
             <h3 class="mt-2 mb-0">Mountain Cabin</h3>
           </a>
           <h4>Studio, .5 bath</h4>
@@ -90,7 +90,7 @@
         </div>
 
         <div class="col-12 col-md-6 d-flex justify-content-center justify-content-lg-start">
-          <a href="#"> <!-- Replace with link to My Account page? -->
+          <a href="/register">
             <button class="globalButton blueButton mb-2">
               List Your Property
             </button>

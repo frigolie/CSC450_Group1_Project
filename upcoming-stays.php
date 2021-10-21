@@ -15,7 +15,7 @@
       -->
 
       <!-- Page title -->
-    <title>Upcoming Reservations</title>
+    <title>Upcoming Stays</title>
   </head>
   <body>
   <?php include(getcwd( ) . "/header.php"); ?>
@@ -32,12 +32,12 @@
                 <h3>Trip #0293843</h3>
               </div>
               <div class="col-12 col-md-6">
-                <a href="#">
+                <a href="/property-details.php">
                   <div class="w-100 rentalListing rounded-custom">
                     <img class="w-100" src="graphic/penthouse.jpg" alt="Penthouse Rental" title="Photo by Mostafa Safadel">
                   </div>
                 </a>
-                <a href="#">
+                <a href="/property-details.php">
                   <h4 class="mt-3 mb-1">Downtown Penthouse</h4>
                 </a>
                 <h5>111 Main Street Apt #117<br/>
@@ -58,8 +58,12 @@
                   <span class="reservationTitle">Total Paid: </span>$345.77
                 </p>
                 <div class="w-100">
-                  <button class="globalButton orangeButton my-2 me-2">Edit Reservation</button>
-                  <button class="globalButton blueButton my-2 ms-2">Contact Host</button>
+                  <a href="/edit-reservation.php">
+                    <button class="globalButton orangeButton my-2 me-2">Edit Reservation</button>
+                  </a>
+                  <a href="/messages.php">
+                    <button class="globalButton blueButton my-2 ms-2">Contact Host</button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -72,12 +76,12 @@
                 <h3>Trip #0383996</h3>
               </div>
               <div class="col-12 col-md-6">
-                <a href="#">
+                <a href="/property-details.php">
                   <div class="w-100 rentalListing rounded-custom">
                     <img class="w-100" src="graphic/cabin.jpg" alt="Cabin Rental" title="Photo by Cameron Stewart">
                   </div>
                 </a>
-                <a href="#">
+                <a href="/property-details.php">
                   <h4 class="mt-3 mb-1">Mountain Cabin</h4>
                 </a>
                 <h5>N19W388 County Rd. H<br/>
@@ -98,8 +102,12 @@
                   <span class="reservationTitle">Total Paid: </span>$119.26
                 </p>
                 <div class="w-100">
-                  <button class="globalButton orangeButton my-2 me-2">Edit Reservation</button>
-                  <button class="globalButton blueButton my-2 ms-2">Contact Host</button>
+                  <a href="/edit-reservation.php">
+                    <button class="globalButton orangeButton my-2 me-2">Edit Reservation</button>
+                  </a>
+                  <a href="/messages.php">
+                    <button class="globalButton blueButton my-2 ms-2">Contact Host</button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -121,12 +129,12 @@
                 <h3>Trip #0847939</h3>
               </div>
               <div class="col-12 col-md-6">
-                <a href="#">
+                <a href="/property-details.php">
                   <div class="w-100 rentalListing rounded-custom">
                     <img class="w-100" src="graphic/manor.jpg" alt="Manor Rental" title="Photo by Nathan Walker">
                   </div>
                 </a>
-                <a href="#">
+                <a href="/property-details.php">
                   <h4 class="mt-3 mb-1">Victorian Manor</h4>
                 </a>
                 <h5>2839 First Street<br/>

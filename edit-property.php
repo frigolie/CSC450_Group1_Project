@@ -77,7 +77,7 @@
 
             <div class="pt-3 text-center">
               <button type="submit" class="globalButton blueButton">Update Property</button>
-              <button type="delete" class="globalButton orangeButton">Delete Property</button>
+              <button type="delete" class="globalButton redButton">Delete Property</button>
             </div>
           </div>
         </div>

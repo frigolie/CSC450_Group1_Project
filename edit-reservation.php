@@ -77,7 +77,7 @@
 
             <div class="pt-3 text-center">
               <button type="submit" class="globalButton blueButton">Update Reservation</button>
-              <button type="delete" class="globalButton orangeButton">Delete Reservation</button>
+              <button type="delete" class="globalButton redButton">Delete Reservation</button>
             </div>
           </div>
         </div>

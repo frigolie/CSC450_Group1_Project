@@ -11,7 +11,7 @@
       Joshua Sibert
       Lor Xiong
       Written:     10/16/21
-      Revisions:   10/19/21 - replacing bootstrap sample form 
+      Revisions:   10/19/21 - replacing bootstrap sample form
       -->
 
       <!-- Page title -->
@@ -34,7 +34,7 @@
               <input type="password" class="form-control" id="passwordInput">
             </div><br>
             <!-- my html was spacing out after working for more than 6 hours straight, but we should use a line break other than <br> -->
-      
+
             <div class="mb-3">
               <!-- could use a better name -->
               <h5><input type="checkbox" id="remember" name="remember" value=" ">
@@ -42,7 +42,7 @@
             </h5>
           </div>
               <div id="passHelp" class="form-text">
-                <h5> Forgot your password? Click <a href="index.php">here</a>
+                <h5> Forgot your password? Click <a href="#">here</a>
                 </h5>
               </div>
             <div class="pt-3 text-center">
