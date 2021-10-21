@@ -57,6 +57,7 @@
                 <li class="py-1 px-0"><a href="/make-reservation.php" class="blue-text">Make A Reservation</a></li>
                 <li class="py-1 px-0"><a href="/edit-reservation.php" class="blue-text">Edit A Reservation</a></li>
                 <li class="py-1 px-0"><a href="/my-properties.php" class="blue-text">My Properties</a></li>
+                <li class="py-1 px-0"><a href="/property-details.php" class="blue-text">Property Details</a></li>
               </ul>
             </div>
             <!-- End dev links -->

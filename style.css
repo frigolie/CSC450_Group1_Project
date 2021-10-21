@@ -142,6 +142,10 @@ a:active * {
   background-color: #45d3d6;
 }
 
+.globalButton.redButton {
+  background-color: #ff0052;
+}
+
 .globalButton:hover,
 .globalButton:focus,
 .globalButton:active {
@@ -156,6 +160,15 @@ a:active * {
 .globalButton.orangeButton:focus i,
 .globalButton.orangeButton:active i {
   color: #ff7b00;
+}
+
+.globalButton.redButton:hover,
+.globalButton.redButton:focus,
+.globalButton.redButton:active,
+.globalButton.redButton:hover i,
+.globalButton.redButton:focus i,
+.globalButton.redButton:active i {
+  color: #ff0052;
 }
 
 .globalButton.blueButton:hover,
