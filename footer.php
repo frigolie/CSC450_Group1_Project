@@ -54,6 +54,8 @@
                 <li class="py-1 px-0"><a href="/upcoming-stays.php" class="blue-text">Upcoming Stays</a></li>
                 <li class="py-1 px-0"><a href="/add-property.php" class="blue-text">Add A Property</a></li>
                 <li class="py-1 px-0"><a href="/edit-property.php" class="blue-text">Edit A Property</a></li>
+                <li class="py-1 px-0"><a href="/make-reservation.php" class="blue-text">Make A Reservation</a></li>
+                <li class="py-1 px-0"><a href="/edit-reservation.php" class="blue-text">Edit A Reservation</a></li>
               </ul>
             </div>
             <!-- End dev links -->
