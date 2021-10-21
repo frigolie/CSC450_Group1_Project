@@ -25,7 +25,7 @@
       <div class="col-10 col-md-8 col-lg-6 px-5 py-5 white-bg box-shadow rounded-custom">
         <h2 class="mb-1 text-center dk-orange-text">Success!</h2>
         <h3 class="mb-4 text-center">You're almost there. Create a username and password to finish registration.</h3>
-        
+
         <form method="POST" action="index.php">
         <div class="mb-3">
           <div class="mb-3">
@@ -45,11 +45,10 @@
             <div id="userHelp" class="form-text">Re-enter password</div>
             <input type="password" class="form-control" id="passwordInput" minlength="8" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
           </div>
-  
-          <div class="pt-3 text-center">
-            <a href="index.php">
-            <button type="submit" class="globalButton orangeButton"style="height:50px;width:200px;font-size:1.4em;" onsubmit="">Let's go!</button>"
 
+          <div class="pt-3 text-center">
+            <a href="#">
+            <button type="submit" class="globalButton orangeButton"style="height:50px;width:200px;font-size:1.4em;" onsubmit="">Let's go!</button>
           </div>
         </div>
       </form>

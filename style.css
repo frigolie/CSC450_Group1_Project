@@ -142,6 +142,10 @@ a:active * {
   background-color: #45d3d6;
 }
 
+.globalButton.redButton {
+  background-color: #ff0052;
+}
+
 .globalButton:hover,
 .globalButton:focus,
 .globalButton:active {
@@ -156,6 +160,15 @@ a:active * {
 .globalButton.orangeButton:focus i,
 .globalButton.orangeButton:active i {
   color: #ff7b00;
+}
+
+.globalButton.redButton:hover,
+.globalButton.redButton:focus,
+.globalButton.redButton:active,
+.globalButton.redButton:hover i,
+.globalButton.redButton:focus i,
+.globalButton.redButton:active i {
+  color: #ff0052;
 }
 
 .globalButton.blueButton:hover,
@@ -273,6 +286,11 @@ ul {
   font-size: 16px;
 }
 
+#topSiteNav .navLogo {
+  height: 60px;
+  width: auto;
+}
+
 .navbar-light .navbar-nav .nav-link,
 .navbar-light .navbar-nav .show > .nav-link {
   font-family: "Nunito Sans", sans-serif;
@@ -290,6 +308,10 @@ ul {
 #topSiteNav.stickiedNav a {
   color: #f0eeec;
   font-size: 14px;
+}
+
+#topSiteNav.stickiedNav .navLogo {
+  height: 45px;
 }
 
 #topSiteNav.stickiedNav .navbar-dark p,
@@ -354,6 +376,14 @@ ul {
 
 .rentalListing img:hover {
   opacity: 0.85;
+}
+
+/* =========================================
+              Upcoming Reservation Styles
+     ========================================= */
+
+.reservationTitle {
+  font-weight: 800;
 }
 
 /* =========================================
