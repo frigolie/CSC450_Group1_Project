@@ -29,7 +29,7 @@
           <div class="col-12 col-lg-5 col-xl-4 mb-5 p-4 text-center bg-white rounded-custom box-shadow listingCard">
             <a href="#">
               <div class="w-100 rentalListing">
-                <img class="w-100" src="graphic/penthouse.jpg" alt="Penthouse Rental" title="Photo by Mostafa Safadel">
+                <img class="w-100 rounded-custom" src="graphic/penthouse.jpg" alt="Penthouse Rental" title="Photo by Mostafa Safadel">
               </div>
             </a>
             <a href="#">
@@ -43,7 +43,7 @@
           <div class="col-12 col-lg-5 col-xl-4 mb-5 p-4 text-center bg-white rounded-custom box-shadow listingCard">
             <a href="#">
               <div class="w-100 rentalListing">
-                <img class="w-100" src="graphic/cabana.jpg" alt="Cabana Rental" title="Photo by Mike Swigunski">
+                <img class="w-100 rounded-custom" src="graphic/cabana.jpg" alt="Cabana Rental" title="Photo by Mike Swigunski">
               </div>
             </a>
             <a href="#">
@@ -56,7 +56,7 @@
           <div class="col-12 col-lg-5 col-xl-4 mb-5 p-4 text-center bg-white rounded-custom box-shadow listingCard">
             <a href="#">
               <div class="w-100 rentalListing">
-                <img class="w-100" src="graphic/cabin.jpg" alt="Cabin Rental" title="Photo by Cameron Stewart">
+                <img class="w-100 rounded-custom" src="graphic/cabin.jpg" alt="Cabin Rental" title="Photo by Cameron Stewart">
               </div>
             </a>
             <a href="#">
@@ -69,7 +69,7 @@
           <div class="col-12 col-lg-5 col-xl-4 mb-5 p-4 text-center bg-white rounded-custom box-shadow listingCard">
             <a href="#">
               <div class="w-100 rentalListing">
-                <img class="w-100" src="graphic/townhouse.jpg" alt="Townhouse Rental" title="Photo by Travel-Cents">
+                <img class="w-100 rounded-custom" src="graphic/townhouse.jpg" alt="Townhouse Rental" title="Photo by Travel-Cents">
               </div>
             </a>
             <a href="#">
@@ -82,7 +82,7 @@
           <div class="col-12 col-lg-5 col-xl-4 mb-5 p-4 text-center bg-white rounded-custom box-shadow listingCard">
             <a href="#">
               <div class="w-100 rentalListing">
-                <img class="w-100" src="graphic/manor.jpg" alt="Manor Rental" title="Photo by Nathan Walker">
+                <img class="w-100 rounded-custom" src="graphic/manor.jpg" alt="Manor Rental" title="Photo by Nathan Walker">
               </div>
             </a>
             <a href="#">
@@ -95,7 +95,7 @@
           <div class="col-12 col-lg-5 col-xl-4 mb-5 p-4 text-center bg-white rounded-custom box-shadow listingCard">
             <a href="#">
               <div class="w-100 rentalListing">
-                <img class="w-100" src="graphic/cottage.jpg" alt="Cottage Rental" title="Photo by Bertrand Bouchez">
+                <img class="w-100 rounded-custom" src="graphic/cottage.jpg" alt="Cottage Rental" title="Photo by Bertrand Bouchez">
               </div>
             </a>
             <a href="#">
@@ -108,7 +108,7 @@
           <div class="col-12 col-lg-5 col-xl-4 mb-5 p-4 text-center bg-white rounded-custom box-shadow listingCard">
             <a href="#">
               <div class="w-100 rentalListing">
-                <img class="w-100" src="graphic/ranch.jpg" alt="Ranch House Rental" title="Photo by Janelle Hiroshigi">
+                <img class="w-100 rounded-custom" src="graphic/ranch.jpg" alt="Ranch House Rental" title="Photo by Janelle Hiroshigi">
               </div>
             </a>
             <a href="#">
