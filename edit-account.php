@@ -79,6 +79,15 @@
             <div class="pt-3 text-center">
               <button type="submit" class="globalButton orangeButton"style="height:50px;width:200px;font-size:1.4em;">Submit</button>
             </div>
+            <div class="pt-3 text-center mt-3">
+            <h3 class="mb-1 text-left">Want to delete your account? </h3>
+            <h3><span class="dk-orange-text">Warning! </span> This action cannot be undone!</h3>
+      
+              <!-- Add a modal that pops up when user clicks delete? -->
+              <div class="mb-3">
+                <button type="delete" class="globalButton redButton" style="height:50px;width:200px;font-size:1.4em;" onclick="">Delete</button>
+              </div>
+          </div>
           </div>
         </div>
       </form>

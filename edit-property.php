@@ -11,7 +11,7 @@
       Joshua Sibert
       Lor Xiong
       Written:     10/20/21
-      Revisions:
+      Revisions:   10/29/21 - edited form
       -->
 
       <!-- Page title -->
@@ -26,59 +26,69 @@
         <div class="col-10 col-md-8 col-lg-6 px-5 py-5 white-bg box-shadow rounded-custom">
           <h2 class="mb-1 text-center">Update your <span class="dk-orange-text">property information</span> below. </h2>
 
-        <!-- Bootstrap Sample Form - to be replaced once forms are created -->
-          <!-- <form> -->
+
       <form method="POST" action="index.php">
-          <div class="mb-3">
+      <div class="mb-3">
+              <label for="propertyName" class="form-label">Property Name</label>
+              <input type="text" class="form-control" id="propInput" aria-describedby="propHelp" placeholder="Enter here" required>
+            </div>
 
-          <!-- I'm not great with bootstrap. The formatting here for the name works, but the code itself is sloppy. I'll look into editing it to look better!-->
-            <div class="row">
-              <div class="col">
-              <label for="fName" class="form-label">First Name</label>
-              <input type="text" class="form-control" name="fName" placeholder="First Name" required>
-            </div>
-              <div class="col">
-              <label for="lName" class="form-label">First Name</label>
-              <input type="text" class="form-control" name="lName" placeholder="Last Name" required>
-            </div>
-          </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Update description</label>
+              <textarea rows="4" cols="50" class="form-control" id="textAreaInput" placeholder="Amenities, fun things to do in the area..."></textarea>
+           </div>
+        
+           <div class="mb-3">
+            <label for="bath" class="form-label">Does your property allow...</label><br>
+            <input type="checkbox" id="kid" name="kid">
+            <label for="kidFriendly">Kids</label><br>
+            <input type="checkbox" id="pet" name="pet">
+            <label for="petFriendly">Pets</label>
+           </div>
+           
+           <div class="mb-3">
+           <!-- not sure how to make this feature fully functional. ideally, user can select
+                how many files to upload, can select more after already selecting 1, and
+                all file names display on top of each other -->
+            <label for="pics" class="form-label">Add a few pictures of your property</label>
+              <input type="file" id="propPicture" name="propPicture" accept="image/png, image/jpeg" multiple>
+           </div>
+
+           <!-- allow user to select multiple dates/date range. Is this possible? -->
+           <div class="mb-3">
+            <label for="availability" class="form-label">When can your property be reserved? (Optional)</label><br>
+              <input type="date">
+           </div>
+
+          <!-- Looking to have this slider a bit more functional; for example, max range slider should not be able to below min range slider -->
+        <div class="mb-3">
+           <label for="cost" class="form-label">How much will you charge per night? (Optional)</label><br>
+           <input type="range"  min="1" max="1000" oninput="this.nextElementSibling.value = this.value">
+              <output>0</output>
+           <input type="range"  min="1" max="1000" oninput="this.nextElementSibling.value = this.value">
+            <output>0</output>
         </div>
-            <div class="mb-3">
-              <label for="emailInput" class="form-label">Email</label>
-              <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="example@email.com">
-            </div>
-            <div class="mb-3">
-              <label for="phone" class="form-label">Phone Number</label>
-              <input type="tel" class="form-control" id="phone" placeholder="(xxx)xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-           </div>
-           <div class="mb-3">
-            <label for="address1" class="form-label">Address</label>
-            <input type="text" class="form-control" id="address1" placeholder="Address Line 1">
-           </div>
-           <div class="mb-3">
 
-            <input type="text" class="form-control" id="address" placeholder="Address Line 2">
-           </div>
-           <div class="mb-3">
-             <label for="zipCode" class="form-label">Zip Code</label>
-             <input type="text" class="form-control" id="zipCode" placeholder="Enter zipcode"style="width:250px;" pattern="[0-9]{5}">
-           </div>
-           <div class="mb-3">
-           <h2 class="mb-1 text-center">To confirm your changes, enter your password below. </h2>
-           </div>
-           <div class="mb-3">
-              <label for="passwordInput" class="form-label">Password</label>
-              <input type="password" class="form-control" id="passwordInput" placeholder="Password">
-            </div>
-            <div class="mb-3">
-              <label for="passwordInput" class="form-label">Re-enter Password</label>
-              <input type="password" class="form-control" id="passwordInput" placeholder="Re-enter password">
-            </div>
+        <div class="mb-3">
+          <h4 class="mb-3">To confirm your changes, enter your password below. </h4>
+        </div>
+          <div class="mb-3">
+            <label for="passwordInput" class="form-label">Password</label>
+            <input type="password" class="form-control" id="passwordInput" placeholder="Password" style="width:200px";>
+          </div>
+           
+          <div class="pt-3 text-center">
+            <button type="submit" class="globalButton blueButton" style="height:50px;width:350px;font-size:1.4em;">Update Property</button>
+          </div>
 
-            <div class="pt-3 text-center">
-              <button type="submit" class="globalButton blueButton">Update Property</button>
-              <button type="delete" class="globalButton redButton">Delete Property</button>
-            </div>
+          <div class="pt-3 text-center mt-3">
+            <h3 class="mb-1 text-left">Want to delete your property? </h3>
+            <h3><span class="dk-orange-text">Warning! </span> This action cannot be undone!</h3>
+      
+              <!-- Add a modal that pops up when user clicks delete? -->
+              <div class="mb-3">
+                <button type="delete" class="globalButton redButton" style="height:50px;width:200px;font-size:1.4em;" onclick="">Delete</button>
+              </div>
           </div>
         </div>
       </form>

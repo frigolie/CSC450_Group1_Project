@@ -30,19 +30,16 @@
           <form>
             <div class="mb-3">
               <label for="emailInput" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp">
-              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email" required>
+      
             </div>
+     
             <div class="mb-3">
-              <label for="passwordInput" class="form-label">Password</label>
-              <input type="password" class="form-control" id="passwordInput">
-            </div>
-            <div class="mb-3">
-              <label for="textAreaInput" class="form-label">Textarea</label>
-              <textarea rows="4" cols="50" class="form-control" id="textAreaInput"></textarea>
+              <label for="textAreaInput" class="form-label">What seems to be the problem?</label>
+              <textarea rows="4" cols="50" class="form-control" id="textAreaInput" placeholder="Type your problem here..." required></textarea>
             </div>
             <div class="pt-3 text-center">
-              <button type="submit" class="globalButton orangeButton">Submit</button>
+            <button type="submit" class="globalButton orangeButton"style="height:50px;width:200px;font-size:1.4em;">Submit</button>
             </dib>
           </form>
         <!-- End Bootstrap Sample Form -->
@@ -54,3 +51,4 @@
     <?php include(getcwd( ) . "/footer.php"); ?>
   </body>
 </html>
+    
