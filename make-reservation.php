@@ -1,3 +1,5 @@
+<?php include(getcwd() . "/header.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +22,7 @@
 </head>
 
 <body>
-    <?php include(getcwd() . "/header.php"); ?>
+
 
     <section class="container-fluid initialPageContent pinkMountains pb-5">
         <div class="row pb-5 justify-content-center">
@@ -36,7 +38,9 @@
                     <div class="mb-3">
 
                         <!-- I'm not great with bootstrap. The formatting here for the name works, but the code itself is sloppy. I'll look into editing it to look better!-->
+                        <br>
                         <h3>Reservation Details</h3>
+                        <br>
                         <div class="row">
                             <div class="col">
                                 <label for="fName" class="form-label">First Name</label>
@@ -60,71 +64,99 @@
                             </div>
                         </div>
                     </div>
-                  
-                        <!-- Easy html fix, align dropdown boxes in select -->
+                    <br>
                     <h3>Guests</h3>
-                        <label for="adults" class="form-label"><h5>Adults</h5></label>
-                        <select id="adults" name="adults" required>
-                            <option>Select an option</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                    
-                  <div class="mb-3">
-                        <label for="kids" class="form-label"><h5>Children</h5></label>
-                        <select id="kids" name="kids">
-                            <option>Select an option</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                    </div>
-                   
-                    <div class="mb-3">
-                        <label for="pets" class="form-label"><h5>Pets?</h5></label>
-                        <select id="pets" name="pets" required>
-                            <option>Select an option</option>
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="phone" class="form-label"><h5>Contact</h5></label>
-                            <div id="phoneNote" class="form-text">This is how the host will contact you</label>
-                            <input type="tel" class="form-control" id="phone" placeholder="(xxx)xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" style="width:300px"required>
-                            </div>
-
+                    <br>
                     <div class="from-group mb-3">
-                        <label for="">Properties</label>
-                        <select name="Properties" id="Properties" class="form-control" style="width: 300px"required>
-                            <option value="">--Select Properties--</option>
-                            <option value="Downtown Penthouse">Downtown Penthouse</option>
-                            <option value="Oceanside Cabana">Oceanside Cabana</option>
-                            <option value="Mountain Cabin">Mountain Cabin</option>
-                            <option value="Classical Townhouse">Classical Townhouse</option>
-                            <option value="Victorian Manor">Victorian Manor</option>
-                            <option value="Country Cottage">Country Cottage</option>
-                            <option value="Mid-Century Ranch House">Mid-Century Ranch House</option>
-                        </select>
+                        <div class="row">
+                            <div class="col">
+                                <label for="adults" class="form-label">Adults</label>
+                                <select name="adults" id="adults" class="form-control" style="width: 150px" required>
+                                    <option value="">--Select Guests--</option>
+                                    <option value="1">1 adults</option>
+                                    <option value="2">2 adults</option>
+                                    <option value="3">3 adults</option>
+                                    <option value="4">4 adults</option>
+                                    <option value="5">5 adults</option>
+                                    <option value="6">6 adults</option>
+                                    <option value="7">7 adults</option>
+                                    <option value="8">8 adults</option>
+                                    <option value="9">9 adults</option>
+                                    <option value="10">10 adults</option>
+                                    <option value="11">11 adults</option>
+                                    <option value="12">12 adults</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="kids" class="form-label">Children</label>
+                                <select name="kids" id="kids" class="form-control" style="width: 150px" required>
+                                    <option value="">--Select Guests--</option>
+                                    <option value="1">1 kids</option>
+                                    <option value="2">2 kids</option>
+                                    <option value="3">3 kids</option>
+                                    <option value="4">4 kids</option>
+                                    <option value="5">5 kids</option>
+                                    <option value="6">6 kids</option>
+                                    <option value="7">7 kids</option>
+                                    <option value="8">8 kids</option>
+                                    <option value="9">9 kids</option>
+                                    <option value="10">10 kids</option>
+                                    <option value="11">11 kids</option>
+                                    <option value="12">12 kids</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="pets" class="form-label">Pets</label>
+                                <select name="pets" id="pets" class="form-control" style="width: 150px" required>
+                                    <option value="">--Select--</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
+                    <!-- Easy html fix, align dropdown boxes in select -->
+                    <br>
+                    <h3>Contact</h3>
+                    <h6>This is how the host will contact you</h6>
+                    <br>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col">
+                                <label for="phone" class="form-label">phone</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="(xxx)xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" style="width:250px" required>
+                            </div>
+                            <div class="col">
+                                <label for="Properties" class="form-label">Properties</label>
+                                <select name="Properties" id="Properties" class="form-control" style="width: 250px" required>
+                                    <option value="">--Select Properties--</option>
+                                    <option value="Downtown Penthouse">Downtown Penthouse</option>
+                                    <option value="Oceanside Cabana">Oceanside Cabana</option>
+                                    <option value="Mountain Cabin">Mountain Cabin</option>
+                                    <option value="Classical Townhouse">Classical Townhouse</option>
+                                    <option value="Victorian Manor">Victorian Manor</option>
+                                    <option value="Country Cottage">Country Cottage</option>
+                                    <option value="Mid-Century Ranch House">Mid-Century Ranch House</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
                     <div class="mb-3">
                         <label for="textAreaInput" class="form-label">Comments</label>
-                        <textarea rows="4" cols="50" class="form-control" id="textAreaInput" placeholder="Add any additional requests here..."></textarea>
+                        <textarea rows="4" cols="50" class="form-control" name="Comments" id="Comments" placeholder="Add any additional requests here..."></textarea>
                     </div>
 
                     <div class="pt-3 text-center">
                         <button type="submit" name="submit" value="Reservation" id="submit" class="globalButton blueButton" style="height:50px;width:300px;font-size:1.4em;">Book Reservation</button>
                     </div>
-                </div>
             </div>
+        </div>
         </form>
     </section>
     <?php include(getcwd() . "/footer.php"); ?>
 </body>
+
 </html>
 
 <!-- JavaScript Form Validation using Sweet Alert -->
@@ -137,13 +169,16 @@
 
         var fname = $("#fname").val();
         var lname = $("#lname").val();
-        var email = $("#email").val();
+        var checkIn = $("#checkIn").val();
+        var checkOut = $("#checkOut").val();
+        var adults = $("#adults").val();
+        var kids = $("#kids").val();
+        var pets = $("#pets").val();
         var phone = $("#phone").val();
-        var address1 = $("#address1").val();
-        var zipCode = $("#zipCode").val();
         var Properties = $("#Properties").val();
 
-        if (fname == '' || lname == '' || email == '' || phone == '' || address1 == '' || zipCode == '' || Properties == '') {
+
+        if (fname == '' || lname == '' || checkIn == '' || checkOut == '' || adults == '' || kids == '' || pets == '' || phone == '' || Properties == '') {
             swal({
                 title: "Fields Empty!!",
                 text: "Please check the missing field!!",

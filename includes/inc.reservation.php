@@ -1,29 +1,19 @@
-<!-- inc.resrvation.php- Database of Homeaway
-      CSC450 - Computer Science Capstone
-      Group 1:
-      Elise Frigoli
-      Nolan Harre
-      Joshua Sibert
-      Lor Xiong
-      Written:     10/26/21
-      Revisions:
-      -->
-
-
-
-
 <?php
+session_start();
+
 
 if (isset($_POST["submit"])) {
 
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $address1 = $_POST['address1'];
-    $address2 = $_POST['address2'];
-    $zipCode = $_POST['zipCode'];
+    $checkIn = $_POST['checkIn'];
+    $checkOut = $_POST['checkOut'];
+    $adults = $_POST['adults'];
+    $kids  = $_POST['kids'];
+    $pets   = $_POST['pets'];
+    $phone  = $_POST['phone'];
     $Properties = $_POST['Properties'];
+    $Comments  = $_POST['Comments'];
 
 
 
@@ -32,7 +22,7 @@ if (isset($_POST["submit"])) {
 
 
 
-    createReservation($conn, $fname, $lname, $email, $phone, $address1, $address2, $zipCode, $Properties);
+    createReservation($conn, $fname, $lname, $checkIn, $checkOut, $adults, $kids, $pets, $phone, $Properties, $Comments);
 } else {
     header("location: ../make-reservation.php");
     exit();
