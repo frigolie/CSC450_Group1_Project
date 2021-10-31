@@ -18,7 +18,6 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_id'])) {   ?>
       Joshua Sibert
       Lor Xiong
       Written:     10/29/21
-      Revisions:
       
       -->
 

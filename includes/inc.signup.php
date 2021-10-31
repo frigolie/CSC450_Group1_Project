@@ -1,14 +1,5 @@
-<!-- inc.signup.php-- Database of Homeaway
-      CSC450 - Computer Science Capstone
-      Group 1:
-      Elise Frigoli
-      Nolan Harre
-      Joshua Sibert
-      Lor Xiong
-      Written:     10/26/21
-      Revisions:
-      -->
 <?php
+session_start();
 
 if (isset($_POST["submit"])) {
 
@@ -20,9 +11,9 @@ if (isset($_POST["submit"])) {
     $confirmpassword = $_POST["confirmpassword"];
 
 
-
-    require_once 'function.php';
     require_once  'Inc.DBC.php';
+    require_once 'function.php';
+
 
 
     if (emptyInputSignup($fname, $lname, $email, $username, $password, $confirmpassword) !== false) {
@@ -47,7 +38,7 @@ if (isset($_POST["submit"])) {
     }
 
     if (pwdMatch($password, $confirmpassword) !== false) {
-        header("location: ../register.php?error=invalidpassword");
+        header("location: ../register.php?error=passwordsdontmatch");
         exit();
     }
     if (uidExists($conn, $username, $email) !== false) {
