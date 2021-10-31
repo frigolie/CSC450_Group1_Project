@@ -1,18 +1,6 @@
-<!-- function.php for the login and register page - Database of Homeaway
-      CSC450 - Computer Science Capstone
-      Group 1:
-      Elise Frigoli
-      Nolan Harre
-      Joshua Sibert
-      Lor Xiong
-      Written:     10/26/21
-      Revisions:
-      -->
-
-
-
-
 <?php
+session_start();
+
 require_once  'Inc.DBC.php';
 
 
@@ -96,7 +84,7 @@ function uidExists($conn, $username, $email)
     $sql = "SELECT * FROM user WHERE username = ? OR email = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location:../register.php?error=stmtfailed");
+        header("location: ../register.php?error=stmtfailed");
         exit();
     }
 
@@ -117,11 +105,11 @@ function uidExists($conn, $username, $email)
 
 function createUser($conn, $fname, $lname, $email, $username, $password)
 {
-
+    require_once  'Inc.DBC.php';
     $sql = "INSERT INTO user (fname, lname, email, username, password) VALUES (?, ?, ?, ?, ?) ;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location:../register.php?error=stmtfailed");
+        header("location: ../register.php?error=stmtfailed");
         exit();
     }
 
@@ -130,7 +118,7 @@ function createUser($conn, $fname, $lname, $email, $username, $password)
     mysqli_stmt_bind_param($stmt, "sssss", $fname, $lname, $email, $username, $hashedPwd);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location:../index.php?error=none");
+    header("location: ../register.php?error=none");
     exit();
 }
 
@@ -150,25 +138,24 @@ function emptyInputLogin($username, $password)
 
 function loginUser($conn, $username, $password)
 {
-
+    require_once  'Inc.DBC.php';
     $uidExist = uidExists($conn, $username, $username);
 
     if ($uidExist === false) {
-        header("location:../login.php?error=wronglogin");
+        header("location: ../login.php?error=wronglogin");
         exit();
     }
     $pwdHashed = $uidExist["password"];
     $checkPwd = password_verify($password, $pwdHashed);
 
     if ($checkPwd === false) {
-        header("location:../login.php?error=wronglogin");
+        header("location: ../login.php?error=wronglogin");
         exit();
     } else if ($checkPwd === true) {
         session_start();
         $_SESSION["user_id"] = $uidExist["user_id"];
         $_SESSION["username"] = $uidExist["username"];
-
-        header("location:../index.php");
+        header("location: ../index.php");
         exit();
     }
 }
