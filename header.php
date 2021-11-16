@@ -50,25 +50,23 @@ session_start();
                             <button class="globalButton orangeButton w-100">
                                 <?php
                                 if (isset($_SESSION['username'])) {
-                                    echo "<a href='profile.php'>Profile page</a>";
+                                    echo "<a class='white-text' href='profile.php'>Profile page</a>";
                                 } else {
-                                    echo "<a href='login.php'>Log In</a>";
+                                    echo "<a class='white-text' href='login.php'>Log In</a>";
                                 }
                                 ?>
                             </button>
-                            </a>
                         </div>
                         <div class="col-6 col-lg-3">
                             <button class="globalButton blueButton w-100">
                                 <?php
                                 if (isset($_SESSION['username'])) {
-                                    echo "<a href='logout.php'>Log Out</a>";
+                                    echo "<a class='white-text' href='logout.php'>Log Out</a>";
                                 } else {
-                                    echo "<a href='register.php'>Register</a>";
+                                    echo "<a class='white-text' href='register.php'>Register</a>";
                                 }
                                 ?>
                             </button>
-                            </a>
                         </div>
                     </div>
                 </div>

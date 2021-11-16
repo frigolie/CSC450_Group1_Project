@@ -79,6 +79,10 @@ section.initialPageContent {
   background-color: #c9c3bf; /* Dark Gray */
 }
 
+.white-text {
+  color: #fff;
+}
+
 .white-bg {
   background-color: #fff;
 }
@@ -101,9 +105,14 @@ a:focus,
 a:active,
 a:hover *,
 a:focus *,
-a:active * {
+a:active *,
+input[type="checkbox"]:hover,
+input[type="checkbox"]:focus,
+input[type="checkbox"]:active {
   color: #ff7b00;
+  cursor: pointer;
 }
+
 .row {
   display: flex;
   -ms-flex-wrap: wrap;
@@ -159,25 +168,25 @@ a:active * {
 .globalButton.orangeButton:hover i,
 .globalButton.orangeButton:focus i,
 .globalButton.orangeButton:active i {
-  color: #ff7b00;
+  color: #ff7b00!important;
 }
 
 .globalButton.redButton:hover,
 .globalButton.redButton:focus,
 .globalButton.redButton:active,
-.globalButton.redButton:hover i,
-.globalButton.redButton:focus i,
-.globalButton.redButton:active i {
-  color: #ff0052;
+.globalButton.redButton:hover i::before,
+.globalButton.redButton:focus i::before,
+.globalButton.redButton:active i::before {
+  color: #ff0052!important;
 }
 
 .globalButton.blueButton:hover,
 .globalButton.blueButton:focus,
 .globalButton.blueButton:active,
-.globalButton.blueButton:hover i,
-.globalButton.blueButton:focus i,
-.globalButton.blueButton:active i {
-  color: #45d3d6;
+.globalButton.blueButton:hover i::before,
+.globalButton.blueButton:focus i::before,
+.globalButton.blueButton:active i::before {
+  color: #45d3d6!important;
 }
 
 h1 {
@@ -387,10 +396,6 @@ ul {
 }
 
 /* =========================================
-              View Properties Styles
-     ========================================= */
-
-/* =========================================
                    Responsive Styles
       ========================================= */
 
@@ -415,6 +420,10 @@ ul {
   .navbar-collapse {
     background-color: transparent;
     box-shadow: none;
+  }
+
+  #messages {
+    max-width: 85%;
   }
 }
 
