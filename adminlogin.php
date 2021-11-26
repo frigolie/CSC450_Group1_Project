@@ -18,7 +18,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_id'])) {   ?>
       Joshua Sibert
       Lor Xiong
       Written:     10/29/21
-      
+
       -->
 
         <!-- Page title -->
@@ -51,8 +51,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_id'])) {   ?>
                         <div class="mb-3">
                             <h4><label for="usertype" class="form-label">Select User type</label></h4>
                             <select class="form-select mb-3" id="role" name="role" aria-label="Default select example" required />
-                            <option selected value="type">--Select User type--</option>
-                            <option value="admin">Admin</option>
+                            <option selected value="admin">Admin</option>
                             </select>
                         </div>
                         <div class="pt-3 text-center">

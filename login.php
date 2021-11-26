@@ -14,6 +14,7 @@
       Lor Xiong
       Written:     10/16/21
       Revisions:   10/19/21 - replacing bootstrap sample form
+                   11/26/21 - Adding link to adminlogin.php
       -->
 
     <!-- Page title -->
@@ -21,7 +22,7 @@
 </head>
 
 <body>
-   
+
 
     <section class="container-fluid initialPageContent greenMountains pb-5">
         <div class="row pb-5 justify-content-center">
@@ -49,6 +50,10 @@
                     </div>
                     <div id="passHelp" class="form-text">
                         <h5> Forgot your password? Click <a href="#">here</a>
+                        </h5>
+                    </div>
+                    <div class="form-text mt-3">
+                        <h5> Trying to access your admin dashboard? Click <a href="/adminlogin.php">here</a>
                         </h5>
                     </div>
                     <div class="pt-3 text-center">
