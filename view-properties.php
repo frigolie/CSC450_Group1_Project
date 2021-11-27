@@ -31,9 +31,8 @@ include  "includes/Inc.DBC.php";
           <h1 class="mb-5">All Properties In Your Area</h1>
 
           <?php include 'includes/property_table.php';
-            if (mysqli_num_rows($prop_query) > 0) { ?>
-              <div id="testing"></div>
-              <? $i = 1;
+            if (mysqli_num_rows($prop_query) > 0) { 
+            $i = 1;
               while ($rows = mysqli_fetch_assoc($prop_query)) {
                 $featImg = ''; ?>
                 <?php if ($rows['img1'] != '') { $featImg = $rows['img1']; } else { $featImg = 'graphic/homeaway.png'; } ?>
