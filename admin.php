@@ -40,7 +40,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
+                                        <th scope="col">ID</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Username</th>
                                         <th scope="col">Role</th>
@@ -51,7 +51,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                                     $i = 1;
                                     while ($rows = mysqli_fetch_assoc($admin_query)) { ?>
                                         <tr>
-                                            <th scope="row"><?= $i ?></th>
+                                            <th scope="row"><?= $rows['admin_id'] ?></th>
                                             <td><?= $rows['name'] ?></td>
                                             <td><?= $rows['username'] ?></td>
                                             <td><?= $rows['role'] ?></td>
@@ -70,7 +70,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
+                                        <th scope="col">ID</th>
                                         <th scope="col">First Name</th>
                                         <th scope="col">Last Name</th>
                                         <th scope="col">Email</th>
@@ -82,7 +82,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                                     $i = 1;
                                     while ($rows = mysqli_fetch_assoc($user_query)) { ?>
                                         <tr>
-                                            <th scope="row"><?= $i ?></th>
+                                            <th scope="row"><?= $rows['user_id'] ?></th>
                                             <td><?= $rows['fname'] ?></td>
                                             <td><?= $rows['lname'] ?></td>
                                             <td><?= $rows['email'] ?></td>
@@ -102,7 +102,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
+                                        <th scope="col">ID</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Address</th>
                                         <th scope="col">Owner</th>
@@ -118,7 +118,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                                     $i = 1;
                                     while ($rows = mysqli_fetch_assoc($prop_query)) { ?>
                                         <tr>
-                                            <th scope="row"><?= $i ?></th>
+                                            <th scope="row"><?= $rows['property_id'] ?></th>
                                             <td><?= $rows['name'] ?></td>
                                             <td><?= $rows['address'] ?><br><?= $rows['city'] ?>, <?= $rows['state'] ?> <?= $rows['zip'] ?></td>
                                             <td><?= $rows['username'] ?></td>
@@ -143,7 +143,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
+                                        <th scope="col">ID</th>
                                         <th scope="col">Property</th>
                                         <th scope="col">Dates</th>
                                         <th scope="col">Adults</th>
@@ -157,7 +157,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                                     $i = 1;
                                     while ($rows = mysqli_fetch_assoc($res_query)) { ?>
                                         <tr>
-                                            <th scope="row"><?= $i ?></th>
+                                            <th scope="row"><?= $i // $rows['id'] ?></th>
                                             <td><?= $rows['fname'] ?></td>
                                             <td><?= $rows['lname'] ?></td>
                                             <td><?= $rows['email'] ?></td>
