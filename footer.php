@@ -14,6 +14,7 @@
       Revisions:   10/16/21 - Updating footer nav links
                    10/19/21 - Adding logo to footer
                    10/29/21 - Adding the Admin Panel
+                   11/26/21 - Creating dynamic link column based on login/logout status
       -->
 
     <!-- Linking to external stylesheet -->
@@ -42,31 +43,29 @@
                         <ul class="footerLinks lt-gray-text ps-0">
                             <li class="py-1 px-0"><a href="/" class="blue-text">Home</a></li>
                             <li class="py-1 px-0"><a href="/view-properties.php" class="blue-text">View Properties</a></li>
-                            <li class="py-1 px-0"><a href="/contact.php" class="blue-text">Contact</a></li>
-                            <li class="py-1 px-0"><a href="/register.php" class="blue-text">Register</a></li>
-                            <li class="py-1 px-0"><a href="/login.php" class="blue-text">Login</a></li>
-                            <li class="py-1 px-0"><a href="adminlogin.php" class="blue-text">Admin Panel</a></li>
+                            <?php if (isset($_SESSION['username'])) {
+                              echo '<li class="py-1 px-0"><a href="/logout.php" class="blue-text">Log Out</a></li>';
+                            } else {
+                              echo '<li class="py-1 px-0"><a href="/register.php" class="blue-text">Register</a></li>';
+                              echo '<li class="py-1 px-0"><a href="/login.php" class="blue-text">Login</a></li>';
+                              echo '<li class="py-1 px-0"><a href="adminlogin.php" class="blue-text">Admin Panel</a></li>';
+                            } ?>
 
                         </ul>
                     </div>
 
-                    <!-- Dev Links for linking between pages until all pages are built and site is fully functional -->
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <b class="lt-gray-text">Dev Testing Links</b>
-                        <ul class="footerLinks lt-gray-text ps-0">
-                            <li class="py-1 px-0"><a href="/edit-account.php" class="blue-text">Edit Account</a></li>
-                            <li class="py-1 px-0"><a href="/upcoming-reservations.php" class="blue-text">Upcoming Reservations</a></li>
-                            <li class="py-1 px-0"><a href="/upcoming-stays.php" class="blue-text">Upcoming Stays</a></li>
-                            <li class="py-1 px-0"><a href="/add-property.php" class="blue-text">Add A Property</a></li>
-                            <li class="py-1 px-0"><a href="/edit-property.php" class="blue-text">Edit A Property</a></li>
-                            <li class="py-1 px-0"><a href="make-reservation.php" class="blue-text">Make A Reservation</a></li>
-                            <li class="py-1 px-0"><a href="/edit-reservation.php" class="blue-text">Edit A Reservation</a></li>
-                            <li class="py-1 px-0"><a href="/my-properties.php" class="blue-text">My Properties</a></li>
-                            <li class="py-1 px-0"><a href="/property-details.php" class="blue-text">Property Details</a></li>
-                            <li class="py-1 px-0"><a href="/messages.php" class="blue-text">Message Center</a></li>
-                        </ul>
-                    </div>
-                    <!-- End dev links -->
+                    <?php if (isset($_SESSION['username'])) { ?>
+                      <div class="col-12 col-md-6 col-lg-4">
+                          <b class="lt-gray-text">My Account Links</b>
+                          <ul class="footerLinks lt-gray-text ps-0">
+                              <li class="py-1 px-0"><a href="/edit-account.php" class="blue-text">Edit Account</a></li>
+                              <li class="py-1 px-0"><a href="/my-properties.php" class="blue-text">My Properties</a></li>
+                              <li class="py-1 px-0"><a href="/my-properties.php" class="blue-text">My Reservations</a></li>
+                              <li class="py-1 px-0"><a href="/upcoming-stays.php" class="blue-text">My Stays</a></li>
+                              <li class="py-1 px-0"><a href="/messages.php" class="blue-text">Message Center</a></li>
+                          </ul>
+                      </div>
+                    <?php } else { } ?>
 
                     <div class="col-12 attributionBox pt-5">
                         <p class="text-center dk-gray-text mb-0">All photos used are from <a href="https://unsplash.com/" class="blue-text">Unsplash</a> and licensed for commercial use.

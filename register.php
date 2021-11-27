@@ -1,4 +1,3 @@
-<?php include(getcwd() . "/header.php");?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,12 +17,11 @@
 
     <!-- Page title -->
     <title>Register</title>
-  
+
 </head>
 
 <body>
-
-
+  <?php include(getcwd() . "/header.php");?>
     <section class="container-fluid initialPageContent purpleMountains pb-5">
         <div class="row pb-5 justify-content-center">
 

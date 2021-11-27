@@ -1,3 +1,8 @@
+<?php
+session_start();
+if (isset($_SESSION['username'])) {
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                  
+
                         <!-- Easy html fix, align dropdown boxes in select -->
                     <h3>Guests</h3>
                         <label for="adults" class="form-label"><h5>Adults</h5></label>
@@ -64,7 +69,7 @@
                             <option>3</option>
                             <option>4</option>
                         </select>
-                    
+
                   <div class="mb-3">
                         <label for="kids" class="form-label"><h5>Children</h5></label>
                         <select id="kids" name="kids">
@@ -75,7 +80,7 @@
                             <option>4</option>
                         </select>
                     </div>
-                   
+
                     <div class="mb-3">
                         <label for="pets" class="form-label"><h5>Pets?</h5></label>
                         <select id="pets" name="pets" required>
@@ -115,3 +120,6 @@
     <?php include(getcwd( ) . "/footer.php"); ?>
   </body>
 </html>
+<?php } else {
+    header("Location: /login.php");
+} ?>

@@ -1,3 +1,8 @@
+<?php
+session_start();
+if (isset($_SESSION['username'])) {
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,6 +17,7 @@
       Lor Xiong
       Written:     10/20/21
       Revisions:   10/29/21 - made edits to form
+                   11/26/21 - Connecting front end form to the back end
       -->
 
       <!-- Page title -->
@@ -26,62 +32,65 @@
         <div class="col-10 col-md-8 col-lg-6 px-5 py-5 white-bg box-shadow rounded-custom">
           <h2 class="mb-1 text-center">Add a new <span class="dk-orange-text">property listing</span> below. </h2><br>
 
-      <form method="POST" action="index.php">     
+      <form method="POST" action="includes/inc.property.php" enctype="multipart/form-data">
             <div class="mb-3">
               <label for="propertyName" class="form-label">Property Name</label>
-              <input type="text" class="form-control" id="propInput" aria-describedby="propHelp" placeholder="Enter here" required>
+              <input type="text" class="form-control" name="propName" id="propName" aria-describedby="propHelp" placeholder="Enter here" required>
             </div>
             <div class="mb-3">
-              <label for="phone" class="form-label">Give your property a description!</label>
-              <textarea rows="4" cols="50" class="form-control" id="textAreaInput" placeholder="Amenities, fun things to do in the area..."></textarea>
+              <label for="propDescription" class="form-label">Give your property a description!</label>
+              <textarea rows="4" cols="50" class="form-control" name="propDescription" id="propDescription" placeholder="Amenities, fun things to do in the area..."></textarea>
            </div>
 
            <div class="mb-3">
-             <label for="bed" class="form-label">How many bedrooms?</label>
+             <label for="bedrooms" class="form-label">How many bedrooms?</label>
              <select id="bedrooms" name="bedrooms" required>
-               <option>Studio</option>
-               <option>1 Bed</option>
-               <option>2 Bed</option>
-               <option>3 Bed</option>
-               <option>4+ Bed</option>
+               <option value="Studio">Studio</option>
+               <option value="1">1 Bed</option>
+               <option value="2">2 Bed</option>
+               <option value="3">3 Bed</option>
+               <option value="4+">4+ Bed</option>
              </select>
            </div>
 
            <div class="mb-3">
-             <label for="bath" class="form-label">How many bathrooms?</label>
+             <label for="bathrooms" class="form-label">How many bathrooms?</label>
 
-             <!-- offer option for including half bath? -->
-             <select id="bathroom" name="bathroom" required>
-               <option>1</option>
-               <option>2</option>
-               <option>3 </option>
-               <option>4+</option>
+             <select id="bathrooms" name="bathrooms" required>
+               <option value="1">1</option>
+               <option value="1.5">1.5</option>
+               <option value="2">2</option>
+               <option value="2.5">2.5</option>
+               <option value="3">3</option>
+               <option value="3.5">3.5</option>
+               <option value="4+">4+</option>
              </select>
            </div>
 
            <div class="mb-3">
-            <label for="bath" class="form-label">Does your property allow...</label><br>
-            <input type="checkbox" id="kid" name="kid">
+            <label for="allowedGuests" class="form-label">Does your property allow...</label><br>
+            <input name="kidFriendly" type="hidden" value="0">
+            <input type="checkbox" name="kidFriendly" value="1">
             <label for="kidFriendly">Kids</label><br>
-            <input type="checkbox" id="pet" name="pet">
+            <input name="petFriendly" type="hidden" value="0">
+            <input type="checkbox" name="petFriendly" value="1">
             <label for="petFriendly">Pets</label>
            </div>
 
            <div class="mb-3">
             <label for="address1" class="form-label">Where is your property located?</label>
-            <input type="text" class="form-control" id="address1" placeholder="Enter property address" required>
+            <input type="text" class="form-control" name="address1" id="address1" placeholder="Enter property address" required>
            </div>
 
            <div class="mb-3">
             <label for="city" class="form-label">City</label>
-             <input type="text" class="form-control" id="city"style="width:250px;" placeholder="Enter city here" required>
+             <input type="text" class="form-control" name="city" id="city" style="width:250px;" placeholder="Enter city here" required>
            </div>
 
            <div class="mb-3">
              <label for="state" class="form-label">State</label><br>
-             <!-- there just has to be a better way to do this, not sure though -->
               <select name="state" id="state">
-                <option value="" selected="selected">Select a State</option>
+                <option value="" selected="selected" disabled>Select a State</option>
                 <option value="AL">AL</option>
                 <option value="AK">AK</option>
                 <option value="AZ">AZ</option>
@@ -138,34 +147,23 @@
 
            <div class="mb-3">
              <label for="zipCode" class="form-label">Zip Code</label>
-             <input type="text" class="form-control" id="zipCode" placeholder="Enter zip code"style="width:250px;" pattern="[0-9]{5}" required>
-           </div>
-        
-           <div class="mb-3">
-           <!-- not sure how to make this feature fully functional. ideally, user can select
-                how many files to upload, can select more after already selecting 1, and
-                all file names display on top of each other -->
-            <label for="pics" class="form-label">Add a few pictures of your property</label>
-              <input type="file" id="propPicture" name="propPicture" accept="image/png, image/jpeg" multiple>
+             <input type="text" class="form-control" name="zipCode" id="zipCode" placeholder="Enter zip code"style="width:250px;" pattern="[0-9]{5}" required>
            </div>
 
-           <!-- allow user to select multiple dates/date range. Is this possible? -->
            <div class="mb-3">
-            <label for="availability" class="form-label">When can your property be reserved? (Optional)</label><br>
-              <input type="date">
+            <label for="pics" class="form-label">Add up to 5 pictures of your property</label>
+              <input type="file" id="propPicture" name="propPicture[]" accept="image/png, image/jpeg" multiple>
            </div>
 
-          <!-- Looking to have this slider a bit more functional; for example, max range slider should not be able to below min range slider -->
         <div class="mb-3">
-           <label for="cost" class="form-label">How much will you charge per night? (Optional)</label><br>
-           <input type="range"  min="1" max="1000" oninput="this.nextElementSibling.value = this.value">
-              <output>0</output>
-           <input type="range"  min="1" max="1000" oninput="this.nextElementSibling.value = this.value">
-            <output>0</output>
+           <label for="cost" class="form-label">How much will you charge per night?<br>$</label>
+            <input type="number" step="0.01" id="price" name="price" />
         </div>
-        
+
+        <input type="hidden" id="userID" name="userID" value="<?php if (isset($_SESSION['user_id'])) { echo $_SESSION['user_id']; } ?>" readonly>
+
           <div class="pt-3 text-center">
-            <button type="submit" class="globalButton blueButton" style="height:50px;width:200px;font-size:1.4em;">Add Property</button>
+            <button type="submit" id="submit" value="Add Property" name="submit"  class="globalButton blueButton" style="height:50px;width:200px;font-size:1.4em;">Add Property</button>
           </div>
         </div>
       </div>
@@ -174,3 +172,6 @@
   <?php include(getcwd( ) . "/footer.php"); ?>
   </body>
 </html>
+<?php } else {
+    header("Location: /login.php");
+} ?>

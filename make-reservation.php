@@ -1,4 +1,7 @@
-<?php include(getcwd() . "/header.php"); ?>
+<?php
+session_start();
+if (isset($_SESSION['username'])) {
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,8 +25,7 @@
 </head>
 
 <body>
-
-
+  <?php include(getcwd() . "/header.php"); ?>
     <section class="container-fluid initialPageContent pinkMountains pb-5">
         <div class="row pb-5 justify-content-center">
 
@@ -195,3 +197,6 @@
 
     })
 </script>
+<?php } else {
+    header("Location: /login.php");
+} ?>
