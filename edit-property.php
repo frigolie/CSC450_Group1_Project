@@ -1,7 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['username']) && isset($_GET['property_id'])){
-  $prop_id = htmlspecialchars($_GET['property_id']);
+if (isset($_SESSION['username'])){
 ?>
 
 <!DOCTYPE html>
@@ -30,10 +29,14 @@ if (isset($_SESSION['username']) && isset($_GET['property_id'])){
   <section class="container-fluid initialPageContent yellowMountains pb-5">
       <div class="row pb-5 justify-content-center">
 
-        <?php   include 'includes/property_table.php';
+        <?php
+
+          include 'includes/property_table.php';
           include 'includes/getPropertyImages.php';
             if (mysqli_num_rows($prop_query) > 0) {
             $i = 1;
+            if(isset($_GET['property_id'])) {
+              $prop_id = htmlspecialchars($_GET['property_id']);
               while ($property = mysqli_fetch_assoc($prop_query)) {
                 if($property['owner_id'] == $_SESSION['user_id'] && $property['property_id'] == $prop_id) { ?>
 
@@ -64,7 +67,7 @@ if (isset($_SESSION['username']) && isset($_GET['property_id'])){
            </div>
 
            <div class="mb-3">
-             <input type="hidden" name="hiddenBath" value="<?php echo $property['bathrooms']; ?>" readonly>
+             <input type="hidden" name="hiddenBaths" value="<?php echo $property['bathrooms']; ?>" readonly>
              <label for="bathrooms" class="form-label">How many bathrooms?</label>
              <select id="bathrooms" name="bathrooms" required>
                <option value="1">1</option>
@@ -173,10 +176,10 @@ if (isset($_SESSION['username']) && isset($_GET['property_id'])){
             <input type="password" class="form-control" id="passwordInput" placeholder="Password" style="width:200px";>
           </div>
 
-          <input type="hidden" id="propertyID" name="propertyID" value="<?php if (isset($_SESSION['user_id'])) { echo $_SESSION['user_id']; } ?>" readonly>
+          <input type="hidden" id="propertyID" name="propertyID" value="<?php echo $prop_id; ?>" readonly>
 
           <div class="pt-3 text-center">
-            <button type="submit" id="submit" value="Update Property" name="submit"  class="globalButton blueButton" style="height:50px;width:200px;font-size:1.4em;">Update Property</button>
+            <button type="submit" id="submit" value="Update" name="submit"  class="globalButton blueButton" style="height:50px;width:200px;font-size:1.4em;">Update</button>
           </div>
 
           <div class="pt-3 text-center mt-3">
@@ -193,7 +196,8 @@ if (isset($_SESSION['username']) && isset($_GET['property_id'])){
         <?php
               }
             }
-          } ?>
+          }
+        } ?>
 
       </div>
     </form>
@@ -204,9 +208,9 @@ if (isset($_SESSION['username']) && isset($_GET['property_id'])){
 </html>
 <script>
   $( document ).ready(function() {
-    $('input[name="bedrooms"]').val($('input[name="hiddenBeds"]').val());
-    $('input[name="bathrooms"]').val($('input[name="hiddenBaths"]').val());
-    $('input[name="state"]').val($('input[name="hiddenState"]').val());
+    $('select[name="bedrooms"]').val($('input[name="hiddenBeds"]').val());
+    $('select[name="bathrooms"]').val($('input[name="hiddenBaths"]').val());
+    $('select[name="state"]').val($('input[name="hiddenState"]').val());
 
     if($('input[name="hiddenKids"]').val() == 1) {
       $('input[name="kidFriendly"]').prop( "checked", true );
@@ -222,5 +226,5 @@ if (isset($_SESSION['username']) && isset($_GET['property_id'])){
   });
 </script>
 <?php } else {
-    header("Location: /login.php");
+    header("Location: /view-properties.php");
 } ?>

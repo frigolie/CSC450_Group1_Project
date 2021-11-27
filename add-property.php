@@ -32,7 +32,7 @@ if (isset($_SESSION['username'])) {
         <div class="col-10 col-md-8 col-lg-6 px-5 py-5 white-bg box-shadow rounded-custom">
           <h2 class="mb-1 text-center">Add a new <span class="dk-orange-text">property listing</span> below. </h2><br>
 
-      <form method="POST" action="includes/inc.property.php" enctype="multipart/form-data">
+      <form method="POST" action="includes/inc.createProperty.php" enctype="multipart/form-data">
             <div class="mb-3">
               <label for="propertyName" class="form-label">Property Name</label>
               <input type="text" class="form-control" name="propName" id="propName" aria-describedby="propHelp" placeholder="Enter here" required>
@@ -148,11 +148,6 @@ if (isset($_SESSION['username'])) {
            <div class="mb-3">
              <label for="zipCode" class="form-label">Zip Code</label>
              <input type="text" class="form-control" name="zipCode" id="zipCode" placeholder="Enter zip code"style="width:250px;" pattern="[0-9]{5}" required>
-           </div>
-
-           <div class="mb-3">
-            <label for="pics" class="form-label">Add up to 5 pictures of your property</label>
-              <input type="file" id="propPicture" name="propPicture[]" accept="image/png, image/jpeg" multiple>
            </div>
 
         <div class="mb-3">
