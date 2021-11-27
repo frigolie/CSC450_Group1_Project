@@ -31,7 +31,7 @@ include  "includes/Inc.DBC.php";
           <h1 class="mb-5">All Properties In Your Area</h1>
 
           <?php include 'includes/property_table.php';
-            if (mysqli_num_rows($prop_query) > 0) { 
+            if (mysqli_num_rows($prop_query) > 0) {
             $i = 1;
               while ($rows = mysqli_fetch_assoc($prop_query)) {
                 $featImg = ''; ?>
@@ -49,7 +49,7 @@ include  "includes/Inc.DBC.php";
                   <a href="/make-reservation.php?property_id=<?php echo $rows['property_id'] ?>">
                     <button class="globalButton blueButton my-2 me-2">Book Now</button>
                   </a>
-                  <a href="/messages.php?recipient_id=<?php echo $rows['user_id'] ?>&property_id=<?php echo $rows['property_id'] ?>">
+                  <a href="/messages.php?recipient_id=<?php echo $rows['owner_id'] ?>&property_id=<?php echo $rows['property_id'] ?>">
                     <button class="globalButton orangeButton my-2">Contact Host</button>
                   </a>
                 </div>

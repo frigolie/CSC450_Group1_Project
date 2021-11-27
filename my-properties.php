@@ -40,7 +40,7 @@ include  "includes/Inc.DBC.php";
             if (mysqli_num_rows($prop_query) >= 0) {
             $i = 1;
               while ($rows = mysqli_fetch_assoc($prop_query)) {
-                if($rows['user_id'] == $_SESSION['user_id']) {
+                if($rows['owner_id'] == $_SESSION['user_id']) {
 
                 $featImg = ''; ?>
                 <?php if ($rows['img1'] != '') { $featImg = $rows['img1']; } else { $featImg = 'graphic/homeaway.png'; } ?>
