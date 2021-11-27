@@ -27,7 +27,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                             <h5 class="card-title mb-4">
                                 <?= $_SESSION['name'] ?>
                             </h5>
-                            <a href="/edit-account.php" class="globalButton blueButton w-100 mt-5">Edit Account</a>
+                            <a href="/edit-account.php?id=<?= $_SESSION['admin_id'] ?>" class="globalButton blueButton w-100 mt-5">Edit Account</a>
                             <a href="/logout.php" class="globalButton redButton w-100 mt-5">Logout</a>
                         </div>
                     </div>
@@ -157,7 +157,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                                     $i = 1;
                                     while ($rows = mysqli_fetch_assoc($res_query)) { ?>
                                         <tr>
-                                            <th scope="row"><?= $i // $rows['id'] ?></th>
+                                            <th scope="row"><?= $i // $rows['reservation_id'] ?></th>
                                             <td><?= $rows['fname'] ?></td>
                                             <td><?= $rows['lname'] ?></td>
                                             <td><?= $rows['email'] ?></td>
