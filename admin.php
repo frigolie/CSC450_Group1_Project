@@ -1,4 +1,5 @@
 <?php
+session_start();
 include  "includes/Inc.DBC.php";
 if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
 

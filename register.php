@@ -1,3 +1,4 @@
+<?php include(getcwd() . "/header.php");?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,11 +18,12 @@
 
     <!-- Page title -->
     <title>Register</title>
-
+  
 </head>
 
 <body>
-  <?php include(getcwd() . "/header.php");?>
+
+
     <section class="container-fluid initialPageContent purpleMountains pb-5">
         <div class="row pb-5 justify-content-center">
 
@@ -29,6 +31,8 @@
                 <h2 class="mb-1 text-center">Creating an account is <span class="dk-orange-text">quick and easy</span>.</h2>
                 <h3 class="mb-4 text-center">Get started below!</h3>
 
+
+                <!-- Bootstrap Sample Form - to be replaced once forms are created -->
                 <!-- <form> -->
                 <form method="POST" action="includes/inc.signup.php">
                     <div class="mb-3">
