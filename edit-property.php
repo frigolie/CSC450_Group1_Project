@@ -27,6 +27,7 @@ if (isset($_SESSION['username'])){
   <?php include(getcwd( ) . "/header.php"); ?>
 
   <section class="container-fluid initialPageContent yellowMountains pb-5">
+    <div class="container">
       <div class="row pb-5 justify-content-center">
 
         <?php
@@ -38,10 +39,11 @@ if (isset($_SESSION['username'])){
             if(isset($_GET['property_id'])) {
               $prop_id = htmlspecialchars($_GET['property_id']);
               while ($property = mysqli_fetch_assoc($prop_query)) {
-                if($property['owner_id'] == $_SESSION['user_id'] && $property['property_id'] == $prop_id) { ?>
+                if($property['owner_id'] == $_SESSION['user_id'] && $property['property_id'] == $prop_id) {
+                ?>
 
 
-        <div class="col-10 col-md-8 col-lg-6 px-5 py-5 white-bg box-shadow rounded-custom">
+        <div class="col-10 col-md-8 col-lg-7 px-5 py-5 white-bg box-shadow rounded-custom">
           <h2 class="mb-1 text-center">Update your <span class="dk-orange-text">property information</span> below. </h2>
 
       <form method="POST" action="includes/inc.updateProperty.php" enctype="multipart/form-data">
@@ -191,6 +193,40 @@ if (isset($_SESSION['username'])){
               <button type="delete" name="delete" class="globalButton redButton" style="height:50px;width:200px;font-size:1.4em;" onclick="">Delete</button>
             </div>
           </div>
+          </form>
+        </div>
+
+        <div class="col-10 col-md-8 col-lg-7 px-5 py-5 mt-5 white-bg box-shadow rounded-custom">
+          <h2 class="mb-3 text-center">Update your <span class="dk-orange-text">property images</span>! </h2>
+          <div class="row">
+
+          <?php $images = getPropertyImages($property['property_id']);
+            $i = 1;
+            foreach($images as $img) { ?>
+              <div class="col-12 col-md-6">
+                <form id="img<?php echo $i; ?>" method="POST" action="includes/inc.updateProperty.php" enctype="multipart/form-data" class="text-center">
+                  <input type="hidden" name="deleteImgID" value="<?php echo $img['image_id']; ?>" readonly />
+                  <input type="hidden" name="deletePropertyID" value="<?php echo $prop_id; ?>" readonly />
+                  <img class="w-100 rounded-custom" src="/graphic/uploads/<?php echo $img['filename']; ?>">
+                  <button type="delete" name="deleteImg" class="globalButton redButton mx-auto mb-5 mt-3">Delete</button>
+                </form>
+              </div>
+
+            <?php $i++;
+                } //endforeach
+            ?>
+
+            <div class="col-12">
+              <form method="POST" action="includes/inc.updateProperty.php" enctype="multipart/form-data" class="d-flex w-100 align-items-center">
+                <input type="file" id="img" name="img" accept="image/png, image/jpeg">
+                <input type="hidden" name="imageUserID" value="<?php if (isset($_SESSION['user_id'])) { echo $_SESSION['user_id']; } ?>" readonly>
+                <input type="hidden" name="imagePropertyID" value="<?php echo $prop_id; ?>" readonly>
+                <button type="submit" value="Add Images" name="upload"  class="globalButton blueButton">Add Image</button>
+              </form>
+            </div>
+
+          </div>
+
         </div>
 
         <?php
@@ -198,10 +234,8 @@ if (isset($_SESSION['username'])){
             }
           }
         } ?>
-
       </div>
-    </form>
-
+      </div>
     </section>
     <?php include(getcwd( ) . "/footer.php"); ?>
   </body>

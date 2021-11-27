@@ -1,10 +1,6 @@
 <?php
 require_once  'Inc.DBC.php';
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 function uploadImage($conn, $filename, $tempname, $folder, $property_id, $user_id, $featured)
 {
 
@@ -25,4 +21,6 @@ function uploadImage($conn, $filename, $tempname, $folder, $property_id, $user_i
     mysqli_stmt_close($stmt);
     move_uploaded_file($tempname, $folder);
 
+    header("location: ../edit-property.php?property_id=" . $property_id . "");
+    exit();
   }

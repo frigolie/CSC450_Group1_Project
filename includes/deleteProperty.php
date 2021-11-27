@@ -20,7 +20,5 @@ function deleteProperty($conn, $property_id)
     mysqli_stmt_bind_param($stmt, "i", $property_id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../my-properties.php?success=true");
-    exit();
 
   }

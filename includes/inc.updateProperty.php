@@ -30,7 +30,32 @@ if (isset($_POST["submit"])) {
 
     deleteProperty($conn, $property_id);
 
+} else if (isset($_POST['deleteImg'])) {
+
+    require_once  'Inc.DBC.php';
+    require_once 'deleteImage.php';
+
+    $image_id = $_POST['deleteImgID'];
+    $property_id = $_POST['deletePropertyID'];
+
+    deleteImage($conn, $image_id, $property_id);
+
+} else if (isset($_POST['upload'])) {
+
+    require_once  'Inc.DBC.php';
+    require_once 'uploadImage.php';
+
+    $property_id = $_POST['imagePropertyID'];
+    $user_id = $_POST['imageUserID'];
+
+    $file = $_FILES["img"]["name"];
+    $temp = $_FILES["img"]["tmp_name"];
+    $folder = "../graphic/uploads/".$file;
+    $feat = 0;
+
+    uploadImage($conn, $file, $temp, $folder, $property_id, $user_id, $feat);
+
 } else {
-    header("location: ../edit-property.php");
+    header("location: ../my-properties.php");
     exit();
 }

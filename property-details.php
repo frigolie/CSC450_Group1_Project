@@ -36,7 +36,7 @@ session_start();
               while ($property = mysqli_fetch_assoc($prop_query)) {
                 if($property['property_id'] == $prop_id) {
                   $images = getPropertyImages($property['property_id']);
-                  if ($images[0] != '') { $featImg = $images[0]; } else { $featImg = 'graphic/homeaway.png'; } ?>
+                  if ($images[0]['filename'] != '') { $featImg = '/graphic/uploads/' . $images[0]['filename']; } else { $featImg = '/graphic/homeaway.png'; } ?>
 
                   <div class="row py-1 justify-content-between">
 

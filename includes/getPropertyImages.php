@@ -14,7 +14,7 @@ function getPropertyImages($property)
     if (mysqli_num_rows($img_query) > 0) {
       $i = 1;
       while ($rows = mysqli_fetch_assoc($img_query)) {
-        $images[] = '/graphic/uploads/' . $rows['filename'];
+        $images[] = $rows;
       }
     }
 
