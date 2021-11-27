@@ -16,6 +16,7 @@ session_start();
       Lor Xiong
       Written:     10/20/21
       Revisions:   10/29/21 - made edits to form
+                   11/26/21 - Connecting front end form to the back end
       -->
 
       <!-- Page title -->
@@ -149,30 +150,16 @@ session_start();
            </div>
 
            <div class="mb-3">
-           <!-- not sure how to make this feature fully functional. ideally, user can select
-                how many files to upload, can select more after already selecting 1, and
-                all file names display on top of each other -->
-            <label for="pics" class="form-label">Add a few pictures of your property</label>
+            <label for="pics" class="form-label">Add up to 5 pictures of your property</label>
               <input type="file" id="propPicture" name="propPicture" accept="image/png, image/jpeg" multiple>
            </div>
 
-           <!-- allow user to select multiple dates/date range. Is this possible? -->
-           <div class="mb-3">
-            <label for="availability" class="form-label">When can your property be reserved? (Optional)</label><br>
-              <input type="date" name="availability" id="availability">
-           </div>
-
-          <!-- Looking to have this slider a bit more functional; for example, max range slider should not be able to below min range slider -->
         <div class="mb-3">
-           <label for="cost" class="form-label">How much will you charge per night? (Optional)<br>$</label>
-           <!-- <input type="range"  min="1" max="1000" oninput="this.nextElementSibling.value = this.value">
-              <output>0</output>
-           <input type="range"  min="1" max="1000" oninput="this.nextElementSibling.value = this.value">
-            <output>0</output> -->
-            <!-- Temporarily using just an input number field to test database creation of property -->
+           <label for="cost" class="form-label">How much will you charge per night?<br>$</label>
             <input type="number" step="0.01" id="price" name="price" />
-            <input type="text" id="userID" name="userID" value="<?php if (isset($_SESSION['user_id'])) { echo $_SESSION['user_id']; } ?>">
         </div>
+        
+        <input type="hidden" id="userID" name="userID" value="<?php if (isset($_SESSION['user_id'])) { echo $_SESSION['user_id']; } ?>" readonly>
 
           <div class="pt-3 text-center">
             <button type="submit" id="submit" value="Add Property" name="submit"  class="globalButton blueButton" style="height:50px;width:200px;font-size:1.4em;">Add Property</button>
