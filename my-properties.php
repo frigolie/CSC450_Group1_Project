@@ -84,12 +84,12 @@
     <section class="container-fluid py-5 lt-gray-bg">
       <div class="row w-75 mx-auto py-4 max-880">
         <div class="col-12 mb-3">
-          <h2 class="text-center">Not seeing all of your properties?</h2>
+          <h2 class="text-center">Have a new property to list?</h2>
         </div>
         <div class="col-12 d-flex justify-content-center">
-          <a href="/contact.php">
+          <a href="/add-property.php">
             <button class="globalButton blueButton mb-2">
-              Contact Us
+              Add it Now!
             </button>
           </a>
         </div>

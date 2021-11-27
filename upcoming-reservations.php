@@ -119,12 +119,12 @@
     <section class="container-fluid py-5 lt-gray-bg">
       <div class="row w-75 mx-auto py-4 max-880">
         <div class="col-12 mb-3">
-          <h2 class="text-center">Experiencing Technical Issues?</h2>
+          <h2 class="text-center">Can't wait for another adventure?</h2>
         </div>
         <div class="col-12 d-flex justify-content-center">
-          <a href="/contact.php">
+          <a href="/view-properties.php">
             <button class="globalButton blueButton mb-2">
-              Contact Us
+              Explore More Destinations!
             </button>
           </a>
         </div>
