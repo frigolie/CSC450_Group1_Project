@@ -31,7 +31,7 @@ session_start();
         <div class="col-10 col-md-8 col-lg-6 px-5 py-5 white-bg box-shadow rounded-custom">
           <h2 class="mb-1 text-center">Add a new <span class="dk-orange-text">property listing</span> below. </h2><br>
 
-      <form method="POST" action="includes/inc.property.php">
+      <form method="POST" action="includes/inc.property.php" enctype="multipart/form-data">
             <div class="mb-3">
               <label for="propertyName" class="form-label">Property Name</label>
               <input type="text" class="form-control" name="propName" id="propName" aria-describedby="propHelp" placeholder="Enter here" required>
@@ -151,14 +151,14 @@ session_start();
 
            <div class="mb-3">
             <label for="pics" class="form-label">Add up to 5 pictures of your property</label>
-              <input type="file" id="propPicture" name="propPicture" accept="image/png, image/jpeg" multiple>
+              <input type="file" id="propPicture" name="propPicture[]" accept="image/png, image/jpeg" multiple>
            </div>
 
         <div class="mb-3">
            <label for="cost" class="form-label">How much will you charge per night?<br>$</label>
             <input type="number" step="0.01" id="price" name="price" />
         </div>
-        
+
         <input type="hidden" id="userID" name="userID" value="<?php if (isset($_SESSION['user_id'])) { echo $_SESSION['user_id']; } ?>" readonly>
 
           <div class="pt-3 text-center">
