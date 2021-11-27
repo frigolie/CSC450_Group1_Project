@@ -1,5 +1,6 @@
 <?php
 session_start();
+if (isset($_SESSION['username'])) {
 include  "includes/Inc.DBC.php";
 ?>
 
@@ -83,3 +84,6 @@ include  "includes/Inc.DBC.php";
     <?php include(getcwd( ) . "/footer.php"); ?>
   </body>
 </html>
+<?php } else {
+    header("Location: /login.php");
+} ?>

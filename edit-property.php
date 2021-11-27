@@ -1,3 +1,8 @@
+<?php
+session_start();
+if (isset($_SESSION['username'])) {
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,7 +42,7 @@
               <label for="phone" class="form-label">Update description</label>
               <textarea rows="4" cols="50" class="form-control" id="textAreaInput" placeholder="Amenities, fun things to do in the area..."></textarea>
            </div>
-        
+
            <div class="mb-3">
             <label for="bath" class="form-label">Does your property allow...</label><br>
             <input type="checkbox" id="kid" name="kid">
@@ -45,7 +50,7 @@
             <input type="checkbox" id="pet" name="pet">
             <label for="petFriendly">Pets</label>
            </div>
-           
+
            <div class="mb-3">
            <!-- not sure how to make this feature fully functional. ideally, user can select
                 how many files to upload, can select more after already selecting 1, and
@@ -76,7 +81,7 @@
             <label for="passwordInput" class="form-label">Password</label>
             <input type="password" class="form-control" id="passwordInput" placeholder="Password" style="width:200px";>
           </div>
-           
+
           <div class="pt-3 text-center">
             <button type="submit" class="globalButton blueButton" style="height:50px;width:350px;font-size:1.4em;">Update Property</button>
           </div>
@@ -84,7 +89,7 @@
           <div class="pt-3 text-center mt-3">
             <h3 class="mb-1 text-left">Want to delete your property? </h3>
             <h3><span class="dk-orange-text">Warning! </span> This action cannot be undone!</h3>
-      
+
               <!-- Add a modal that pops up when user clicks delete? -->
               <div class="mb-3">
                 <button type="delete" class="globalButton redButton" style="height:50px;width:200px;font-size:1.4em;" onclick="">Delete</button>
@@ -96,3 +101,6 @@
     <?php include(getcwd( ) . "/footer.php"); ?>
   </body>
 </html>
+<?php } else {
+    header("Location: /login.php");
+} ?>

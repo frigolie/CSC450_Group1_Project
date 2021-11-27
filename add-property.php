@@ -1,5 +1,6 @@
 <?php
 session_start();
+if (isset($_SESSION['username'])) {
 ?>
 
 <!DOCTYPE html>
@@ -171,3 +172,6 @@ session_start();
   <?php include(getcwd( ) . "/footer.php"); ?>
   </body>
 </html>
+<?php } else {
+    header("Location: /login.php");
+} ?>
