@@ -17,7 +17,7 @@ if (isset($_POST["submit"])) {
     $owner_id     = $_POST["userID"];
 
     require_once  'Inc.DBC.php';
-    require_once 'function3.php';
+    require_once 'createProperty.php';
 
     createProperty($conn, $name, $description, $address, $city, $state, $zip, $bedrooms, $bathrooms, $kids, $pets, $price, $owner_id);
 } else {

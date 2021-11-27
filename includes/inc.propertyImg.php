@@ -4,7 +4,7 @@ session_start();
   if (isset($_POST['upload'])) {
 
     require_once  'Inc.DBC.php';
-    require_once 'function4.php';
+    require_once 'uploadImage.php';
 
     $property_id = $_POST['propertyID'];
     $user_id = $_POST['userID'];
