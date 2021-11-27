@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -150,8 +146,12 @@ session_start();
            </div>
 
            <div class="mb-3">
-            <label for="pics" class="form-label">Add up to 5 pictures of your property</label>
-              <input type="file" id="propPicture" name="propPicture[]" accept="image/png, image/jpeg" multiple>
+            <label for="pic1" class="form-label">Add up to 5 pictures of your property:</label>
+              <input type="file" id="pic1" name="pic1" accept="image/png, image/jpeg">
+              <input type="file" id="pic2" name="pic2" accept="image/png, image/jpeg">
+              <input type="file" id="pic3" name="pic3" accept="image/png, image/jpeg">
+              <input type="file" id="pic4" name="pic4" accept="image/png, image/jpeg">
+              <input type="file" id="pic5" name="pic5" accept="image/png, image/jpeg">
            </div>
 
         <div class="mb-3">

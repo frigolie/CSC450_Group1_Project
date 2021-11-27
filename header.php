@@ -90,9 +90,6 @@ session_start();
                         <li class="nav-item">
                             <a class="nav-link" href="/view-properties.php">View Properties</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/contact.php">Contact Us</a>
-                        </li>
                     </ul>
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

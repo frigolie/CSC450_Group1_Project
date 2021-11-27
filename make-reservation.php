@@ -1,5 +1,3 @@
-<?php include(getcwd() . "/header.php"); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,8 +20,7 @@
 </head>
 
 <body>
-
-
+  <?php include(getcwd() . "/header.php"); ?>
     <section class="container-fluid initialPageContent pinkMountains pb-5">
         <div class="row pb-5 justify-content-center">
 
@@ -72,7 +69,7 @@
                             <div class="col">
                                 <label for="adults" class="form-label">Adults</label>
                                 <select name="adults" id="adults" class="form-control" style="width: 150px" required>
-                                    <option value="">--Select Guests--</option>
+                                    <option value="" disabled>--Select Guests--</option>
                                     <option value="1">1 adults</option>
                                     <option value="2">2 adults</option>
                                     <option value="3">3 adults</option>
@@ -90,7 +87,7 @@
                             <div class="col">
                                 <label for="kids" class="form-label">Children</label>
                                 <select name="kids" id="kids" class="form-control" style="width: 150px" required>
-                                    <option value="">--Select Guests--</option>
+                                    <option value="" disabled>--Select Guests--</option>
                                     <option value="1">1 kids</option>
                                     <option value="2">2 kids</option>
                                     <option value="3">3 kids</option>
@@ -108,7 +105,7 @@
                             <div class="col">
                                 <label for="pets" class="form-label">Pets</label>
                                 <select name="pets" id="pets" class="form-control" style="width: 150px" required>
-                                    <option value="">--Select--</option>
+                                    <option value="" disabled>--Select--</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
                                 </select>
