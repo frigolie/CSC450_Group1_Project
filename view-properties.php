@@ -31,25 +31,30 @@ include  "includes/Inc.DBC.php";
           <h1 class="mb-5">All Properties In Your Area</h1>
 
           <?php include 'includes/property_table.php';
-            if (mysqli_num_rows($prop_query) > 0) { 
+            include 'includes/getPropertyImages.php';
+            if (mysqli_num_rows($prop_query) > 0) {
             $i = 1;
-              while ($rows = mysqli_fetch_assoc($prop_query)) {
-                $featImg = ''; ?>
-                <?php if ($rows['img1'] != '') { $featImg = $rows['img1']; } else { $featImg = 'graphic/homeaway.png'; } ?>
+              while ($property = mysqli_fetch_assoc($prop_query)) {
+                $images = getPropertyImages($property['property_id']);
+                ?>
+                <?php if ($images[0]['filename'] != '') { $featImg = '/graphic/uploads/' . $images[0]['filename']; } else { $featImg = '/graphic/homeaway.png'; } ?>
                 <div class="col-12 col-lg-5 col-xl-4 mb-5 p-4 text-center bg-white rounded-custom box-shadow listingCard">
-                  <a href="/property-details.php?property_id=<?php echo $rows['property_id'] ?>">
+                  <a href="/property-details.php?property_id=<?php echo $property['property_id'] ?>">
                     <div class="w-100 rentalListing">
-                      <img class="w-100 rounded-custom" src="<?php echo $featImg; ?>" alt="<?php echo $rows['name'] ?>" title="Photo of <?php echo $rows['name'] ?>">
+                      <img class="w-100 rounded-custom" src="<?php echo $featImg; ?>" alt="<?php echo $property['name'] ?>" title="Photo of <?php echo $property['name'] ?>">
                     </div>
                   </a>
-                  <a href="/property-details.php?property_id=<?php echo $rows['property_id'] ?>">
-                    <h3 class="mt-3 mb-1"><?php echo $rows['name'] ?></h3>
+                  <a href="/property-details.php?property_id=<?php echo $property['property_id'] ?>">
+                    <h3 class="mt-3 mb-1"><?php echo $property['name'] ?></h3>
                   </a>
-                  <h4><?php echo $rows['bedrooms'] ?> bed(s), <?php echo $rows['bathrooms'] ?> bath(s)</h4>
-                  <a href="/make-reservation.php?property_id=<?php echo $rows['property_id'] ?>">
+                  <h4>
+                    <?php echo $property['bedrooms']; if($property['bedrooms'] != 'Studio') { echo ' Bed'; if($property['bedrooms'] != '1') { echo 's'; } } ?>,
+                    <?php echo $property['bathrooms']; echo ' Bath'; if($property['bathrooms'] != '1') { echo 's'; }?>
+                  </h4>
+                  <a href="/make-reservation.php?property_id=<?php echo $property['property_id'] ?>">
                     <button class="globalButton blueButton my-2 me-2">Book Now</button>
                   </a>
-                  <a href="/messages.php?recipient_id=<?php echo $rows['user_id'] ?>&property_id=<?php echo $rows['property_id'] ?>">
+                  <a href="/messages.php?recipient_id=<?php echo $property['owner_id'] ?>&property_id=<?php echo $property['property_id'] ?>">
                     <button class="globalButton orangeButton my-2">Contact Host</button>
                   </a>
                 </div>

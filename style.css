@@ -220,6 +220,10 @@ ul {
   border-radius: 15px;
 }
 
+img.rounded-custom {
+  border-radius: 5px;
+}
+
 .blueMountains {
   background-image: url("graphic/mountainBG/blue.jpg");
   background-size: cover;
@@ -404,6 +408,27 @@ ul {
 }
 
 /* =========================================
+              Property Detail Styles
+     ========================================= */
+
+.featured-img {
+  height: 350px;
+  background-size: cover;
+  background-position: center center;
+}
+
+.gallery-tab {
+  filter: grayscale(35%);
+  transition: filter .2s ease;
+}
+
+.gallery-tab:hover,
+.gallery-tab:focus {
+  cursor: pointer;
+  filter: grayscale(0%);
+}
+
+/* =========================================
                    Responsive Styles
       ========================================= */
 
@@ -417,6 +442,9 @@ ul {
 
 /* Medium and Up */
 @media only screen and (min-width: 768px) {
+  .featured-img {
+    height: 500px;
+  }
 }
 
 /* Large and Up */

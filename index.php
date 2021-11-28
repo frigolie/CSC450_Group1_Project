@@ -15,7 +15,7 @@ session_start();
       Joshua Sibert
       Lor Xiong
       Written:     10/03/21
-      Revisions:
+      Revisions:   11/27/21 - Connecting listings to DB
       -->
 
   <!-- Page title -->
@@ -40,44 +40,35 @@ session_start();
 
   <section class="container">
     <div class="row py-5">
-      <div class="col-12 col-lg-4 mb-4">
-        <a href="/property-details.php">
-          <div class="w-100 rentalListing">
-            <img class="w-100 rentalListing" src="graphic/penthouse.jpg" alt="Penthouse Rental" title="Photo by Mostafa Safadel">
-          </div>
-        </a>
-        <a href="/property-details.php">
-          <h3 class="mt-2 mb-0">Downtown Penthouse</h3>
-        </a>
-        <h4>2 beds, 1.5 bath</h4>
-        <p>Enjoy the nightlife of the city in a penthouse that comes complete with all the amenities you could wish for! Luxury pool and spa, valet parking, and 24-hour fitness center included in rental.</p>
-      </div>
 
-      <div class="col-12 col-lg-4 mb-4">
-        <a href="/property-details.php">
-          <div class="w-100 rentalListing">
-            <img class="w-100 rentalListing" src="graphic/cabana.jpg" alt="Cabana Rental" title="Photo by Mike Swigunski">
-          </div>
-        </a>
-        <a href="/property-details.php">
-          <h3 class="mt-2 mb-0">Oceanside Cabana</h3>
-        </a>
-        <h4>1 bed, 1 bath</h4>
-        <p>Relax and float away on the serenity of the sea in this oceanside cabana complete with a private pool and 360-degree ocean access.</p>
-      </div>
+    <?php include 'includes/front_page_table.php';
+      include 'includes/getPropertyImages.php';
+      if (mysqli_num_rows($prop_query) > 0) {
+      $i = 1;
+        while ($property = mysqli_fetch_assoc($prop_query)) {
+          $images = getPropertyImages($property['property_id']);
+          ?>
+          <?php if ($images[0]['filename'] != '') { $featImg = '/graphic/uploads/' . $images[0]['filename']; } else { $featImg = '/graphic/homeaway.png'; } ?>
+            <div class="col-12 col-lg-4 mb-4">
+              <a href="/property-details.php?property_id=<?php echo $property['property_id'] ?>">
+                <div class="w-100 rentalListing">
+                  <img class="w-100 rentalListing" src="<?php echo $featImg; ?>" alt="<?php echo $property['name'] ?>" title="Photo of <?php echo $property['name'] ?>">
+                </div>
+              </a>
+              <a href="/property-details.php?property_id=<?php echo $property['property_id'] ?>">
+                <h3 class="mt-2 mb-0"><?php echo $property['name'] ?></h3>
+              </a>
+              <h4>
+                <?php echo $property['bedrooms']; if($property['bedrooms'] != 'Studio') { echo ' Bed'; if($property['bedrooms'] != '1') { echo 's'; } } ?>,
+                <?php echo $property['bathrooms']; echo ' Bath'; if($property['bathrooms'] != '1') { echo 's'; }?>
+              </h4>
+              <p><?php echo $property['description']; ?></p>
+            </div>
+          <?php
+           $i++;
+          }
+        } ?>
 
-      <div class="col-12 col-lg-4 mb-4">
-        <a href="/property-details.php">
-          <div class="w-100 rentalListing">
-            <img class="w-100 rentalListing" src="graphic/cabin.jpg" alt="Cabin Rental" title="Photo by Cameron Stewart">
-          </div>
-        </a>
-        <a href="/property-details.php">
-          <h3 class="mt-2 mb-0">Mountain Cabin</h3>
-        </a>
-        <h4>Studio, .5 bath</h4>
-        <p>Escape the busyness of life and surround yourself with nature in this cozy studio cabin. Wi-fi access, smart TV, and pet-friendly!</p>
-      </div>
     </div>
   </section>
 
@@ -89,15 +80,19 @@ session_start();
       <div class="col-12 col-md-6 d-flex justify-content-center justify-content-lg-end">
         <a href="/view-properties.php">
           <button class="globalButton orangeButton mb-2 ">
-            View Properties
+            View Properties!
           </button>
         </a>
       </div>
 
       <div class="col-12 col-md-6 d-flex justify-content-center justify-content-lg-start">
-        <a href="/register">
+        <?php if (isset($_SESSION['username'])) { ?>
+            <a href="/add-property.php">
+          <?php } else { ?>
+            <a href="/register.php">
+          <?php } ?>
           <button class="globalButton blueButton mb-2">
-            List Your Property
+            List Your Property!
           </button>
         </a>
       </div>

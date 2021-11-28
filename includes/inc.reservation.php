@@ -17,7 +17,7 @@ if (isset($_POST["submit"])) {
 
 
 
-    require_once 'function2.php';
+    require_once 'createReservation.php';
     require_once  'Inc.DBC.php';
 
 

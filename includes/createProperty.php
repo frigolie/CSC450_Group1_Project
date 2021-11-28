@@ -1,7 +1,7 @@
 <?php
 require_once  'Inc.DBC.php';
 
-function createProperty($conn, $name, $description, $address, $city, $state, $zip, $bedrooms, $bathrooms, $kids, $pets, $price, $user_id)
+function createProperty($conn, $name, $description, $address, $city, $state, $zip, $bedrooms, $bathrooms, $kids, $pets, $price, $owner_id)
 {
 
     if (mysqli_connect_errno()) {
@@ -9,14 +9,14 @@ function createProperty($conn, $name, $description, $address, $city, $state, $zi
         exit();
     }
 
-    $sql = "INSERT INTO property (name, description, address, city, state, zip, bedrooms, bathrooms, kids, pets, price, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    $sql = "INSERT INTO property (name, description, address, city, state, zip, bedrooms, bathrooms, kids, pets, price, owner_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../add-property.php?error=stmtfailed");
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "ssssssssiidi", $name, $description, $address, $city, $state, $zip, $bedrooms, $bathrooms, $kids, $pets, $price, $user_id);
+    mysqli_stmt_bind_param($stmt, "ssssssssiidi", $name, $description, $address, $city, $state, $zip, $bedrooms, $bathrooms, $kids, $pets, $price, $owner_id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../my-properties.php?success=true");
