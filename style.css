@@ -220,6 +220,10 @@ ul {
   border-radius: 15px;
 }
 
+img.rounded-custom {
+  border-radius: 5px;
+}
+
 .blueMountains {
   background-image: url("graphic/mountainBG/blue.jpg");
   background-size: cover;

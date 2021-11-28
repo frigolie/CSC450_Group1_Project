@@ -57,6 +57,7 @@ if (isset($_SESSION['username'])) {
              <label for="bathrooms" class="form-label">How many bathrooms?</label>
 
              <select id="bathrooms" name="bathrooms" required>
+               <option value=".5">.5</option>
                <option value="1">1</option>
                <option value="1.5">1.5</option>
                <option value="2">2</option>

@@ -43,7 +43,10 @@ session_start();
                     <div class="col-12 col-lg-7 text-center px-3">
                       <h1 class="my-5 text-start text-shadow"><?php echo $property['name']; ?></h1>
                       <img class="w-100 rounded-custom box-shadow" src="<?php echo $featImg; ?>" alt="<?php echo $property['name']; ?>" title="Photo of <?php echo $property['name']; ?>">
-                      <h4 class="text-start lt-gray-text mt-3"><?php echo $property['bedrooms']; ?> bed, <?php echo $property['bathrooms']; ?> bath</h4>
+                      <h4 class="text-start lt-gray-text mt-3">
+                        <?php echo $property['bedrooms']; if($property['bedrooms'] != 'Studio') { echo ' Bed'; if($property['bedrooms'] != '1') { echo 's'; } } ?>,
+                        <?php echo $property['bathrooms']; echo ' Bath'; if($property['bathrooms'] != '1') { echo 's'; }?>
+                      </h4>
                       <p class="lt-gray-text text-start"><?php echo $property['description']; ?></p>
                       <a href="/messages.php?recipient_id=<?php echo $property['owner_id'] ?>&property_id=<?php echo $property['property_id'] ?>">
                         <button class="globalButton orangeButton my-2">Contact Host</button>

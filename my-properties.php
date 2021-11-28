@@ -55,7 +55,10 @@ include  "includes/Inc.DBC.php";
                   <a href="/property-details.php?property_id=<?php echo $property['property_id'] ?>">
                     <h3 class="mt-3 mb-1"><?php echo $property['name'] ?></h3>
                   </a>
-                  <h4><?php echo $property['bedrooms'] ?> beds, <?php echo $property['bathrooms'] ?> baths</h4>
+                  <h4>
+                    <?php echo $property['bedrooms']; if($property['bedrooms'] != 'Studio') { echo ' Bed'; if($property['bedrooms'] != '1') { echo 's'; } } ?>,
+                    <?php echo $property['bathrooms']; echo ' Bath'; if($property['bathrooms'] != '1') { echo 's'; }?>
+                  </h4>
                   <a href="/edit-property.php?property_id=<?php echo $property['property_id'] ?>">
                     <button class="globalButton orangeButton my-2">Edit Listing</button>
                   </a>
