@@ -408,6 +408,27 @@ img.rounded-custom {
 }
 
 /* =========================================
+              Property Detail Styles
+     ========================================= */
+
+.featured-img {
+  height: 350px;
+  background-size: cover;
+  background-position: center center;
+}
+
+.gallery-tab {
+  filter: grayscale(35%);
+  transition: filter .2s ease;
+}
+
+.gallery-tab:hover,
+.gallery-tab:focus {
+  cursor: pointer;
+  filter: grayscale(0%);
+}
+
+/* =========================================
                    Responsive Styles
       ========================================= */
 
@@ -421,6 +442,9 @@ img.rounded-custom {
 
 /* Medium and Up */
 @media only screen and (min-width: 768px) {
+  .featured-img {
+    height: 500px;
+  }
 }
 
 /* Large and Up */
