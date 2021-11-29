@@ -440,7 +440,13 @@ img.rounded-custom {
   background-color: rgba(240, 238, 236, 0.5);
 }
 
-#add-property input[name='propName'] {
+.popup-container {
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+
+#add-property input[name='propName'],
+#edit-property input[name='propName'] {
   max-width: 300px;
 }
 

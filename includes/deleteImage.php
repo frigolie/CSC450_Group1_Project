@@ -21,7 +21,4 @@ function deleteImage($conn, $image_id, $property_id)
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
-    header("location: ../edit-property.php?property_id=" . $property_id . "&success=true");
-    exit();
-
   }

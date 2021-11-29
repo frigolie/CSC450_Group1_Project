@@ -15,7 +15,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
 
     <body>
         <?php include(getcwd() . "/header.php"); ?>
-        <section class="container-fluid initialPageContent greenMountains p-0">
+        <section class="container-fluid initialPageContent greenMountains pb-5">
 
             <div class="container" style="min-height: 100vh">
                 <?php if ($_SESSION['role'] == 'admin') { ?>
@@ -104,23 +104,36 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                             <h1 class="fs-1 mb-3 text-center text-shadow">Properties</h1>
                             <table class="table">
                                 <thead>
-                                    <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Address</th>
-                                        <th scope="col">Owner</th>
-                                        <th scope="col">Beds</th>
-                                        <th scope="col">Baths</th>
-                                        <th scope="col">Pets</th>
-                                        <th scope="col">Kids</th>
-                                        <th scope="col">Price</th>
-                                    </tr>
+                                  <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Owner</th>
+                                    <th scope="col">Beds</th>
+                                    <th scope="col">Baths</th>
+                                    <th scope="col">Pets</th>
+                                    <th scope="col">Kids</th>
+                                    <th scope="col">Price</th>
+                                  </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     $i = 1;
                                     while ($rows = mysqli_fetch_assoc($prop_query)) { ?>
-                                        <tr>
+                                        <tr class="popup-row property-row"
+                                            property-id="<?= $rows['property_id'] ?>"
+                                            property-name="<?= $rows['name'] ?>"
+                                            property-description="<?= $rows['description'] ?>"
+                                            property-address="<?= $rows['address'] ?>"
+                                            property-city="<?= $rows['city'] ?>"
+                                            property-state="<?= $rows['state'] ?>"
+                                            property-zip="<?= $rows['zip'] ?>"
+                                            property-bedrooms="<?= $rows['bedrooms'] ?>"
+                                            property-bathrooms="<?= $rows['bathrooms'] ?>"
+                                            property-kids="<?= $rows['kids'] ?>"
+                                            property-pets="<?= $rows['pets'] ?>"
+                                            property-price="<?= $rows['price'] ?>"
+                                        >
                                             <th scope="row"><?= $rows['property_id'] ?></th>
                                             <td><?= $rows['name'] ?></td>
                                             <td><?= $rows['address'] ?><br><?= $rows['city'] ?>, <?= $rows['state'] ?> <?= $rows['zip'] ?></td>
@@ -189,7 +202,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                 <span class="close-btn"><i class="bi bi-x-circle"></i></span>
 
                 <div id="add-user" class="hide popup-form w-100">
-                  <h3 class="mb-3">Add New User</h3>
+                  <h3 class="mb-3">Add A New User</h3>
                   <form method="POST" action="includes/inc.adminCreateUser.php" enctype="multipart/form-data">
                     <div class="form-field-container d-flex">
                       <input type="hidden" name="userID" readonly>
@@ -200,8 +213,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                       <input type="password" class="form-control me-3" placeholder="Password" name="password" autocomplete="new-password" required>
                       <input type="password" class="form-control" placeholder="Confirm Password" name="confirmpassword" autocomplete="new-password" required>
                     </div>
-                    <div class="pt-3 text-center">
-                      <button type="submit" name="submit" class="globalButton orangeButton">Create User</button>
+                    <div class="pt-3">
+                      <button type="submit" name="submit" class="globalButton blueButton">Create User</button>
                     </div>
                   </form>
                 </div>
@@ -226,7 +239,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                 </div>
 
                 <div id="add-property" class="hide popup-form w-100">
-                  <h3 class="mb-3">Add Property</h3>
+                  <h3 class="mb-3">Add A New Property</h3>
                   <form method="POST" action="includes/inc.adminCreateProperty.php" enctype="multipart/form-data" class="d-flex flex-wrap">
                     <div class="mb-3 w-100 d-flex align-items-start justify-content-between">
                       <input type="text" class="form-control me-3" name="propName" aria-describedby="propHelp" placeholder="Property Name" required>
@@ -243,18 +256,18 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                       <select name="bathrooms" class="me-3" required>
                          <option value=".5">.5 Bath</option>
                          <option value="1">1 Bath</option>
-                         <option value="1.5">1.5 Bath</option>
-                         <option value="2">2 Bath</option>
-                         <option value="2.5">2.5 Bath</option>
-                         <option value="3">3 Bath</option>
-                         <option value="3.5">3.5 Bath</option>
-                         <option value="4+">4+ Bath</option>
+                         <option value="1.5">1.5 Baths</option>
+                         <option value="2">2 Baths</option>
+                         <option value="2.5">2.5 Baths</option>
+                         <option value="3">3 Baths</option>
+                         <option value="3.5">3.5 Baths</option>
+                         <option value="4+">4+ Baths</option>
                        </select>
                       <input name="kidFriendly" type="hidden" value="0">
-                      <input type="checkbox" name="kidFriendly" value="1">
+                      <input type="checkbox" name="kidFriendly" class="me-1" value="1">
                       <label for="kidFriendly" class="me-3">Kids Allowed</label>
                       <input name="petFriendly" type="hidden" value="0">
-                      <input type="checkbox" name="petFriendly" value="1">
+                      <input type="checkbox" name="petFriendly" class="me-1" value="1">
                       <label for="petFriendly">Pets Allowed</label>
                     </div>
                     <div class="mb-3 w-100 d-flex justify-content-between align-items-center">
@@ -320,12 +333,111 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                     <div class="pt-3 text-center">
                       <button type="submit" value="Add Property" name="submit"  class="globalButton blueButton">Add Property</button>
                     </div>
-                    </div>
                   </form>
                 </div>
 
                 <div id="edit-property" class="hide popup-form w-100">
-                  edit property form here
+                  <h3 class="mb-3">Update Property Information</h3>
+                  <form method="POST" action="includes/inc.adminUpdateProperty.php" enctype="multipart/form-data" class="d-flex flex-wrap">
+                    <div class="mb-3 w-100 d-flex align-items-start justify-content-between">
+                      <input type="text" class="form-control me-3" name="propName" aria-describedby="propHelp" required>
+                      <textarea rows="1" cols="50" class="form-control" name="propDescription"></textarea>
+                    </div>
+
+                    <div class="mb-3 w-100 d-flex align-items-center justify-content-start">
+                       <select name="bedrooms" class="me-3" required>
+                         <option value="Studio">Studio</option>
+                         <option value="1">1 Bed</option>
+                         <option value="2">2 Beds</option>
+                         <option value="3">3 Beds</option>
+                         <option value="4+">4+ Beds</option>
+                       </select>
+
+                       <select name="bathrooms" class="me-3" required>
+                         <option value=".5">.5 Bath</option>
+                         <option value="1">1 Bath</option>
+                         <option value="1.5">1.5 Baths</option>
+                         <option value="2">2 Baths</option>
+                         <option value="2.5">2.5 Baths</option>
+                         <option value="3">3 Baths</option>
+                         <option value="3.5">3.5 Baths</option>
+                         <option value="4+">4+ Baths</option>
+                       </select>
+
+                      <input type="checkbox" name="kidFriendly" class="me-1" value="1">
+                      <label for="kidFriendly" class="me-3">Kids Allowed</label><br>
+                      <input type="checkbox" name="petFriendly" class="me-1" value="1">
+                      <label for="petFriendly">Pets Allowed</label>
+
+                    </div>
+
+                    <div class="mb-3 w-100 d-flex align-items-center justify-content-between">
+                      <input type="text" class="form-control me-3" name="address1" required />
+                      <input type="text" class="form-control me-3" name="city" required />
+                      <select name="state" class="me-3">
+                            <option value="AL">AL</option>
+                            <option value="AK">AK</option>
+                            <option value="AZ">AZ</option>
+                            <option value="AR">AR</option>
+                            <option value="CA">CA</option>
+                            <option value="CO">CO</option>
+                            <option value="CT">CT</option>
+                            <option value="DE">DE</option>
+                            <option value="DC">D.C.</option>
+                            <option value="FL">FL</option>
+                            <option value="GA">GA</option>
+                            <option value="HI">HI</option>
+                            <option value="ID">ID</option>
+                            <option value="IL">IL</option>
+                            <option value="IN">IN</option>
+                            <option value="IA">IA</option>
+                            <option value="KS">KS</option>
+                            <option value="KY">KY</option>
+                            <option value="LA">LA</option>
+                            <option value="ME">ME</option>
+                            <option value="MD">MD</option>
+                            <option value="MA">MA</option>
+                            <option value="MI">MI</option>
+                            <option value="MN">MN</option>
+                            <option value="MS">MS</option>
+                            <option value="MO">MO</option>
+                            <option value="MT">MT</option>
+                            <option value="NE">NE</option>
+                            <option value="NV">NV</option>
+                            <option value="NH">NH</option>
+                            <option value="NJ">NJ</option>
+                            <option value="NM">NM</option>
+                            <option value="NY">NY</option>
+                            <option value="NC">NC</option>
+                            <option value="ND">ND</option>
+                            <option value="OH">OH</option>
+                            <option value="OK">OK</option>
+                            <option value="OR">OR</option>
+                            <option value="PA">PA</option>
+                            <option value="RI">RI</option>
+                            <option value="SC">SC</option>
+                            <option value="SD">SD</option>
+                            <option value="TN">TN</option>
+                            <option value="TX">TX</option>
+                            <option value="UT">UT</option>
+                            <option value="VT">VT</option>
+                            <option value="VA">VA</option>
+                            <option value="WA">WA</option>
+                            <option value="WV">WV</option>
+                            <option value="WI">WI</option>
+                            <option value="WY">WY</option>
+                          </select>
+                      <input type="text" class="form-control me-3" name="zipCode" pattern="[0-9]{5}" required />
+                      $<input type="number" step="0.01" name="price" class="ms-1" required />
+                    </div>
+
+                    <input type="hidden" name="propertyID" readonly>
+
+                    <div class="pt-3 text-center">
+                      <button type="submit" value="Update" name="submit"  class="globalButton orangeButton me-3">Update Property</button>
+                      <button type="delete" name="delete" class="globalButton redButton">Delete Property</button>
+                    </div>
+                 </form>
                 </div>
 
                 <div id="add-reservation" class="hide popup-form w-100">
@@ -377,6 +489,49 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
           $('#edit-user').find('input[name="lName"]').val(lname);
           $('#edit-user').find('input[name="email"]').val(email);
           $('#edit-user').find('input[name="username"]').val(username);
+
+          $('#black-overlay').fadeTo( 200, 1.0 );
+        });
+
+        $('.property-row').click(function(e){
+          e.preventDefault();
+          $('#black-overlay').removeClass('hide');
+          $('#edit-property').removeClass('hide');
+          var prop_id = $(this).attr('property-id');
+          var prop_name = $(this).attr('property-name');
+          var prop_descrip = $(this).attr('property-description');
+          var prop_address = $(this).attr('property-address');
+          var prop_city = $(this).attr('property-city');
+          var prop_state = $(this).attr('property-state');
+          var prop_zip = $(this).attr('property-zip');
+          var prop_br = $(this).attr('property-bedrooms');
+          var prop_ba = $(this).attr('property-bathrooms');
+          var prop_kids = $(this).attr('property-kids');
+          var prop_pets = $(this).attr('property-pets');
+          var prop_price = $(this).attr('property-price');
+
+          $('#edit-property').find('input[name="propName"]').val(prop_name);
+          $('#edit-property').find('[name="propDescription"]').val(prop_descrip);
+          $('#edit-property').find('input[name="address1"]').val(prop_address);
+          $('#edit-property').find('input[name="city"]').val(prop_city);
+          $('#edit-property').find('select[name="state"]').val(prop_state);
+          $('#edit-property').find('input[name="zipCode"]').val(prop_zip);
+          $('#edit-property').find('select[name="bedrooms"]').val(prop_br);
+          $('#edit-property').find('select[name="bathrooms"]').val(prop_ba);
+          $('#edit-property').find('input[name="price"]').val(prop_price);
+          $('#edit-property').find('input[name="propertyID"]').val(prop_id);
+
+          if(prop_kids == 1) {
+            $('#edit-property').find('input[name="kidFriendly"]').prop( "checked", true );
+          } else {
+            $('#edit-property').find('input[name="kidFriendly"]').prop( "checked", false );
+          }
+
+          if(prop_pets == 1) {
+            $('#edit-property').find('input[name="petFriendly"]').prop( "checked", true );
+          } else {
+            $('#edit-property').find('input[name="petFriendly"]').prop( "checked", false );
+          }
 
           $('#black-overlay').fadeTo( 200, 1.0 );
         });
