@@ -14,16 +14,16 @@ if (isset($_POST["submit"])) {
     $kids        = $_POST["kidFriendly"];
     $pets        = $_POST["petFriendly"];
     $price       = $_POST["price"];
-    $owner_id     = $_POST["userID"];
+    $owner_id    = 1;
 
     require_once  'Inc.DBC.php';
     require_once 'createProperty.php';
 
     createProperty($conn, $name, $description, $address, $city, $state, $zip, $bedrooms, $bathrooms, $kids, $pets, $price, $owner_id);
 
-    header("location: ../my-properties.php?success=true");
+    header("location: ../admin.php?success=true");
     exit();
 } else {
-    header("location: ../add-property.php");
+    header("location: ../admin.php");
     exit();
 }

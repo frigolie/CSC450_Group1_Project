@@ -226,7 +226,102 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                 </div>
 
                 <div id="add-property" class="hide popup-form w-100">
-                  add property form here
+                  <h3 class="mb-3">Add Property</h3>
+                  <form method="POST" action="includes/inc.adminCreateProperty.php" enctype="multipart/form-data" class="d-flex flex-wrap">
+                    <div class="mb-3 w-100 d-flex align-items-start justify-content-between">
+                      <input type="text" class="form-control me-3" name="propName" aria-describedby="propHelp" placeholder="Property Name" required>
+                      <textarea rows="1" cols="50" class="form-control" name="propDescription" placeholder="Amenities, fun things to do in the area..."></textarea>
+                    </div>
+                    <div class="mb-3 w-100">
+                      <select name="bedrooms" class="me-3" required>
+                         <option value="Studio">Studio</option>
+                         <option value="1">1 Bed</option>
+                         <option value="2">2 Beds</option>
+                         <option value="3">3 Beds</option>
+                         <option value="4+">4+ Beds</option>
+                       </select>
+                      <select name="bathrooms" class="me-3" required>
+                         <option value=".5">.5 Bath</option>
+                         <option value="1">1 Bath</option>
+                         <option value="1.5">1.5 Bath</option>
+                         <option value="2">2 Bath</option>
+                         <option value="2.5">2.5 Bath</option>
+                         <option value="3">3 Bath</option>
+                         <option value="3.5">3.5 Bath</option>
+                         <option value="4+">4+ Bath</option>
+                       </select>
+                      <input name="kidFriendly" type="hidden" value="0">
+                      <input type="checkbox" name="kidFriendly" value="1">
+                      <label for="kidFriendly" class="me-3">Kids Allowed</label>
+                      <input name="petFriendly" type="hidden" value="0">
+                      <input type="checkbox" name="petFriendly" value="1">
+                      <label for="petFriendly">Pets Allowed</label>
+                    </div>
+                    <div class="mb-3 w-100 d-flex justify-content-between align-items-center">
+                      <input type="text" class="form-control me-3" name="address1" placeholder="Street Address" required>
+                      <input type="text" class="form-control me-3" name="city" placeholder="City" required>
+                      <select name="state" class="me-3" required>
+                          <option value="" selected="selected" disabled>State</option>
+                          <option value="AL">AL</option>
+                          <option value="AK">AK</option>
+                          <option value="AZ">AZ</option>
+                          <option value="AR">AR</option>
+                          <option value="CA">CA</option>
+                          <option value="CO">CO</option>
+                          <option value="CT">CT</option>
+                          <option value="DE">DE</option>
+                          <option value="DC">D.C.</option>
+                          <option value="FL">FL</option>
+                          <option value="GA">GA</option>
+                          <option value="HI">HI</option>
+                          <option value="ID">ID</option>
+                          <option value="IL">IL</option>
+                          <option value="IN">IN</option>
+                          <option value="IA">IA</option>
+                          <option value="KS">KS</option>
+                          <option value="KY">KY</option>
+                          <option value="LA">LA</option>
+                          <option value="ME">ME</option>
+                          <option value="MD">MD</option>
+                          <option value="MA">MA</option>
+                          <option value="MI">MI</option>
+                          <option value="MN">MN</option>
+                          <option value="MS">MS</option>
+                          <option value="MO">MO</option>
+                          <option value="MT">MT</option>
+                          <option value="NE">NE</option>
+                          <option value="NV">NV</option>
+                          <option value="NH">NH</option>
+                          <option value="NJ">NJ</option>
+                          <option value="NM">NM</option>
+                          <option value="NY">NY</option>
+                          <option value="NC">NC</option>
+                          <option value="ND">ND</option>
+                          <option value="OH">OH</option>
+                          <option value="OK">OK</option>
+                          <option value="OR">OR</option>
+                          <option value="PA">PA</option>
+                          <option value="RI">RI</option>
+                          <option value="SC">SC</option>
+                          <option value="SD">SD</option>
+                          <option value="TN">TN</option>
+                          <option value="TX">TX</option>
+                          <option value="UT">UT</option>
+                          <option value="VT">VT</option>
+                          <option value="VA">VA</option>
+                          <option value="WA">WA</option>
+                          <option value="WV">WV</option>
+                          <option value="WI">WI</option>
+                          <option value="WY">WY</option>
+                        </select>
+                      <input type="text" class="form-control me-3" name="zipCode" placeholder="Zip Code" pattern="[0-9]{5}" required />
+                      $ <input type="number" class="ms-1" step="0.01" name="price" placeholder="Price" required/>
+                    </div>
+                    <div class="pt-3 text-center">
+                      <button type="submit" value="Add Property" name="submit"  class="globalButton blueButton">Add Property</button>
+                    </div>
+                    </div>
+                  </form>
                 </div>
 
                 <div id="edit-property" class="hide popup-form w-100">
