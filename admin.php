@@ -214,10 +214,12 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                       <input type="text" class="form-control me-3" name="fName" placeholder="First Name" required>
                       <input type="text" class="form-control me-3" name="lName" placeholder="Last Name" required>
                       <input type="text" class="form-control me-3" name="username" placeholder="Username" required>
-                      <input type="email" class="form-control" name="email" placeholder="email@address.com" required>
+                      <input type="email" class="form-control me-3" name="email" placeholder="email@address.com" required>
+                      <input type="password" class="form-control me-3" placeholder="New Password" name="password" autocomplete="new-password">
+                      <input type="password" class="form-control" placeholder="Confirm New Password" name="confirmpassword" autocomplete="new-password">
                     </div>
                     <div class="pt-3">
-                      <button type="submit" name="submit" class="globalButton orangeButton me-3">Edit User</button>
+                      <button type="submit" name="submit" class="globalButton orangeButton me-3">Update User</button>
                       <button type="delete" name="delete" class="globalButton redButton">Delete User</button>
                     </div>
                   </form>
