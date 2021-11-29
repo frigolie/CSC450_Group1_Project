@@ -20,11 +20,15 @@
   box-sizing: border-box;
   font-family: "Nunito Sans", sans-serif;
   color: #091517;
-  transition: all 0.25s ease !important;
+  transition: all 0.2s ease !important;
 }
 
 body {
   background-color: #fff;
+}
+
+.hide {
+  display: none!important;
 }
 
 section.initialPageContent {
@@ -405,6 +409,45 @@ img.rounded-custom {
 
 .adminCard {
   top: 100px;
+}
+
+#black-overlay {
+  display: flex;
+  background-color: rgba(8, 38, 43, .7);
+  min-height: 100vh;
+  min-width: 100vw;
+  opacity: 0;
+  transition: all .2s ease;
+}
+
+.close-btn i {
+  font-size: 30px;
+  color: #08262b;
+  transition: color 0.2s ease;
+}
+
+.close-btn i:hover, .close-btn i:focus {
+  color: #ff0052;
+  cursor: pointer;
+}
+
+.popup-row {
+  transition: all .2s ease;
+}
+
+.popup-row:hover, .popup-row:focus {
+  cursor: pointer;
+  background-color: rgba(240, 238, 236, 0.5);
+}
+
+.popup-container {
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+
+#add-property input[name='propName'],
+#edit-property input[name='propName'] {
+  max-width: 300px;
 }
 
 /* =========================================

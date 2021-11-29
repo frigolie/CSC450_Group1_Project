@@ -1,7 +1,7 @@
 <?php
 require_once  'Inc.DBC.php';
 
-function deleteImage($conn, $image_id, $property_id)
+function deleteUser($conn, $user_id)
 {
 
     if (mysqli_connect_errno()) {
@@ -9,15 +9,15 @@ function deleteImage($conn, $image_id, $property_id)
         exit();
     }
 
-    $sql = "DELETE FROM image WHERE image_id = ?;";
+    $sql = "DELETE FROM user WHERE user_id = ?;";
 
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../edit-property.php?property_id=" . $property_id . "&error=stmtfailed");
+        header("location: ../edit-property.php?error=stmtfailed");
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "i", $image_id);
+    mysqli_stmt_bind_param($stmt, "i", $user_id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 

@@ -10,11 +10,8 @@ if (isset($_POST["submit"])) {
     $password = $_POST["password"];
     $confirmpassword = $_POST["confirmpassword"];
 
-
     require_once  'Inc.DBC.php';
     require_once 'loginFunctions.php';
-
-
 
     if (emptyInputSignup($fname, $lname, $email, $username, $password, $confirmpassword) !== false) {
         header("location: ../register.php?error=emptyinput");
@@ -36,7 +33,6 @@ if (isset($_POST["submit"])) {
         header("location: ../register.php?error=invalidEmail");
         exit();
     }
-
     if (pwdMatch($password, $confirmpassword) !== false) {
         header("location: ../register.php?error=passwordsdontmatch");
         exit();
@@ -47,9 +43,10 @@ if (isset($_POST["submit"])) {
     }
 
     createUser($conn, $fname, $lname, $email, $username, $password, $confirmpassword);
-    header("location: ../login.php?success=true");
+
+    header("location: ../admin.php?success=true");
     exit();
 } else {
-    header("location: ../register.php");
+    header("location: ../admin.php");
     exit();
 }

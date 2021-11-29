@@ -21,6 +21,4 @@ function uploadImage($conn, $filename, $tempname, $folder, $property_id, $user_i
     mysqli_stmt_close($stmt);
     move_uploaded_file($tempname, $folder);
 
-    header("location: ../edit-property.php?property_id=" . $property_id . "");
-    exit();
   }

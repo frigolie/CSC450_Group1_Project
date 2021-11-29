@@ -189,7 +189,6 @@ if (isset($_SESSION['username'])){
             <h3 class="mb-1 text-left">Want to delete your property? </h3>
             <h3><span class="dk-orange-text">Warning! </span> This action cannot be undone!</h3>
 
-            <!-- Add a modal that pops up when user clicks delete? -->
             <div class="mb-3">
               <button type="delete" name="delete" class="globalButton redButton" style="height:50px;width:200px;font-size:1.4em;" onclick="">Delete</button>
             </div>

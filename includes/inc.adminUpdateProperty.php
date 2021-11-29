@@ -21,7 +21,7 @@ if (isset($_POST["submit"])) {
 
     updateProperty($conn, $property_id, $name, $description, $address, $city, $state, $zip, $bedrooms, $bathrooms, $kids, $pets, $price);
 
-    header("location: ../edit-property.php?property_id=" . $property_id . "&success=true");
+    header("location: ../admin.php?success=true");
     exit();
 
 } else if (isset($_POST["delete"])) {
@@ -33,7 +33,7 @@ if (isset($_POST["submit"])) {
 
     deleteProperty($conn, $property_id);
 
-    header("location: ../my-properties.php?success=true");
+    header("location: ../admin.php?success=true");
     exit();
 
 } else if (isset($_POST['deleteImg'])) {
@@ -46,7 +46,7 @@ if (isset($_POST["submit"])) {
 
     deleteImage($conn, $image_id, $property_id);
 
-    header("location: ../edit-property.php?property_id=" . $property_id . "&success=true");
+    header("location: ../admin.php?success=true");
     exit();
 
 } else if (isset($_POST['upload'])) {
@@ -63,11 +63,11 @@ if (isset($_POST["submit"])) {
     $feat = 0;
 
     uploadImage($conn, $file, $temp, $folder, $property_id, $user_id, $feat);
-    
-    header("location: ../edit-property.php?property_id=" . $property_id . "&success=true");
+
+    header("location: ../admin.php?success=true");
     exit();
 
 } else {
-    header("location: ../my-properties.php");
+    header("location: ../admin.php");
     exit();
 }
