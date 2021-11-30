@@ -79,8 +79,11 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                                 </thead>
                                 <tbody>
                                     <?php
+                                    $user_array = [];
                                     $i = 1;
-                                    while ($rows = mysqli_fetch_assoc($user_query)) { ?>
+                                    while ($rows = mysqli_fetch_assoc($user_query)) {
+                                      $user_array[] = array($rows['user_id'], $rows['username']);
+                                      ?>
                                         <tr user-id="<?= $rows['user_id'] ?>" first-name="<?= $rows['fname'] ?>" last-name="<?= $rows['lname'] ?>" email="<?= $rows['email'] ?>" username="<?= $rows['username'] ?>" class="popup-row user-row">
                                             <th scope="row"><?= $rows['user_id'] ?></th>
                                             <td><?= $rows['fname'] ?></td>
@@ -97,6 +100,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                             </div>
                           </div>
                         <?php } ?>
+
                     <!-- Property info table -->
                     <?php include 'includes/property_table.php';
                       if (mysqli_num_rows($prop_query) > 0) { ?>
@@ -118,8 +122,10 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                                 </thead>
                                 <tbody>
                                     <?php
+                                    $property_array = [];
                                     $i = 1;
-                                    while ($rows = mysqli_fetch_assoc($prop_query)) { ?>
+                                    while ($rows = mysqli_fetch_assoc($prop_query)) {
+                                      $property_array[] = array($rows['property_id'], $rows['name']);?>
                                         <tr class="popup-row property-row"
                                             property-id="<?= $rows['property_id'] ?>"
                                             property-name="<?= $rows['name'] ?>"
@@ -153,6 +159,77 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                             </div>
                           </div>
                         <?php } ?>
+
+                <!-- Profile Avatar table -->
+                <?php include 'includes/avatar_table.php';
+                  if (mysqli_num_rows($prop_query) > 0) { ?>
+                    <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable" id="avatarTable">
+                        <h1 class="fs-1 mb-3 text-center text-shadow">Profile Avatars</h1>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">File</th>
+                                <th scope="col">User</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $i = 1;
+                                while ($rows = mysqli_fetch_assoc($prop_query)) { ?>
+                                    <tr class="popup-row avatar-row"
+                                        avatar-id="<?= $rows['avatar_id'] ?>"
+                                        avatar-user-id="<?= $rows['user_id'] ?>"
+                                    >
+                                        <th scope="row"><?= $rows['avatar_id'] ?></th>
+                                        <td><img class="table-image" src="/graphic/uploads/users/<?= $rows['filename'] ?>"></td>
+                                        <td><?= $rows['username'] ?></td>
+                                    </tr>
+                                <?php $i++;
+                                } ?>
+                            </tbody>
+                        </table>
+                        <div class="w-100 py-3 text-center">
+                          <a class="globalButton blueButton mt-3 mb-2 popup-button" href="#" popup-form="add-avatar">Add New Profile Avatar</a>
+                        </div>
+                      </div>
+                    <?php } ?>
+
+                    <!-- Property Image table -->
+                    <?php include 'includes/image_table.php';
+                      if (mysqli_num_rows($prop_query) > 0) { ?>
+                        <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable" id="imageTable">
+                            <h1 class="fs-1 mb-3 text-center text-shadow">Property Images</h1>
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">File</th>
+                                    <th scope="col">Property</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $i = 1;
+                                    while ($rows = mysqli_fetch_assoc($prop_query)) { ?>
+                                        <tr class="popup-row image-row"
+                                            image-id="<?= $rows['image_id'] ?>"
+                                            image-property-id="<?= $rows['property_id'] ?>"
+                                        >
+                                            <th scope="row"><?= $rows['image_id'] ?></th>
+                                            <td><img class="table-image" src="/graphic/uploads/<?= $rows['filename'] ?>"></td>
+                                            <td><?= $rows['name'] ?></td>
+                                        </tr>
+                                    <?php $i++;
+                                    } ?>
+                                </tbody>
+                            </table>
+                            <div class="w-100 py-3 text-center">
+                              <a class="globalButton blueButton mt-3 mb-2 popup-button" href="#" popup-form="add-image">Add New Property Image</a>
+                            </div>
+                          </div>
+                        <?php } ?>
+
                     <!-- Reservation info table -->
                     <?php include 'includes/res_table.php';
                       if (mysqli_num_rows($res_query) > 0) { ?>
@@ -448,6 +525,34 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                   edit reservation form here
                 </div>
 
+                <div id="add-avatar" class="hide popup-form w-100">
+                  add profile avatar form here
+                  needs file upload, select dropdown of users to pull id
+                  user is required, file is required.
+                  <select class="userSelect"><option>Test Option</option></select>
+                </div>
+
+                <div id="edit-avatar" class="hide popup-form w-100">
+                  edit profile avatar form here
+                  needs hidden avatar id, file upload, select dropdown of users to pull id, delete button
+                  user is required, if file is empty, no change.
+                  <select class="userSelect"></select>
+                </div>
+
+                <div id="add-image" class="hide popup-form w-100">
+                  add property image form here
+                  needs file upload, select dropdown of properties to pull id
+                  property is required, file is required.
+                  <select class="propertySelect"><option>Test Option</option></select>
+                </div>
+
+                <div id="edit-image" class="hide popup-form w-100">
+                  edit property image form here
+                  needs hidden image id, file upload, select dropdown of property to pull id, delete button
+                  property is required, if file is empty, no change.
+                  <select class="propertySelect"></select>
+                </div>
+
               </div>
             </div>
         </section>
@@ -457,7 +562,22 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
 
     </html>
     <script>
+    // Access the user array
+    var userArray = <?php echo json_encode($user_array); ?>;
+    var propertyArray = <?php echo json_encode($property_array); ?>;
+
+    function generateDynamicSelect(array, className){
+      var $el = $("." + className);
+      $el.empty(); // remove old options
+      for(var i = 0; i < array.length; i++){
+        $el.append($("<option></option>")
+           .attr("value", array[i][0]).text(array[i][1]));
+      }
+    }
+
       $( document ).ready(function() {
+        generateDynamicSelect(userArray, 'userSelect');
+        generateDynamicSelect(propertyArray, 'propertySelect');
         $('.close-btn i').click(function(e){
           e.preventDefault();
           $('#black-overlay').fadeTo( 200, 0,function(){
@@ -532,6 +652,34 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
           } else {
             $('#edit-property').find('input[name="petFriendly"]').prop( "checked", false );
           }
+
+          $('#black-overlay').fadeTo( 200, 1.0 );
+        });
+
+        $('.avatar-row').click(function(e){
+          e.preventDefault();
+          $('#black-overlay').removeClass('hide');
+          $('#edit-avatar').removeClass('hide');
+          var user_id = $(this).attr('avatar-user-id');
+          var user_array = $(this).attr('all-users');
+          var avatar_id = $(this).attr('avatar-id');
+
+          $('#edit-avatar').find('select[name="userID"]').val(user_id);
+          $('#edit-avatar').find('input[name="avatarID"]').val(avatar_id);
+
+          $('#black-overlay').fadeTo( 200, 1.0 );
+        });
+
+        $('.image-row').click(function(e){
+          e.preventDefault();
+          $('#black-overlay').removeClass('hide');
+          $('#edit-image').removeClass('hide');
+          var user_id = $(this).attr('image-user-id');
+          var user_array = $(this).attr('all-users');
+          var image_id = $(this).attr('image-id');
+
+          $('#edit-image').find('select[name="userID"]').val(user_id);
+          $('#edit-image').find('input[name="imageID"]').val(image_id);
 
           $('#black-overlay').fadeTo( 200, 1.0 );
         });

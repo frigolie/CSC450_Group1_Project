@@ -450,6 +450,10 @@ img.rounded-custom {
   max-width: 300px;
 }
 
+.table-image {
+  max-width: 100px;
+}
+
 /* =========================================
               Property Detail Styles
      ========================================= */
