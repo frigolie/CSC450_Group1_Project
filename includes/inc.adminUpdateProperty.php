@@ -21,7 +21,7 @@ if (isset($_POST["submit"])) {
 
     updateProperty($conn, $property_id, $name, $description, $address, $city, $state, $zip, $bedrooms, $bathrooms, $kids, $pets, $price);
 
-    header("location: ../admin.php?success=true");
+    header("location: ../admin.php?property_id=" . $property_id . "&success=true");
     exit();
 
 } else if (isset($_POST["delete"])) {
@@ -33,10 +33,10 @@ if (isset($_POST["submit"])) {
 
     deleteProperty($conn, $property_id);
 
-    header("location: ../admin.php?success=true");
+    header("location: ../admin.php?property_id=" . $property_id . "&success=true");
     exit();
 
-} else if (isset($_POST['deleteImg'])) {
+} else if (isset($_POST['deleteAvatar'])) {
 
     require_once  'Inc.DBC.php';
     require_once 'deleteImage.php';
@@ -46,7 +46,7 @@ if (isset($_POST["submit"])) {
 
     deleteImage($conn, $image_id, $property_id);
 
-    header("location: ../admin.php?success=true");
+    header("location: ../admin.php?image_id=" . $image_id . "&success=true");
     exit();
 
 } else if (isset($_POST['upload'])) {
@@ -57,14 +57,14 @@ if (isset($_POST["submit"])) {
     $property_id = $_POST['imagePropertyID'];
     $user_id = $_POST['imageUserID'];
 
-    $file = $_FILES["img"]["name"];
+    $file = "" . time() . "_" . $_FILES["img"]["name"];
     $temp = $_FILES["img"]["tmp_name"];
-    $folder = "../graphic/uploads/".$file;
+    $folder = "../graphic/uploads/" . $file;
     $feat = 0;
 
     uploadImage($conn, $file, $temp, $folder, $property_id, $user_id, $feat);
 
-    header("location: ../admin.php?success=true");
+    header("location: ../admin.php?property_id=" . $property_id . "&success=true");
     exit();
 
 } else {

@@ -57,13 +57,13 @@ if (isset($_POST["submit"])) {
     $property_id = $_POST['imagePropertyID'];
     $user_id = $_POST['imageUserID'];
 
-    $file = $_FILES["img"]["name"];
+    $file = "" . time() . "_" . $_FILES["img"]["name"];
     $temp = $_FILES["img"]["tmp_name"];
-    $folder = "../graphic/uploads/".$file;
+    $folder = "../graphic/uploads/" . $file;
     $feat = 0;
 
     uploadImage($conn, $file, $temp, $folder, $property_id, $user_id, $feat);
-    
+
     header("location: ../edit-property.php?property_id=" . $property_id . "&success=true");
     exit();
 

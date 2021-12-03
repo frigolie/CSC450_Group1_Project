@@ -17,7 +17,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
         <?php include(getcwd() . "/header.php"); ?>
         <section class="container-fluid initialPageContent greenMountains pb-5">
 
-            <div class="container" style="min-height: 100vh">
+            <div class="container" style="min-height: 100vh;">
                 <?php if ($_SESSION['role'] == 'admin') { ?>
                   <div class="row w-100 d-flex flex-wrap justify-content-center align-items-start">
                     <!--Admin Users-->
@@ -79,10 +79,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $user_array = [];
                                     $i = 1;
                                     while ($rows = mysqli_fetch_assoc($user_query)) {
-                                      $user_array[] = array($rows['user_id'], $rows['username']);
                                       ?>
                                         <tr user-id="<?= $rows['user_id'] ?>" first-name="<?= $rows['fname'] ?>" last-name="<?= $rows['lname'] ?>" email="<?= $rows['email'] ?>" username="<?= $rows['username'] ?>" class="popup-row user-row">
                                             <th scope="row"><?= $rows['user_id'] ?></th>
@@ -160,9 +158,19 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                           </div>
                         <?php } ?>
 
+                        <?php
+                        include 'includes/avatar_user_table.php';
+                          if (mysqli_num_rows($avatar_user_query) > 0) {
+                            $user_array = [];
+                            $i = 1;
+                            while ($rows = mysqli_fetch_assoc($avatar_user_query)) {
+                              $user_array[] = array($rows['id_number'], $rows['username']);
+                            }
+                          }
+                        ?>
                 <!-- Profile Avatar table -->
                 <?php include 'includes/avatar_table.php';
-                  if (mysqli_num_rows($prop_query) > 0) { ?>
+                  if (mysqli_num_rows($avatar_query) > 0) { ?>
                     <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable" id="avatarTable">
                         <h1 class="fs-1 mb-3 text-center text-shadow">Profile Avatars</h1>
                         <table class="table">
@@ -176,13 +184,15 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                             <tbody>
                                 <?php
                                 $i = 1;
-                                while ($rows = mysqli_fetch_assoc($prop_query)) { ?>
+                                while ($rows = mysqli_fetch_assoc($avatar_query)) { ?>
                                     <tr class="popup-row avatar-row"
                                         avatar-id="<?= $rows['avatar_id'] ?>"
-                                        avatar-user-id="<?= $rows['user_id'] ?>"
+                                        avatar-user-id="<?= $rows['avatar_user_id'] ?>"
+                                        avatar-username="<?= $rows['username'] ?>"
+                                        avatar-filename="/graphic/uploads/avatars/<?= $rows['filename'] ?>"
                                     >
                                         <th scope="row"><?= $rows['avatar_id'] ?></th>
-                                        <td><img class="table-image" src="/graphic/uploads/users/<?= $rows['filename'] ?>"></td>
+                                        <td><img class="table-image" src="/graphic/uploads/avatars/<?= $rows['filename'] ?>"></td>
                                         <td><?= $rows['username'] ?></td>
                                     </tr>
                                 <?php $i++;
@@ -197,7 +207,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
 
                     <!-- Property Image table -->
                     <?php include 'includes/image_table.php';
-                      if (mysqli_num_rows($prop_query) > 0) { ?>
+                      if (mysqli_num_rows($image_query) > 0) { ?>
                         <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable" id="imageTable">
                             <h1 class="fs-1 mb-3 text-center text-shadow">Property Images</h1>
                             <table class="table">
@@ -211,7 +221,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                                 <tbody>
                                     <?php
                                     $i = 1;
-                                    while ($rows = mysqli_fetch_assoc($prop_query)) { ?>
+                                    while ($rows = mysqli_fetch_assoc($image_query)) { ?>
                                         <tr class="popup-row image-row"
                                             image-id="<?= $rows['image_id'] ?>"
                                             image-property-id="<?= $rows['property_id'] ?>"
@@ -526,17 +536,26 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                 </div>
 
                 <div id="add-avatar" class="hide popup-form w-100">
-                  add profile avatar form here
-                  needs file upload, select dropdown of users to pull id
-                  user is required, file is required.
-                  <select class="userSelect"><option>Test Option</option></select>
+                  <h3 class="mb-3">Upload New Avatar</h3>
+                  <form method="POST" action="includes/inc.adminUpdateAvatar.php" enctype="multipart/form-data" class="d-flex flex-wrap justify-content-between align-items-center">
+                    <input type="file" name="avatar" accept="image/png, image/jpeg" required>
+                    <select class="userSelect" name="avatarUserID" required>
+                      <option disabled selected>Select a User</option>
+                    </select>
+                    <button type="submit" name="upload" class="globalButton blueButton mx-auto ms-3">Upload New Avatar</button>
+                  </form>
                 </div>
 
                 <div id="edit-avatar" class="hide popup-form w-100">
-                  edit profile avatar form here
-                  needs hidden avatar id, file upload, select dropdown of users to pull id, delete button
-                  user is required, if file is empty, no change.
-                  <select class="userSelect"></select>
+                  <h3 class="mb-3">Update Avatar for <span class="text-capitalize avatar-username"></span></h3>
+                  <form method="POST" action="includes/inc.adminUpdateAvatar.php" enctype="multipart/form-data" class="d-flex flex-wrap justify-content-between align-items-center">
+                    <input type="hidden" name="avatarUserID" readonly />
+                    <input type="hidden" name="avatarID" readonly />
+                    <img class="table-image me-3" src=""/>
+                    <input class="me-3" type="file" name="avatar" accept="image/png, image/jpeg">
+                      <button type="upload" name="upload" class="globalButton orangeButton me-3">Update Avatar</button>
+                      <button type="delete" name="deleteAvatar" class="globalButton redButton">Delete Avatar</button>
+                  </form>
                 </div>
 
                 <div id="add-image" class="hide popup-form w-100">
@@ -568,7 +587,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
 
     function generateDynamicSelect(array, className){
       var $el = $("." + className);
-      $el.empty(); // remove old options
       for(var i = 0; i < array.length; i++){
         $el.append($("<option></option>")
            .attr("value", array[i][0]).text(array[i][1]));
@@ -661,10 +679,13 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
           $('#black-overlay').removeClass('hide');
           $('#edit-avatar').removeClass('hide');
           var user_id = $(this).attr('avatar-user-id');
-          var user_array = $(this).attr('all-users');
+          var avatar_username = $(this).attr('avatar-username');
           var avatar_id = $(this).attr('avatar-id');
+          var avatar_name = $(this).attr('avatar-filename');
 
-          $('#edit-avatar').find('select[name="userID"]').val(user_id);
+          $('.avatar-username').text(avatar_username);
+          $('#edit-avatar').find('.table-image').attr('src', avatar_name);
+          $('#edit-avatar').find('input[name="avatarUserID"]').val(user_id);
           $('#edit-avatar').find('input[name="avatarID"]').val(avatar_id);
 
           $('#black-overlay').fadeTo( 200, 1.0 );
@@ -675,8 +696,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
           $('#black-overlay').removeClass('hide');
           $('#edit-image').removeClass('hide');
           var user_id = $(this).attr('image-user-id');
-          var user_array = $(this).attr('all-users');
           var image_id = $(this).attr('image-id');
+          var image_name = $(this).attr('image-filename');
 
           $('#edit-image').find('select[name="userID"]').val(user_id);
           $('#edit-image').find('input[name="imageID"]').val(image_id);
