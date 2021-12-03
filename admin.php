@@ -225,6 +225,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                                         <tr class="popup-row image-row"
                                             image-id="<?= $rows['image_id'] ?>"
                                             image-property-id="<?= $rows['property_id'] ?>"
+                                            image-property-name="<?= $rows['name'] ?>"
+                                            image-filename="<?= $rows['filename'] ?>"
                                         >
                                             <th scope="row"><?= $rows['image_id'] ?></th>
                                             <td><img class="table-image" src="/graphic/uploads/property_images/<?= $rows['filename'] ?>"></td>
@@ -559,17 +561,23 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                 </div>
 
                 <div id="add-image" class="hide popup-form w-100">
-                  add property image form here
-                  needs file upload, select dropdown of properties to pull id
-                  property is required, file is required.
-                  <select class="propertySelect"><option>Test Option</option></select>
+                  <form method="POST" action="includes/inc.adminUpdateImage.php" enctype="multipart/form-data" class="d-flex flex-wrap justify-content-between align-items-center">
+                    <input class="me-3" type="file" name="img" accept="image/png, image/jpeg" required>
+                    <select class="propertySelect" name="imagePropertyID" required></select>
+                    <button type="upload" name="uploadImg" class="globalButton blueButton me-3">Upload Image</button>
+                  </form>
+
                 </div>
 
                 <div id="edit-image" class="hide popup-form w-100">
-                  edit property image form here
-                  needs hidden image id, file upload, select dropdown of property to pull id, delete button
-                  property is required, if file is empty, no change.
-                  <select class="propertySelect"></select>
+                  <h3 class="mb-3">Update Image for <span class="text-capitalize property-name"></span></h3>
+                  <form method="POST" action="includes/inc.adminUpdateImage.php" enctype="multipart/form-data" class="d-flex flex-wrap justify-content-between align-items-center">
+                    <input type="hidden" name="imageID" readonly />
+                    <img class="table-image me-3" src=""/>
+                    <input class="me-3" type="file" name="img" accept="image/png, image/jpeg">
+                      <button type="upload" name="updateImg" class="globalButton orangeButton me-3">Update Image</button>
+                      <button type="delete" name="deleteImg" class="globalButton redButton">Delete Image</button>
+                  </form>
                 </div>
 
               </div>
@@ -698,7 +706,10 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
           var user_id = $(this).attr('image-user-id');
           var image_id = $(this).attr('image-id');
           var image_name = $(this).attr('image-filename');
+          var image_prop_name = $(this).attr('image-property-name');
 
+          $('.property-name').text(image_prop_name);
+          $('#edit-image').find('.table-image').attr('src', '/graphic/uploads/property_images/' + image_name);
           $('#edit-image').find('select[name="userID"]').val(user_id);
           $('#edit-image').find('input[name="imageID"]').val(image_id);
 
