@@ -48,7 +48,7 @@ session_start();
         while ($property = mysqli_fetch_assoc($prop_query)) {
           $images = getPropertyImages($property['property_id']);
           ?>
-          <?php if ($images[0]['filename'] != '') { $featImg = '/graphic/uploads/property_images/' . $images[0]['filename']; } else { $featImg = '/graphic/homeaway.png'; } ?>
+          <?php if ($images[0]['filename'] != '') { $featImg = '/graphic/uploads/property_images/' . $images[0]['filename']; } else { $featImg = '/graphic/ha_square.png'; } ?>
             <div class="col-12 col-lg-4 mb-4">
               <a href="/property-details.php?property_id=<?php echo $property['property_id'] ?>">
                 <div class="w-100 rentalListing">

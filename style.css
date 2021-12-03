@@ -117,6 +117,11 @@ input[type="checkbox"]:active {
   cursor: pointer;
 }
 
+.collapisbleTable h1:hover,
+.collapisbleTable h1:focus {
+  cursor: pointer;
+}
+
 .row {
   display: flex;
   -ms-flex-wrap: wrap;

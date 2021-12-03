@@ -15,7 +15,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
 
     <body>
         <?php include(getcwd() . "/header.php"); ?>
-        <section class="container-fluid initialPageContent greenMountains pb-5">
+        <section class="container-fluid initialPageContent greenMountains pb-5 px-0">
 
             <div class="container" style="min-height: 100vh;">
                 <?php if ($_SESSION['role'] == 'admin') { ?>
@@ -37,7 +37,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                       if (mysqli_num_rows($admin_query) > 0) { ?>
                         <div class="col-8 offset-1 p-4 mb-0 rounded-custom white-bg box-shadow adminDashTable" id="adminTable">
                             <h1 class="fs-1 mb-3 text-center text-shadow">Admins</h1>
-                            <table class="table">
+                            <div class="table-container">
+                              <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
@@ -60,14 +61,16 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                                     } ?>
                                 </tbody>
                             </table>
+                            </div>
                           </div>
                         <?php } ?>
                     <!-- User info table -->
                     <?php include 'includes/user_table.php';
                       if (mysqli_num_rows($user_query) > 0) { ?>
-                        <div class="col-8 offset-4 p-4 mb-5 rounded-custom white-bg box-shadow adminDashTable" id="userTable">
-                            <h1 class="fs-1 mb-3 text-center text-shadow">Users</h1>
-                            <table class="table">
+                        <div class="col-8 offset-4 p-4 mb-5 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="userTable">
+                            <h1 class="fs-1 mb-3 text-center text-shadow">Users <span class="icon show">+</span><span class="icon hide">-</span></h1>
+                            <div class="table-container" style="display: none;">
+                              <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
@@ -97,14 +100,16 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                               <a class="globalButton blueButton mt-3 mb-2 popup-button" href="#" popup-form="add-user">Add New User</a>
                             </div>
                           </div>
+                        </div>
                         <?php } ?>
 
                     <!-- Property info table -->
                     <?php include 'includes/property_table.php';
                       if (mysqli_num_rows($prop_query) > 0) { ?>
-                        <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable" id="propertyTable">
-                            <h1 class="fs-1 mb-3 text-center text-shadow">Properties</h1>
-                            <table class="table">
+                        <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="propertyTable">
+                            <h1 class="fs-1 mb-3 text-center text-shadow">Properties <span class="icon show">+</span><span class="icon hide">-</span></h1>
+                            <div class="table-container" style="display: none;">
+                              <table class="table">
                                 <thead>
                                   <tr>
                                     <th scope="col">ID</th>
@@ -156,6 +161,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                               <a class="globalButton blueButton mt-3 mb-2 popup-button" href="#" popup-form="add-property">Add New Property</a>
                             </div>
                           </div>
+                        </div>
                         <?php } ?>
 
                         <?php
@@ -168,87 +174,15 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                             }
                           }
                         ?>
-                <!-- Profile Avatar table -->
-                <?php include 'includes/avatar_table.php';
-                  if (mysqli_num_rows($avatar_query) > 0) { ?>
-                    <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable" id="avatarTable">
-                        <h1 class="fs-1 mb-3 text-center text-shadow">Profile Avatars</h1>
-                        <table class="table">
-                            <thead>
-                              <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">File</th>
-                                <th scope="col">User</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $i = 1;
-                                while ($rows = mysqli_fetch_assoc($avatar_query)) { ?>
-                                    <tr class="popup-row avatar-row"
-                                        avatar-id="<?= $rows['avatar_id'] ?>"
-                                        avatar-user-id="<?= $rows['avatar_user_id'] ?>"
-                                        avatar-username="<?= $rows['username'] ?>"
-                                        avatar-filename="/graphic/uploads/avatars/<?= $rows['filename'] ?>"
-                                    >
-                                        <th scope="row"><?= $rows['avatar_id'] ?></th>
-                                        <td><img class="table-image" src="/graphic/uploads/avatars/<?= $rows['filename'] ?>"></td>
-                                        <td><?= $rows['username'] ?></td>
-                                    </tr>
-                                <?php $i++;
-                                } ?>
-                            </tbody>
-                        </table>
-                        <div class="w-100 py-3 text-center">
-                          <a class="globalButton blueButton mt-3 mb-2 popup-button" href="#" popup-form="add-avatar">Add New Profile Avatar</a>
-                        </div>
-                      </div>
-                    <?php } ?>
-
-                    <!-- Property Image table -->
-                    <?php include 'includes/image_table.php';
-                      if (mysqli_num_rows($image_query) > 0) { ?>
-                        <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable" id="imageTable">
-                            <h1 class="fs-1 mb-3 text-center text-shadow">Property Images</h1>
-                            <table class="table">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">File</th>
-                                    <th scope="col">Property</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $i = 1;
-                                    while ($rows = mysqli_fetch_assoc($image_query)) { ?>
-                                        <tr class="popup-row image-row"
-                                            image-id="<?= $rows['image_id'] ?>"
-                                            image-property-id="<?= $rows['property_id'] ?>"
-                                            image-property-name="<?= $rows['name'] ?>"
-                                            image-filename="<?= $rows['filename'] ?>"
-                                        >
-                                            <th scope="row"><?= $rows['image_id'] ?></th>
-                                            <td><img class="table-image" src="/graphic/uploads/property_images/<?= $rows['filename'] ?>"></td>
-                                            <td><?= $rows['name'] ?></td>
-                                        </tr>
-                                    <?php $i++;
-                                    } ?>
-                                </tbody>
-                            </table>
-                            <div class="w-100 py-3 text-center">
-                              <a class="globalButton blueButton mt-3 mb-2 popup-button" href="#" popup-form="add-image">Add New Property Image</a>
-                            </div>
-                          </div>
-                        <?php } ?>
 
                     <!-- Reservation info table -->
                     <?php include 'includes/res_table.php';
                       if (mysqli_num_rows($res_query) > 0) { ?>
-                        <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable" id="reservationTable">
+                        <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="reservationTable">
 
-                            <h1 class="fs-1 mb-3 text-center text-shadow">Reservations</h1>
-                            <table class="table">
+                            <h1 class="fs-1 mb-3 text-center text-shadow">Reservations <span class="icon show">+</span><span class="icon hide">-</span></h1>
+                            <div class="table-container" style="display: none;">
+                              <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
@@ -279,8 +213,86 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                               <a class="globalButton blueButton mt-3 mb-2 popup-button" href="#" popup-form="add-reservation">Add New Reservation</a>
                             </div>
                           </div>
+                        </div>
                         <?php } ?>
 
+                        <!-- Profile Avatar table -->
+                        <?php include 'includes/avatar_table.php';
+                          if (mysqli_num_rows($avatar_query) > 0) { ?>
+                            <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="avatarTable">
+                                <h1 class="fs-1 mb-3 text-center text-shadow">Profile Avatars <span class="icon show">+</span><span class="icon hide">-</span></h1>
+                                <div class="table-container" style="display: none;">
+                                  <table class="table">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">ID</th>
+                                          <th scope="col">File</th>
+                                          <th scope="col">User</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                          <?php
+                                          $i = 1;
+                                          while ($rows = mysqli_fetch_assoc($avatar_query)) { ?>
+                                              <tr class="popup-row avatar-row"
+                                                  avatar-id="<?= $rows['avatar_id'] ?>"
+                                                  avatar-user-id="<?= $rows['avatar_user_id'] ?>"
+                                                  avatar-username="<?= $rows['username'] ?>"
+                                                  avatar-filename="/graphic/uploads/avatars/<?= $rows['filename'] ?>"
+                                              >
+                                                  <th scope="row"><?= $rows['avatar_id'] ?></th>
+                                                  <td><img class="table-image" src="/graphic/uploads/avatars/<?= $rows['filename'] ?>"></td>
+                                                  <td><?= $rows['username'] ?></td>
+                                              </tr>
+                                          <?php $i++;
+                                          } ?>
+                                      </tbody>
+                                  </table>
+                                <div class="w-100 py-3 text-center">
+                                  <a class="globalButton blueButton mt-3 mb-2 popup-button" href="#" popup-form="add-avatar">Add New Profile Avatar</a>
+                                </div>
+                              </div>
+                            </div>
+                            <?php } ?>
+
+                      <!-- Property Image table -->
+                      <?php include 'includes/image_table.php';
+                        if (mysqli_num_rows($image_query) > 0) { ?>
+                          <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="imageTable">
+                              <h1 class="fs-1 mb-3 text-center text-shadow">Property Images <span class="icon show">+</span><span class="icon hide">-</span></h1>
+                              <div class="table-container" style="display: none;">
+                                <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">File</th>
+                                        <th scope="col">Property</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $i = 1;
+                                        while ($rows = mysqli_fetch_assoc($image_query)) { ?>
+                                            <tr class="popup-row image-row"
+                                                image-id="<?= $rows['image_id'] ?>"
+                                                image-property-id="<?= $rows['property_id'] ?>"
+                                                image-property-name="<?= $rows['name'] ?>"
+                                                image-filename="<?= $rows['filename'] ?>"
+                                            >
+                                                <th scope="row"><?= $rows['image_id'] ?></th>
+                                                <td><img class="table-image" src="/graphic/uploads/property_images/<?= $rows['filename'] ?>"></td>
+                                                <td><?= $rows['name'] ?></td>
+                                            </tr>
+                                        <?php $i++;
+                                        } ?>
+                                    </tbody>
+                                </table>
+                              <div class="w-100 py-3 text-center">
+                                <a class="globalButton blueButton mt-3 mb-2 popup-button" href="#" popup-form="add-image">Add New Property Image</a>
+                              </div>
+                          </div>
+                          <?php } ?>
+                      </div>
                   </div>
                 <?php } else { // Display nothing
                 } ?>
@@ -601,7 +613,13 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
       }
     }
 
-      $( document ).ready(function() {
+    $('.collapisbleTable').children('h1').click(function(){
+      $(this).siblings(".table-container").slideToggle();
+      $(this).find('.icon').toggleClass('show hide');
+    });
+
+      $(document).ready(function() {
+        $('.collapsibleTable').find('.table-container').slideUp();
         generateDynamicSelect(userArray, 'userSelect');
         generateDynamicSelect(propertyArray, 'propertySelect');
         $('.close-btn i').click(function(e){
