@@ -59,7 +59,7 @@ if (isset($_POST["submit"])) {
 
     $file = "" . time() . "_" . $_FILES["img"]["name"];
     $temp = $_FILES["img"]["tmp_name"];
-    $folder = "../graphic/uploads/" . $file;
+    $folder = "../graphic/uploads/property_images/" . $file;
     $feat = 0;
 
     uploadImage($conn, $file, $temp, $folder, $property_id, $user_id, $feat);

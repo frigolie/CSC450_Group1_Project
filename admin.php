@@ -227,7 +227,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                                             image-property-id="<?= $rows['property_id'] ?>"
                                         >
                                             <th scope="row"><?= $rows['image_id'] ?></th>
-                                            <td><img class="table-image" src="/graphic/uploads/<?= $rows['filename'] ?>"></td>
+                                            <td><img class="table-image" src="/graphic/uploads/property_images/<?= $rows['filename'] ?>"></td>
                                             <td><?= $rows['name'] ?></td>
                                         </tr>
                                     <?php $i++;
