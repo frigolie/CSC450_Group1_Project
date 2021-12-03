@@ -36,7 +36,7 @@ session_start();
               while ($property = mysqli_fetch_assoc($prop_query)) {
                 if($property['property_id'] == $prop_id) {
                   $images = getPropertyImages($property['property_id']);
-                  if ($images[0]['filename'] != '') { $featImg = '/graphic/uploads/' . $images[0]['filename']; } else { $featImg = '/graphic/homeaway.png'; } ?>
+                  if ($images[0]['filename'] != '') { $featImg = '/graphic/uploads/property_images/' . $images[0]['filename']; } else { $featImg = '/graphic/ha_square.png'; } ?>
 
                   <div class="row py-1 justify-content-between">
 
@@ -54,7 +54,7 @@ session_start();
                         $i = 1;
                         foreach($images as $img) { ?>
                           <div class="col-6 col-md-3 mb-3 d-flex align-items-center">
-                            <img class="w-100 rounded-custom gallery-tab" src="/graphic/uploads/<?php echo $img['filename']; ?>">
+                            <img class="w-100 rounded-custom gallery-tab" src="/graphic/uploads/property_images/<?php echo $img['filename']; ?>">
                           </div>
                         <?php $i++;
                       } //endforeach

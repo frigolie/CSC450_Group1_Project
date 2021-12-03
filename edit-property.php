@@ -207,7 +207,7 @@ if (isset($_SESSION['username'])){
                 <form id="img<?php echo $i; ?>" method="POST" action="includes/inc.updateProperty.php" enctype="multipart/form-data" class="text-center">
                   <input type="hidden" name="deleteImgID" value="<?php echo $img['image_id']; ?>" readonly />
                   <input type="hidden" name="deletePropertyID" value="<?php echo $prop_id; ?>" readonly />
-                  <img class="w-100 rounded-custom" src="/graphic/uploads/<?php echo $img['filename']; ?>">
+                  <img class="w-100 rounded-custom" src="/graphic/uploads/property_images/<?php echo $img['filename']; ?>">
                   <button type="delete" name="deleteImg" class="globalButton redButton mx-auto mb-5 mt-3">Delete</button>
                 </form>
               </div>

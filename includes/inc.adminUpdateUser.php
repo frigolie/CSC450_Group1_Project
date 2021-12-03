@@ -24,7 +24,7 @@ if (isset($_POST["submit"])) {
 
     updateUser($conn, $user_id, $fname, $lname, $email, $username, $password);
 
-    header("location: ../admin.php?success=true");
+    header("location: ../admin.php?user_id=" . $user_id . "&success=true");
     exit();
 
 } else if (isset($_POST["delete"])) {
@@ -35,7 +35,7 @@ if (isset($_POST["submit"])) {
 
     deleteUser($conn, $user_id);
 
-    header("location: ../admin.php?success=true");
+    header("location: ../admin.php?user_id=" . $user_id . "&success=true");
     exit();
 }
 

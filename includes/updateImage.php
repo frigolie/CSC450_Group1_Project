@@ -1,7 +1,7 @@
 <?php
 require_once  'Inc.DBC.php';
 
-function uploadImage($conn, $filename, $tempname, $folder, $property_id, $user_id, $featured)
+function updateImage($conn, $filename, $tempname, $folder, $image_id)
 {
 
     if (mysqli_connect_errno()) {
@@ -9,14 +9,15 @@ function uploadImage($conn, $filename, $tempname, $folder, $property_id, $user_i
         exit();
     }
 
-    $sql = "INSERT INTO image (filename, property_id, user_id, featured) VALUES (?, ?, ?, ?);";
+    $sql = "UPDATE image SET filename = ? WHERE image_id = ?;";
+
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../index.php?error=stmtfailed");
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "siii", $filename, $property_id, $user_id, $featured);
+    mysqli_stmt_bind_param($stmt, "si", $filename, $image_id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     move_uploaded_file($tempname, $folder);

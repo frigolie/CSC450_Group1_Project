@@ -58,6 +58,9 @@
                       <div class="col-12 col-md-6 col-lg-4">
                           <b class="lt-gray-text">My Account Links</b>
                           <ul class="footerLinks lt-gray-text ps-0">
+                            <?php if(isset($_SESSION['admin_id'])) { ?>
+                              <li class="py-1 px-0"><a href="/admin.php" class="blue-text">Admin Dashboard</a></li>
+                            <?php } ?>
                               <li class="py-1 px-0"><a href="/edit-account.php" class="blue-text">Edit Account</a></li>
                               <li class="py-1 px-0"><a href="/my-properties.php" class="blue-text">My Properties</a></li>
                               <li class="py-1 px-0"><a href="/my-properties.php" class="blue-text">My Reservations</a></li>

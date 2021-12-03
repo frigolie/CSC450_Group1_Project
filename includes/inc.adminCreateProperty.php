@@ -21,7 +21,7 @@ if (isset($_POST["submit"])) {
 
     createProperty($conn, $name, $description, $address, $city, $state, $zip, $bedrooms, $bathrooms, $kids, $pets, $price, $owner_id);
 
-    header("location: ../admin.php?success=true");
+    header("location: ../admin.php?newProperty=" . $name . "success=true");
     exit();
 } else {
     header("location: ../admin.php");

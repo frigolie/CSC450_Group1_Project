@@ -44,7 +44,7 @@ if (isset($_POST["submit"])) {
 
     createUser($conn, $fname, $lname, $email, $username, $password, $confirmpassword);
 
-    header("location: ../admin.php?success=true");
+    header("location: ../admin.php?newUser=" . $username . "&success=true");
     exit();
 } else {
     header("location: ../admin.php");
