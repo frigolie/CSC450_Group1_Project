@@ -17,7 +17,7 @@ if (isset($_POST["submit"])) {
     $property_id = $_POST["propertyID"];
 
     require_once 'Inc.DBC.php';
-    require_once 'updateProperty.php';
+    require_once 'functions/property/updateProperty.php';
 
     updateProperty($conn, $property_id, $name, $description, $address, $city, $state, $zip, $bedrooms, $bathrooms, $kids, $pets, $price);
 
@@ -29,7 +29,7 @@ if (isset($_POST["submit"])) {
     $property_id = $_POST["propertyID"];
 
     require_once 'Inc.DBC.php';
-    require_once 'deleteProperty.php';
+    require_once 'functions/property/deleteProperty.php';
 
     deleteProperty($conn, $property_id);
 
@@ -39,7 +39,7 @@ if (isset($_POST["submit"])) {
 } else if (isset($_POST['deleteImg'])) {
 
     require_once  'Inc.DBC.php';
-    require_once 'deleteImage.php';
+    require_once 'functions/image/deleteImage.php';
 
     $image_id = $_POST['deleteImgID'];
     $property_id = $_POST['deletePropertyID'];
@@ -52,7 +52,7 @@ if (isset($_POST["submit"])) {
 } else if (isset($_POST['upload'])) {
 
     require_once  'Inc.DBC.php';
-    require_once 'uploadImage.php';
+    require_once 'functions/image/uploadImage.php';
 
     $property_id = $_POST['imagePropertyID'];
     $user_id = $_POST['imageUserID'];

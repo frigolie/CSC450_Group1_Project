@@ -28,7 +28,7 @@ session_start();
       <div class="container mb-3">
         <?php
           include 'includes/queries/property_table.php';
-          include 'includes/getPropertyImages.php';
+          include 'includes/functions/property/getPropertyImages.php';
             if (mysqli_num_rows($prop_query) > 0) {
             $i = 1;
             if(isset($_GET['property_id'])) {

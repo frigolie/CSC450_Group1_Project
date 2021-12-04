@@ -42,7 +42,7 @@ session_start();
     <div class="row py-5">
 
     <?php include 'includes/queries/front_page_table.php';
-      include 'includes/getPropertyImages.php';
+      include 'includes/functions/property/getPropertyImages.php';
       if (mysqli_num_rows($prop_query) > 0) {
       $i = 1;
         while ($property = mysqli_fetch_assoc($prop_query)) {

@@ -10,7 +10,7 @@ if (isset($_POST["submit"])) {
     $email = $_POST["email"];
 
     require_once  'Inc.DBC.php';
-    require_once 'updateUser.php';
+    require_once 'functions/user/updateUser.php';
 
     updateUser($conn, $user_id, $fname, $lname, $email, $username);
 
@@ -21,7 +21,7 @@ if (isset($_POST["submit"])) {
     $user_id = $_POST["userID"];
 
     require_once  'Inc.DBC.php';
-    require_once  'deleteUser.php';
+    require_once  'functions/user/deleteUser.php';
 
     deleteUser($conn, $user_id);
 

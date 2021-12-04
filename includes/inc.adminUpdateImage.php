@@ -4,7 +4,7 @@ session_start();
 if (isset($_POST['uploadImg'])) {
 
   require_once  'Inc.DBC.php';
-  require_once 'uploadImage.php';
+  require_once 'functions/image/uploadImage.php';
 
   $property_id = $_POST['imagePropertyID'];
   $user_id = 1;
@@ -23,7 +23,7 @@ if (isset($_POST['uploadImg'])) {
 else if (isset($_POST['deleteImg'])) {
 
     require_once  'Inc.DBC.php';
-    require_once 'deleteImage.php';
+    require_once 'functions/image/deleteImage.php';
 
     $property_id = '';
     $image_id = $_POST["imageID"];
@@ -36,7 +36,7 @@ else if (isset($_POST['deleteImg'])) {
 } else if (isset($_POST['updateImg'])) {
 
     require_once  'Inc.DBC.php';
-    require_once 'updateImage.php';
+    require_once 'functions/image/updateImage.php';
 
     $image_id = $_POST["imageID"];
 

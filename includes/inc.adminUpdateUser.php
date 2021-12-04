@@ -4,8 +4,8 @@ session_start();
 if (isset($_POST["submit"])) {
 
   require_once  'Inc.DBC.php';
-  require_once 'loginFunctions.php';
-  require_once 'updateUser.php';
+  require_once 'functions/user/loginFunctions.php';
+  require_once 'functions/user/updateUser.php';
 
     $user_id = $_POST["userID"];
     $fname = $_POST["fName"];
@@ -31,7 +31,7 @@ if (isset($_POST["submit"])) {
     $user_id = $_POST["userID"];
 
     require_once  'Inc.DBC.php';
-    require_once  'deleteUser.php';
+    require_once  'functions/user/deleteUser.php';
 
     deleteUser($conn, $user_id);
 

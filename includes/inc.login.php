@@ -8,7 +8,7 @@ if (isset($_POST["submit"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    require_once 'loginFunctions.php';
+    require_once 'functions/user/loginFunctions.php';
     require_once  'Inc.DBC.php';
 
 

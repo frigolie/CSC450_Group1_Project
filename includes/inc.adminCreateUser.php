@@ -11,7 +11,7 @@ if (isset($_POST["submit"])) {
     $confirmpassword = $_POST["confirmpassword"];
 
     require_once  'Inc.DBC.php';
-    require_once 'loginFunctions.php';
+    require_once 'functions/user/loginFunctions.php';
 
     if (emptyInputSignup($fname, $lname, $email, $username, $password, $confirmpassword) !== false) {
         header("location: ../register.php?error=emptyinput");

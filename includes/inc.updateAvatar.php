@@ -4,7 +4,7 @@ session_start();
 if (isset($_POST['deleteAvatar'])) {
 
     require_once  'Inc.DBC.php';
-    require_once 'deleteAvatar.php';
+    require_once 'functions/avatar/deleteAvatar.php';
 
     $user_id = $_POST['avatarUserID'];
     $avatar_id = $_POST['avatarID'];
@@ -17,7 +17,7 @@ if (isset($_POST['deleteAvatar'])) {
 } else if (isset($_POST['upload'])) {
 
     require_once  'Inc.DBC.php';
-    require_once 'uploadAvatar.php';
+    require_once 'functions/avatar/uploadAvatar.php';
 
     $user_id = $_POST["avatarUserID"];
     $avatar_id = $_POST["avatarID"];
