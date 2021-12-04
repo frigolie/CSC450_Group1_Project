@@ -16,7 +16,7 @@ if (isset($_SESSION['username'])) {
       Joshua Sibert
       Lor Xiong
       Written:     10/20/21
-      Revisions:   11/15/21 - Adding New Message and Open Message templates
+      Revisions:   12/02/21 - Adding message database integration with the forms
       -->
 
       <!-- Page title -->
@@ -58,40 +58,26 @@ if (isset($_SESSION['username'])) {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row"><input type="checkbox" id="msg1" name="msg1" value=""></th>
-                    <td>sender@test.com</td>
-                    <td>03/04/21</td>
-                    <td><a class="open-message-btn blue-text">Test Subject 01</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" id="msg2" name="msg2" value=""></th>
-                    <td>test@email.com</td>
-                    <td>07/12/21</td>
-                    <td><a class="open-message-btn blue-text">Testing Another Subject</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" id="msg3" name="msg3" value=""></th>
-                    <td>email@testing.com</td>
-                    <td>09/28/21</td>
-                    <td><a class="open-message-btn blue-text">Hello!</a></td>
-                  </tr>
+                  <?php include 'messagingLogic';
+                  listMessages(); ?><!--- get all messages from database -->
                 </tbody>
               </table>
             </div>
 
+            <!--- NEW MESSAGE FORM -->
             <div class="w-100 new-msg-visible pt-2 px-3" id="new-message-container">
                 <h3 class="text-center mb-4">Compose New Message</h3>
-                <form id="new-message" class="row">
+                <form id="new-message" class="row" action="sendMessage.php" method="POST">
                   <div class="col-3 col-md-2 mb-4 d-flex align-items-center">
                     <label for="recipient"><h4 class="mb-0">To:</h4></label>
                   </div>
                   <div class="col-9 col-md-10 mb-4">
-                    <select class="form-select" id="recipient" name="recipient">
+                    <select class="form-select" id="recipient" name="recipient" required>
                       <option selected>--Select A User--</option>
-                      <option value="user1">John Smith</option>
-                      <option value="user2">Jane Green</option>
-                      <option value="user3">Jim Doe</option>
+                      <?php 
+                      include 'messagingLogic.php';
+                      getUsers(); 
+                      ?><!--- get all users from database -->
                     </select>
                   </div>
 
@@ -99,14 +85,14 @@ if (isset($_SESSION['username'])) {
                     <label for="subject"><h4 class="mb-0">Subject:</h4></label>
                   </div>
                   <div class="col-9 col-md-10 mb-4">
-                    <input class="form-control" type="text" id="subject" name="subject">
+                    <input class="form-control" type="text" id="subject" name="subject" required>
                   </div>
 
                   <div class="col-12">
                     <label for="message-text"><h4>Enter Message Here:</h4></label>
                   </div>
                   <div class="col-12 mb-4">
-                    <textarea class="form-control p-3" id="message-text" rows="5"></textarea>
+                    <textarea class="form-control p-3" id="message-text" name="content" rows="5" required></textarea>
                   </div>
 
                   <div class="col-12 mb-3">
@@ -154,7 +140,6 @@ if (isset($_SESSION['username'])) {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -177,6 +162,9 @@ if (isset($_SESSION['username'])) {
             $('.inbox-visible').hide();
             $('.new-msg-visible').hide();
             $('.open-msg-visible').show();
+
+            //keep value from hyperlink
+            
           });
 
           $('.inbox-btn').click(function(){
