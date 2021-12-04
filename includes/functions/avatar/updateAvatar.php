@@ -1,5 +1,5 @@
 <?php
-require_once  'Inc.DBC.php';
+require_once dirname( dirname( dirname(__FILE__) ) ) . '/Inc.DBC.php';
 
 function updateAvatar($conn, $filename, $tempname, $folder, $avatar_id)
 {

@@ -304,7 +304,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
 
                 <div id="add-user" class="hide popup-form w-100">
                   <h3 class="mb-3">Add A New User</h3>
-                  <form method="POST" action="includes/inc.adminCreateUser.php" enctype="multipart/form-data">
+                  <form method="POST" action="includes/inc.adminTables.php" enctype="multipart/form-data">
                     <div class="form-field-container d-flex">
                       <input type="hidden" name="userID" readonly>
                       <input type="text" class="form-control me-3" name="fname" placeholder="First Name" required>
@@ -315,14 +315,14 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                       <input type="password" class="form-control" placeholder="Confirm Password" name="confirmpassword" autocomplete="new-password" required>
                     </div>
                     <div class="pt-3">
-                      <button type="submit" name="submit" class="globalButton blueButton">Create User</button>
+                      <button type="submit" name="createUser" class="globalButton blueButton">Create User</button>
                     </div>
                   </form>
                 </div>
 
                 <div id="edit-user" class="hide popup-form w-100">
                   <h3 class="mb-3">Update User</h3>
-                  <form method="POST" action="includes/inc.adminUpdateUser.php" enctype="multipart/form-data">
+                  <form method="POST" action="includes/inc.adminTables.php" enctype="multipart/form-data">
                     <div class="form-field-container d-flex">
                       <input type="hidden" name="userID" readonly>
                       <input type="text" class="form-control me-3" name="fName" placeholder="First Name" required>
@@ -333,15 +333,15 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                       <input type="password" class="form-control" placeholder="Confirm New Password" name="confirmpassword" autocomplete="new-password">
                     </div>
                     <div class="pt-3">
-                      <button type="submit" name="submit" class="globalButton orangeButton me-3">Update User</button>
-                      <button type="delete" name="delete" class="globalButton redButton">Delete User</button>
+                      <button type="submit" name="updateUser" class="globalButton orangeButton me-3">Update User</button>
+                      <button type="delete" name="deleteUser" class="globalButton redButton">Delete User</button>
                     </div>
                   </form>
                 </div>
 
                 <div id="add-property" class="hide popup-form w-100">
                   <h3 class="mb-3">Add A New Property</h3>
-                  <form method="POST" action="includes/inc.adminCreateProperty.php" enctype="multipart/form-data" class="d-flex flex-wrap">
+                  <form method="POST" action="includes/inc.adminTables.php" enctype="multipart/form-data" class="d-flex flex-wrap">
                     <div class="mb-3 w-100 d-flex align-items-start justify-content-between">
                       <input type="text" class="form-control me-3" name="propName" aria-describedby="propHelp" placeholder="Property Name" required>
                       <textarea rows="1" cols="50" class="form-control" name="propDescription" placeholder="Amenities, fun things to do in the area..."></textarea>
@@ -432,14 +432,14 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                       $ <input type="number" class="ms-1" step="0.01" name="price" placeholder="Price" required/>
                     </div>
                     <div class="pt-3 text-center">
-                      <button type="submit" value="Add Property" name="submit"  class="globalButton blueButton">Add Property</button>
+                      <button type="submit" value="Add Property" name="createProperty" class="globalButton blueButton">Add Property</button>
                     </div>
                   </form>
                 </div>
 
                 <div id="edit-property" class="hide popup-form w-100">
                   <h3 class="mb-3">Update Property Information</h3>
-                  <form method="POST" action="includes/inc.adminUpdateProperty.php" enctype="multipart/form-data" class="d-flex flex-wrap">
+                  <form method="POST" action="includes/inc.adminTables.php" enctype="multipart/form-data" class="d-flex flex-wrap">
                     <div class="mb-3 w-100 d-flex align-items-start justify-content-between">
                       <input type="text" class="form-control me-3" name="propName" aria-describedby="propHelp" required>
                       <textarea rows="1" cols="50" class="form-control" name="propDescription"></textarea>
@@ -535,8 +535,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                     <input type="hidden" name="propertyID" readonly>
 
                     <div class="pt-3 text-center">
-                      <button type="submit" value="Update" name="submit"  class="globalButton orangeButton me-3">Update Property</button>
-                      <button type="delete" name="delete" class="globalButton redButton">Delete Property</button>
+                      <button type="submit" value="Update" name="updateProperty"  class="globalButton orangeButton me-3">Update Property</button>
+                      <button type="delete" name="deleteProperty" class="globalButton redButton">Delete Property</button>
                     </div>
                  </form>
                 </div>
@@ -551,29 +551,29 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
 
                 <div id="add-avatar" class="hide popup-form w-100">
                   <h3 class="mb-3">Upload New Avatar</h3>
-                  <form method="POST" action="includes/inc.adminUpdateAvatar.php" enctype="multipart/form-data" class="d-flex flex-wrap justify-content-between align-items-center">
+                  <form method="POST" action="includes/inc.adminTables.php" enctype="multipart/form-data" class="d-flex flex-wrap justify-content-between align-items-center">
                     <input type="file" name="avatar" accept="image/png, image/jpeg" required>
                     <select class="userSelect" name="avatarUserID" required>
                       <option disabled selected>Select a User</option>
                     </select>
-                    <button type="submit" name="upload" class="globalButton blueButton mx-auto ms-3">Upload New Avatar</button>
+                    <button type="submit" name="uploadAvatar" class="globalButton blueButton mx-auto ms-3">Upload New Avatar</button>
                   </form>
                 </div>
 
                 <div id="edit-avatar" class="hide popup-form w-100">
                   <h3 class="mb-3">Update Avatar for <span class="text-capitalize avatar-username"></span></h3>
-                  <form method="POST" action="includes/inc.adminUpdateAvatar.php" enctype="multipart/form-data" class="d-flex flex-wrap justify-content-between align-items-center">
+                  <form method="POST" action="includes/inc.adminTables.php" enctype="multipart/form-data" class="d-flex flex-wrap justify-content-between align-items-center">
                     <input type="hidden" name="avatarUserID" readonly />
                     <input type="hidden" name="avatarID" readonly />
                     <img class="table-image me-3" src=""/>
                     <input class="me-3" type="file" name="avatar" accept="image/png, image/jpeg">
-                      <button type="upload" name="upload" class="globalButton orangeButton me-3">Update Avatar</button>
+                      <button type="upload" name="updateAvatar" class="globalButton orangeButton me-3">Update Avatar</button>
                       <button type="delete" name="deleteAvatar" class="globalButton redButton">Delete Avatar</button>
                   </form>
                 </div>
 
                 <div id="add-image" class="hide popup-form w-100">
-                  <form method="POST" action="includes/inc.adminUpdateImage.php" enctype="multipart/form-data" class="d-flex flex-wrap justify-content-between align-items-center">
+                  <form method="POST" action="includes/inc.adminTables.php" enctype="multipart/form-data" class="d-flex flex-wrap justify-content-between align-items-center">
                     <input class="me-3" type="file" name="img" accept="image/png, image/jpeg" required>
                     <select class="propertySelect" name="imagePropertyID" required></select>
                     <button type="upload" name="uploadImg" class="globalButton blueButton me-3">Upload Image</button>
@@ -583,7 +583,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
 
                 <div id="edit-image" class="hide popup-form w-100">
                   <h3 class="mb-3">Update Image for <span class="text-capitalize property-name"></span></h3>
-                  <form method="POST" action="includes/inc.adminUpdateImage.php" enctype="multipart/form-data" class="d-flex flex-wrap justify-content-between align-items-center">
+                  <form method="POST" action="includes/inc.adminTables.php" enctype="multipart/form-data" class="d-flex flex-wrap justify-content-between align-items-center">
                     <input type="hidden" name="imageID" readonly />
                     <img class="table-image me-3" src=""/>
                     <input class="me-3" type="file" name="img" accept="image/png, image/jpeg">

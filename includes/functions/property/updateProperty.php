@@ -1,9 +1,6 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-require_once  'Inc.DBC.php';
+require_once dirname( dirname( dirname(__FILE__) ) ) . '/Inc.DBC.php';
 
 function updateProperty($conn, $property_id, $name, $description, $address, $city, $state, $zip, $bedrooms, $bathrooms, $kids, $pets, $price)
 {
@@ -24,5 +21,5 @@ function updateProperty($conn, $property_id, $name, $description, $address, $cit
     mysqli_stmt_bind_param($stmt, "ssssssssiidi", $name, $description, $address, $city, $state, $zip, $bedrooms, $bathrooms, $kids, $pets, $price, $property_id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    
+
   }

@@ -1,6 +1,6 @@
 <?php
 
-require_once  'Inc.DBC.php';
+require_once dirname( dirname( dirname(__FILE__) ) ) . '/Inc.DBC.php';
 
 function updateUser($conn, $user_id, $fname, $lname, $email, $username, $password)
 {

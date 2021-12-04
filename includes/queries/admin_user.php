@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include  "Inc.DBC.php";
+include  dirname( dirname(__FILE__) ) . '/Inc.DBC.php';
 if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {
 
     $sql = "SELECT * FROM admin ORDER BY admin_id ASC";

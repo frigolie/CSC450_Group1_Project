@@ -1,5 +1,5 @@
 <?php
-require_once  'Inc.DBC.php';
+require_once dirname( dirname( dirname(__FILE__) ) ) . '/Inc.DBC.php';
 
 function deleteAvatar($conn, $avatar_id, $user_id)
 {

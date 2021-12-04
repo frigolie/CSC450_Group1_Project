@@ -1,5 +1,5 @@
 <?php
-require_once  'Inc.DBC.php';
+require_once dirname( dirname( dirname(__FILE__) ) ) . '/Inc.DBC.php';
 
 function createProperty($conn, $name, $description, $address, $city, $state, $zip, $bedrooms, $bathrooms, $kids, $pets, $price, $owner_id)
 {
