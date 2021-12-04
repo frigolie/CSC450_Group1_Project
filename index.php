@@ -41,7 +41,7 @@ session_start();
   <section class="container">
     <div class="row py-5">
 
-    <?php include 'includes/front_page_table.php';
+    <?php include 'includes/queries/front_page_table.php';
       include 'includes/getPropertyImages.php';
       if (mysqli_num_rows($prop_query) > 0) {
       $i = 1;

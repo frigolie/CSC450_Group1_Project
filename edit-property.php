@@ -32,7 +32,7 @@ if (isset($_SESSION['username'])){
 
         <?php
 
-          include 'includes/property_table.php';
+          include 'includes/queries/property_table.php';
           include 'includes/getPropertyImages.php';
             if (mysqli_num_rows($prop_query) > 0) {
             $i = 1;

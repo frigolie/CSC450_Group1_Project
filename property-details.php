@@ -27,7 +27,7 @@ session_start();
     <section class="container-fluid initialPageContent pb-5 blueMountains">
       <div class="container mb-3">
         <?php
-          include 'includes/property_table.php';
+          include 'includes/queries/property_table.php';
           include 'includes/getPropertyImages.php';
             if (mysqli_num_rows($prop_query) > 0) {
             $i = 1;

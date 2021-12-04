@@ -33,7 +33,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                     </div>
 
                     <!-- Admin info table -->
-                    <?php include 'includes/admin_user.php';
+                    <?php include 'includes/queries/admin_user.php';
                       if (mysqli_num_rows($admin_query) > 0) { ?>
                         <div class="col-8 offset-1 p-4 mb-0 rounded-custom white-bg box-shadow adminDashTable" id="adminTable">
                             <h1 class="fs-1 mb-3 text-center text-shadow">Admins</h1>
@@ -65,7 +65,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                           </div>
                         <?php } ?>
                     <!-- User info table -->
-                    <?php include 'includes/user_table.php';
+                    <?php include 'includes/queries/user_table.php';
                       if (mysqli_num_rows($user_query) > 0) { ?>
                         <div class="col-8 offset-4 p-4 mb-5 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="userTable">
                             <h1 class="fs-1 mb-3 text-center text-shadow">Users <span class="icon show">+</span><span class="icon hide">-</span></h1>
@@ -104,7 +104,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                         <?php } ?>
 
                     <!-- Property info table -->
-                    <?php include 'includes/property_table.php';
+                    <?php include 'includes/queries/property_table.php';
                       if (mysqli_num_rows($prop_query) > 0) { ?>
                         <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="propertyTable">
                             <h1 class="fs-1 mb-3 text-center text-shadow">Properties <span class="icon show">+</span><span class="icon hide">-</span></h1>
@@ -165,7 +165,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                         <?php } ?>
 
                         <?php
-                        include 'includes/avatar_user_table.php';
+                        include 'includes/queries/avatar_user_table.php';
                           if (mysqli_num_rows($avatar_user_query) > 0) {
                             $user_array = [];
                             $i = 1;
@@ -176,7 +176,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                         ?>
 
                     <!-- Reservation info table -->
-                    <?php include 'includes/res_table.php';
+                    <?php include 'includes/queries/res_table.php';
                       if (mysqli_num_rows($res_query) > 0) { ?>
                         <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="reservationTable">
 
@@ -217,7 +217,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                         <?php } ?>
 
                         <!-- Profile Avatar table -->
-                        <?php include 'includes/avatar_table.php';
+                        <?php include 'includes/queries/avatar_table.php';
                           if (mysqli_num_rows($avatar_query) > 0) { ?>
                             <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="avatarTable">
                                 <h1 class="fs-1 mb-3 text-center text-shadow">Profile Avatars <span class="icon show">+</span><span class="icon hide">-</span></h1>
@@ -256,7 +256,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                             <?php } ?>
 
                       <!-- Property Image table -->
-                      <?php include 'includes/image_table.php';
+                      <?php include 'includes/queries/image_table.php';
                         if (mysqli_num_rows($image_query) > 0) { ?>
                           <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="imageTable">
                               <h1 class="fs-1 mb-3 text-center text-shadow">Property Images <span class="icon show">+</span><span class="icon hide">-</span></h1>
