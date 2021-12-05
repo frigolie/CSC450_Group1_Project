@@ -38,7 +38,7 @@ include  "includes/Inc.DBC.php";
           </div>
 
           <?php include 'includes/queries/property_table.php';
-            include 'includes/functions/property/getPropertyImages.php';
+            include 'includes/functions/image/getPropertyImages.php';
             if (mysqli_num_rows($prop_query) > 0) {
             $i = 1;
               while ($property = mysqli_fetch_assoc($prop_query)) {

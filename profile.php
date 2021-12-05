@@ -1,6 +1,10 @@
 <?php
 session_start();
 if (isset($_SESSION['user_id'])) {
+  if(isset($_GET['user_id'])) {
+    $user_id = htmlspecialchars($_GET['user_id']);
+    if($_SESSION['user_id'] == $user_id) {
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +20,7 @@ if (isset($_SESSION['user_id'])) {
       Joshua Sibert
       Lor Xiong
       Written:     11/29/21
-      Revisions:
+      Revisions:   12/04/21 - Connecting to the user table of the DB
       -->
 
       <!-- Page title -->
@@ -25,172 +29,65 @@ if (isset($_SESSION['user_id'])) {
   <body>
   <?php include(getcwd( ) . "/header.php"); ?>
 
-    <section class="container-fluid initialPageContent pb-3 pinkMountains">
+    <section class="container-fluid initialPageContent pb-3 redMountains">
       <div class="container mb-3">
+
+        <?php
+          include 'includes/queries/user_table.php';
+          include 'includes/functions/avatar/getAvatar.php';
+          include 'includes/functions/property/countProperties.php';
+            if (mysqli_num_rows($user_query) > 0) {
+            $i = 1;
+              while ($user = mysqli_fetch_assoc($user_query)) {
+                if($user['user_id'] == $user_id) {
+                 $image = getAvatar($user_id);
+                 if ($image != '') { $profile_image = '/graphic/uploads/avatars/' . $image; } else { $profile_image = '/graphic/user.png'; }
+                ?>
       <div class="row py-1 justify-content-center">
-          <h1 class="mb-5">Profile</h1>
+          <h1 class="mb-5 text-capitalize"><?php echo $user['username']; ?>'s Profile</h1>
           <div class="col-12 col-md-10 mb-5 p-4 text-center bg-white rounded-custom box-shadow">
             <div class="row">
-              <div class="col-12 col-md-6">
-                  <div class="w-100 rentalListing rounded-custom">
-                    <img src="graphic/admin.png" style="border-radius: 50%;height:225px;width:250px">
+              <div class="col-12 col-md-4">
+                  <div class="mx-auto profileImg rounded-circle" style="background-image:url('<?php echo $profile_image; ?>')">
                   </div>
               </div>
-                <div class="col-12 col-md-6 reservationDetails text-start p-4 pt-3">
+                <div class="col-12 col-md-8 reservationDetails text-start p-4 pt-3">
                 <p class="w-100 userName">
-                  <span class="userTitle" style="font-size:1.5em;font-weight:800">Name: </span>myName
+                  <h4 class="display-inline">Name: <span class="fw-light"><?php echo $user['fname'] . " " . $user['lname']; ?></span></h4>
+                </p>
+                <p class="w-100 userEmail">
+                  <h4 class="display-inline">Email: <span class="fw-light"><?php echo $user['email']; ?></span></h4>
                 </p>
                 <p class="w-100 userAge">
-                  <span class="userTitle" style="font-size:1.5em;font-weight:800">Member since: </span>(month/year)
+                  <h4 class="display-inline">Member Since: <span class="fw-light"><?php $year = date("F j, Y", strtotime($user['creation_date'])); echo $year; ?></span></h4>
                 </p>
                 <p class="w-100 userTrips">
-                  <span class="userTitle" style="font-size:1.5em;font-weight:800">Trips completed: </span>(num)
+                  <h4 class="display-inline">Trips: <span class="fw-light"><?php //echo $numPastTrips; ?># Completed, <?php //echo $numUpcomingTrips; ?># Upcoming (awaiting res system)</span></h4>
                 </p>
-                <a href="/edit-account.php">
-                    <button class="globalButton orangeButton my-2 me-2">Edit Account Info </button>
+                <p class="w-100 userStays">
+                  <h4 class="display-inline">Stays: <span class="fw-light"><?php //echo $numPastStays; ?># Hosted, <?php //echo $numUpcomingStays; ?># Reserved (awaiting res system)</span></h4>
+                </p>
+                <p class="w-100 userProperties">
+                  <h4 class="display-inline">Properties Listed: <span class="fw-light"><a href="/my-properties.php?user_id=<?php echo $user_id; ?>"><?php $numProps = countProperties($user_id);
+                  if($numProps < 1) {
+                    echo "No Properties";
+                  } else if($numProps = 1) {
+                    echo "1 Property";
+                  } else {
+                    echo $numProps . " Properties";
+                  } ?></a></span></h4>
+                </p>
+                <a href="/edit-account.php?user_id=<?php echo $user_id; ?>">
+                    <button class="globalButton orangeButton my-2 me-2">Edit Account Info</button>
                 </a>
               </div>
             </div>
           </div>
         </div>
-        <div class="row py-1 justify-content-center">
-          <h1 class="mb-5">Upcoming Stays</h1>
 
-          <!-- This single listing can be created on a foreach loop over data so that it can grow dynamically -->
-          <div class="col-12 col-md-10 mb-5 p-4 text-center bg-white rounded-custom box-shadow">
-            <div class="row">
-              <div class="col-12 text-start mb-2">
-                <h3>Trip #0293843</h3>
-              </div>
-              <div class="col-12 col-md-6">
-                <a href="/property-details.php">
-                  <div class="w-100 rentalListing rounded-custom">
-                    <img class="w-100" src="graphic/penthouse.jpg" alt="Penthouse Rental" title="Photo by Mostafa Safadel">
-                  </div>
-                </a>
-                <a href="/property-details.php">
-                  <h4 class="mt-3 mb-1">Downtown Penthouse</h4>
-                </a>
-                <h5>111 Main Street Apt #117<br/>
-                  Minneapolis, MN 55111
-                </h5>
-              </div>
-              <div class="col-12 col-md-6 reservationDetails text-start p-4 pt-3">
-                <p class="w-100 reservationNames">
-                  <span class="reservationTitle">Name on Reservation: </span>Jane Green
-                </p>
-                <p class="w-100 reservationDates">
-                  <span class="reservationTitle">Dates of Stay: </span>07/15/22 - 07/19/22
-                </p>
-                <p class="w-100 reservationGuests">
-                  <span class="reservationTitle">Number of Guests: </span>2 adult(s), 1 kid(s), 1 pet(s)
-                </p>
-                <p class="w-100 reservationPaid">
-                  <span class="reservationTitle">Total Paid: </span>$345.77
-                </p>
-                <div class="w-100">
-                  <a href="/edit-reservation.php">
-                    <button class="globalButton orangeButton my-2 me-2">Edit Reservation</button>
-                  </a>
-                  <a href="/messages.php">
-                    <button class="globalButton blueButton my-2 ms-2">Contact Host</button>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End single listing, following lines are repeating for demo purposes until we get dynamic functionality set up -->
-
-          <div class="col-12 col-md-10 mb-5 p-4 text-center bg-white rounded-custom box-shadow">
-            <div class="row">
-              <div class="col-12 text-start mb-2">
-                <h3>Trip #0383996</h3>
-              </div>
-              <div class="col-12 col-md-6">
-                <a href="/property-details.php">
-                  <div class="w-100 rentalListing rounded-custom">
-                    <img class="w-100" src="graphic/cabin.jpg" alt="Cabin Rental" title="Photo by Cameron Stewart">
-                  </div>
-                </a>
-                <a href="/property-details.php">
-                  <h4 class="mt-3 mb-1">Mountain Cabin</h4>
-                </a>
-                <h5>N19W388 County Rd. H<br/>
-                  Cat Harbor, MI 48044
-                </h5>
-              </div>
-              <div class="col-12 col-md-6 reservationDetails text-start p-4 pt-3">
-                <p class="w-100 reservationNames">
-                  <span class="reservationTitle">Name on Reservation: </span>Jack Green
-                </p>
-                <p class="w-100 reservationDates">
-                  <span class="reservationTitle">Dates of Stay: </span>09/26/22 - 09/30/22
-                </p>
-                <p class="w-100 reservationGuests">
-                  <span class="reservationTitle">Number of Guests: </span>1 adult(s), 0 kid(s), 1 pet(s)
-                </p>
-                <p class="w-100 reservationPaid">
-                  <span class="reservationTitle">Total Paid: </span>$119.26
-                </p>
-                <div class="w-100">
-                  <a href="/edit-reservation.php">
-                    <button class="globalButton orangeButton my-2 me-2">Edit Reservation</button>
-                  </a>
-                  <a href="/messages.php">
-                    <button class="globalButton blueButton my-2 ms-2">Contact Host</button>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="container-fluid py-5 black-bg">
-      <div class="container mb-3">
-        <div class="row py-1 justify-content-center">
-          <h2 class="mb-5 lt-gray-text">Previous Stays</h2>
-
-          <!-- This single listing can be created on a foreach loop over data so that it can grow dynamically -->
-          <div class="col-12 col-md-10 mb-5 p-4 text-center bg-white rounded-custom box-shadow">
-            <div class="row">
-              <div class="col-12 text-start mb-2">
-                <h3>Trip #0847939</h3>
-              </div>
-              <div class="col-12 col-md-6">
-                <a href="/property-details.php">
-                  <div class="w-100 rentalListing rounded-custom">
-                    <img class="w-100" src="graphic/manor.jpg" alt="Manor Rental" title="Photo by Nathan Walker">
-                  </div>
-                </a>
-                <a href="/property-details.php">
-                  <h4 class="mt-3 mb-1">Victorian Manor</h4>
-                </a>
-                <h5>2839 First Street<br/>
-                  Kentworth, ME 04401
-                </h5>
-              </div>
-              <div class="col-12 col-md-6 reservationDetails text-start p-4 pt-3">
-                <p class="w-100 reservationNames">
-                  <span class="reservationTitle">Name on Reservation: </span>Jane Green
-                </p>
-                <p class="w-100 reservationDates">
-                  <span class="reservationTitle">Dates of Stay: </span>12/13/20 - 12/22/20
-                </p>
-                <p class="w-100 reservationGuests">
-                  <span class="reservationTitle">Number of Guests: </span>2 adult(s), 1 kid(s), 1 pet(s)
-                </p>
-                <p class="w-100 reservationPaid">
-                  <span class="reservationTitle">Total Paid: </span>$944.36
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- End single listing, following lines are repeating for demo purposes until we get dynamic functionality set up -->
-
-        </div>
+      <?php }
+        }
+      } ?>
       </div>
     </section>
 
@@ -211,8 +108,16 @@ if (isset($_SESSION['user_id'])) {
     <?php include(getcwd( ) . "/footer.php"); ?>
   </body>
 </html>
-<?php } else if (isset($_SESSION['admin_id'])) {
+<?php } // if get user id matches session user
+    else { // if user id doesn't match, redirect user to their own profile page
+      header("Location: /profile.php?user_id=".$_SESSION['user_id']);
+    }
+  } // if get user id exists
+  else {
+    header("Location: /profile.php?user_id=".$_SESSION['user_id']);
+  }
+} else if (isset($_SESSION['admin_id'])) { // redirect admin to admin profile page
     header("Location: /adminProfile.php");
-} else {
+} else { // redirect logged out users
     header("Location: /login.php");
 } ?>

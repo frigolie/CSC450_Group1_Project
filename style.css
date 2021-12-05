@@ -482,6 +482,17 @@ img.rounded-custom {
 }
 
 /* =========================================
+                  Profile Styles
+      ========================================= */
+
+  .profileImg {
+    height: 300px;
+    width: 300px;
+    background-size: contain;
+    background-position: top center;
+  }
+
+/* =========================================
                    Responsive Styles
       ========================================= */
 
