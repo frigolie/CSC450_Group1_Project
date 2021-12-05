@@ -12,7 +12,7 @@ if (isset($_POST["submit"])) {
 
 
     require_once  'Inc.DBC.php';
-    require_once 'loginFunctions.php';
+    require_once 'functions/user/loginFunctions.php';
 
 
 

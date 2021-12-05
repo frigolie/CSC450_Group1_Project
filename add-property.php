@@ -32,7 +32,7 @@ if (isset($_SESSION['username'])) {
         <div class="col-10 col-md-8 col-lg-6 px-5 py-5 white-bg box-shadow rounded-custom">
           <h2 class="mb-1 text-center">Add a new <span class="dk-orange-text">property listing</span> below. </h2><br>
 
-      <form method="POST" action="includes/inc.createProperty.php" enctype="multipart/form-data">
+      <form method="POST" action="includes/inc.property.php" enctype="multipart/form-data">
             <div class="mb-3">
               <label for="propertyName" class="form-label">Property Name</label>
               <input type="text" class="form-control" name="propName" id="propName" aria-describedby="propHelp" placeholder="Enter here" required>
@@ -159,7 +159,7 @@ if (isset($_SESSION['username'])) {
         <input type="hidden" id="userID" name="userID" value="<?php if (isset($_SESSION['user_id'])) { echo $_SESSION['user_id']; } ?>" readonly>
 
           <div class="pt-3 text-center">
-            <button type="submit" id="submit" value="Add Property" name="submit"  class="globalButton blueButton" style="height:50px;width:200px;font-size:1.4em;">Add Property</button>
+            <button type="submit" id="submit" value="Add Property" name="createProperty"  class="globalButton blueButton" style="height:50px;width:200px;font-size:1.4em;">Add Property</button>
           </div>
         </div>
       </div>

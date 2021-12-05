@@ -371,6 +371,7 @@ img.rounded-custom {
   border-radius: 15px;
 }
 
+
 /* =========================================
                    Footer Styles
       ========================================= */
@@ -481,6 +482,17 @@ img.rounded-custom {
 }
 
 /* =========================================
+                  Profile Styles
+      ========================================= */
+
+  .profileImg {
+    height: 300px;
+    width: 300px;
+    background-size: contain;
+    background-position: top center;
+  }
+
+/* =========================================
                    Responsive Styles
       ========================================= */
 
@@ -508,6 +520,16 @@ img.rounded-custom {
   .navbar-collapse {
     background-color: transparent;
     box-shadow: none;
+  }
+
+  li.nav-item a::after {
+    content: '|';
+    font-weight: 200;
+    margin-left: 15px;
+  }
+
+  li.nav-item:last-of-type a::after {
+    content: '';
   }
 
   #messages {

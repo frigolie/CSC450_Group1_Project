@@ -54,8 +54,10 @@ session_start();
                         <div class="col-6 col-lg-3">
                             <button class="globalButton orangeButton w-100">
                                 <?php
-                                if (isset($_SESSION['username'])) {
-                                    echo "<a class='white-text' href='profile.php'>Profile page</a>";
+                                if (isset($_SESSION['user_id'])) {
+                                    echo "<a class='white-text' href='profile.php?user_id=" . $_SESSION['user_id'] . "'>View Profile</a>";
+                                } else if (isset($_SESSION['admin_id'])) {
+                                    echo "<a class='white-text' href='adminProfile.php?admin_id=" . $_SESSION['admin_id'] . "'>View Profile</a>";
                                 } else {
                                     echo "<a class='white-text' href='login.php'>Log In</a>";
                                 }
@@ -90,14 +92,25 @@ session_start();
                         <li class="nav-item">
                             <a class="nav-link" href="/view-properties.php">View Properties</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/contact.php">Contact Us</a>
-                        </li>
+                        <?php if (isset($_SESSION['user_id'])) {  ?>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/my-properties.php">My Properties</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/upcoming-reservations.php">My Reservations</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/upcoming-stays.php">My Stays</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/messages.php">Message Center</a>
+                          </li>
+                        <?php } else if (isset($_SESSION['admin_id'])) { ?>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/admin.php">Admin Dashboard</a>
+                          </li>
+                        <?php } ?>
                     </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="globalButton blueButton" type="submit"><i class="bi-search"></i></button>
-                    </form>
                 </div>
             </div>
         </nav>

@@ -90,7 +90,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_id'])) {   ?>
             });
         } else {
             swal({
-                title: "Successfully Login",
+                title: "Successfully Logged In",
                 icon: "success",
                 button: "OK",
             });

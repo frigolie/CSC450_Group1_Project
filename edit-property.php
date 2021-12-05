@@ -1,6 +1,9 @@
 <?php
 session_start();
-if (isset($_SESSION['username'])){
+if (isset($_SESSION['username'])) {
+  if(isset($_GET['property_id'])) {
+    $prop_id = htmlspecialchars($_GET['property_id']);
+
 ?>
 
 <!DOCTYPE html>
@@ -32,12 +35,10 @@ if (isset($_SESSION['username'])){
 
         <?php
 
-          include 'includes/property_table.php';
-          include 'includes/getPropertyImages.php';
+          include 'includes/queries/property_table.php';
+          include 'includes/functions/image/getPropertyImages.php';
             if (mysqli_num_rows($prop_query) > 0) {
             $i = 1;
-            if(isset($_GET['property_id'])) {
-              $prop_id = htmlspecialchars($_GET['property_id']);
               while ($property = mysqli_fetch_assoc($prop_query)) {
                 if($property['owner_id'] == $_SESSION['user_id'] && $property['property_id'] == $prop_id) {
                 ?>
@@ -46,7 +47,7 @@ if (isset($_SESSION['username'])){
         <div class="col-10 col-md-8 col-lg-7 px-5 py-5 white-bg box-shadow rounded-custom">
           <h2 class="mb-1 text-center">Update your <span class="dk-orange-text">property information</span> below. </h2>
 
-      <form method="POST" action="includes/inc.updateProperty.php" enctype="multipart/form-data">
+          <form method="POST" action="includes/inc.property.php" enctype="multipart/form-data">
             <div class="mb-3">
               <label for="propertyName" class="form-label">Property Name</label>
               <input type="text" class="form-control" name="propName" id="propName" aria-describedby="propHelp" value="<?php echo $property['name']; ?>" required>
@@ -166,33 +167,33 @@ if (isset($_SESSION['username'])){
              <input type="text" class="form-control" name="zipCode" id="zipCode" value="<?php echo $property['zip']; ?>" style="width:250px;" pattern="[0-9]{5}" required>
            </div>
 
-        <div class="mb-3">
-           <label for="cost" class="form-label">How much will you charge per night?<br>$</label>
-            <input type="number" step="0.01" id="price" name="price" value="<?php echo $property['price']; ?>" />
-        </div>
-
-        <div class="mb-3">
-          <h4 class="mb-3">To confirm your changes, enter your password below. </h4>
-        </div>
-          <div class="mb-3">
-            <label for="passwordInput" class="form-label">Password</label>
-            <input type="password" class="form-control" id="passwordInput" placeholder="Password" style="width:200px";>
-          </div>
-
-          <input type="hidden" id="propertyID" name="propertyID" value="<?php echo $prop_id; ?>" readonly>
-
-          <div class="pt-3 text-center">
-            <button type="submit" id="submit" value="Update" name="submit"  class="globalButton blueButton" style="height:50px;width:200px;font-size:1.4em;">Update</button>
-          </div>
-
-          <div class="pt-3 text-center mt-3">
-            <h3 class="mb-1 text-left">Want to delete your property? </h3>
-            <h3><span class="dk-orange-text">Warning! </span> This action cannot be undone!</h3>
+            <div class="mb-3">
+               <label for="cost" class="form-label">How much will you charge per night?<br>$</label>
+                <input type="number" step="0.01" id="price" name="price" value="<?php echo $property['price']; ?>" />
+            </div>
 
             <div class="mb-3">
-              <button type="delete" name="delete" class="globalButton redButton" style="height:50px;width:200px;font-size:1.4em;" onclick="">Delete</button>
+              <h4 class="mb-3">To confirm your changes, enter your password below. </h4>
             </div>
-          </div>
+              <div class="mb-3">
+                <label for="passwordInput" class="form-label">Password</label>
+                <input type="password" class="form-control" id="passwordInput" placeholder="Password" style="width:200px";>
+              </div>
+
+              <input type="hidden" id="propertyID" name="propertyID" value="<?php echo $prop_id; ?>" readonly>
+
+              <div class="pt-3 text-center">
+                <button type="submit" id="submit" value="Update" name="updateProperty"  class="globalButton blueButton" style="height:50px;width:200px;font-size:1.4em;">Update</button>
+              </div>
+
+            <div class="pt-3 text-center mt-3">
+              <h3 class="mb-1 text-left">Want to delete your property? </h3>
+              <h3><span class="dk-orange-text">Warning! </span> This action cannot be undone!</h3>
+
+              <div class="mb-3">
+                <button type="delete" name="deleteProperty" class="globalButton redButton" style="height:50px;width:200px;font-size:1.4em;" onclick="">Delete</button>
+              </div>
+            </div>
           </form>
         </div>
 
@@ -204,7 +205,7 @@ if (isset($_SESSION['username'])){
             $i = 1;
             foreach($images as $img) { ?>
               <div class="col-12 col-md-6">
-                <form id="img<?php echo $i; ?>" method="POST" action="includes/inc.updateProperty.php" enctype="multipart/form-data" class="text-center">
+                <form id="img<?php echo $i; ?>" method="POST" action="includes/inc.property.php" enctype="multipart/form-data" class="text-center">
                   <input type="hidden" name="deleteImgID" value="<?php echo $img['image_id']; ?>" readonly />
                   <input type="hidden" name="deletePropertyID" value="<?php echo $prop_id; ?>" readonly />
                   <img class="w-100 rounded-custom" src="/graphic/uploads/property_images/<?php echo $img['filename']; ?>">
@@ -217,11 +218,11 @@ if (isset($_SESSION['username'])){
             ?>
 
             <div class="col-12">
-              <form method="POST" action="includes/inc.updateProperty.php" enctype="multipart/form-data" class="d-flex w-100 align-items-center">
+              <form method="POST" action="includes/inc.property.php" enctype="multipart/form-data" class="d-flex w-100 align-items-center">
                 <input type="file" id="img" name="img" accept="image/png, image/jpeg">
                 <input type="hidden" name="imageUserID" value="<?php if (isset($_SESSION['user_id'])) { echo $_SESSION['user_id']; } ?>" readonly>
                 <input type="hidden" name="imagePropertyID" value="<?php echo $prop_id; ?>" readonly>
-                <button type="submit" value="Add Images" name="upload"  class="globalButton blueButton">Add Image</button>
+                <button type="submit" value="Add Images" name="uploadImg" class="globalButton blueButton">Add Image</button>
               </form>
             </div>
 
@@ -230,10 +231,23 @@ if (isset($_SESSION['username'])){
         </div>
 
         <?php
+                } // If on the property selected, and if owned by the current user
+                else {
+                    header("Location: /my-properties.php");
+                }
+              } // While there are results from the prop query
+              else {
+                  header("Location: /my-properties.php");
               }
+            } // If there are results from the prop query
+            else {
+                header("Location: /my-properties.php");
             }
+          } // If there is a searched prop id in the params
+          else {
+              header("Location: /my-properties.php");
           }
-        } ?>
+        ?>
       </div>
       </div>
     </section>
@@ -259,6 +273,7 @@ if (isset($_SESSION['username'])){
     }
   });
 </script>
-<?php } else {
+<?php  } // If the user is logged in
+      else {
     header("Location: /view-properties.php");
 } ?>

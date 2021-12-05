@@ -98,7 +98,7 @@
             });
         } else {
             swal({
-                title: "Successfully Login",
+                title: "Successfully Logged In",
                 icon: "success",
                 button: "OK",
             });
