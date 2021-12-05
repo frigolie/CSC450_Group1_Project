@@ -57,7 +57,7 @@ session_start();
                                 if (isset($_SESSION['user_id'])) {
                                     echo "<a class='white-text' href='profile.php?user_id=" . $_SESSION['user_id'] . "'>View Profile</a>";
                                 } else if (isset($_SESSION['admin_id'])) {
-                                    echo "<a class='white-text' href='adminprofile.php?admin_id=" . $_SESSION['admin_id'] . "'>View Profile</a>";
+                                    echo "<a class='white-text' href='adminProfile.php?admin_id=" . $_SESSION['admin_id'] . "'>View Profile</a>";
                                 } else {
                                     echo "<a class='white-text' href='login.php'>Log In</a>";
                                 }

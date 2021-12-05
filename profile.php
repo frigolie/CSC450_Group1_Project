@@ -91,20 +91,6 @@ if (isset($_SESSION['user_id'])) {
       </div>
     </section>
 
-    <section class="container-fluid py-5 lt-gray-bg">
-      <div class="row w-75 mx-auto py-4 max-880">
-        <div class="col-12 mb-3">
-          <h2 class="text-center">Book your next adventure today!</h2>
-        </div>
-        <div class="col-12 d-flex justify-content-center">
-          <a href="/view-properties.php">
-            <button class="globalButton blueButton mb-2">
-              View Properties
-            </button>
-          </a>
-        </div>
-      </div>
-    </section>
     <?php include(getcwd( ) . "/footer.php"); ?>
   </body>
 </html>

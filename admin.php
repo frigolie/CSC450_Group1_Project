@@ -321,7 +321,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                 </div>
 
                 <div id="edit-user" class="hide popup-form w-100">
-                  <h3 class="mb-3">Update User</h3>
+                  <h3 class="mb-3 d-inline">Update User</h3> <a href="" class="profile-link"><button class="globalButton blueButton ms-3 mb-4">View Profile</button></a>
                   <form method="POST" action="includes/inc.adminTables.php" enctype="multipart/form-data">
                     <div class="form-field-container d-flex">
                       <input type="hidden" name="userID" readonly>
@@ -438,7 +438,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                 </div>
 
                 <div id="edit-property" class="hide popup-form w-100">
-                  <h3 class="mb-3">Update Property Information</h3>
+                  <h3 class="mb-3 d-inline">Update Property Information</h3><a href="" class="property-link"><button class="globalButton blueButton ms-3 mb-4">View Property Details</button></a>
                   <form method="POST" action="includes/inc.adminTables.php" enctype="multipart/form-data" class="d-flex flex-wrap">
                     <div class="mb-3 w-100 d-flex align-items-start justify-content-between">
                       <input type="text" class="form-control me-3" name="propName" aria-describedby="propHelp" required>
@@ -653,6 +653,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
           $('#edit-user').find('input[name="lName"]').val(lname);
           $('#edit-user').find('input[name="email"]').val(email);
           $('#edit-user').find('input[name="username"]').val(username);
+          $('#edit-user').find('.profile-link').attr('href', '/view-profile.php?user_id='+user_id+'');
 
           $('#black-overlay').fadeTo( 200, 1.0 );
         });
@@ -696,6 +697,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
           } else {
             $('#edit-property').find('input[name="petFriendly"]').prop( "checked", false );
           }
+
+          $('#edit-property').find('.property-link').attr('href', '/property-details.php?property_id='+prop_id+'');
 
           $('#black-overlay').fadeTo( 200, 1.0 );
         });
