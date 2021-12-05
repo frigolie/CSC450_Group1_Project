@@ -17,11 +17,11 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
         <?php include(getcwd() . "/header.php"); ?>
         <section class="container-fluid initialPageContent greenMountains pb-5 px-0">
 
-            <div class="container" style="min-height: 100vh;">
+            <div class="container d-flex flex-wrap justify-content-center align-items-center" style="min-height: 100vh;">
                 <?php if ($_SESSION['role'] == 'admin') { ?>
                   <div class="row w-100 d-flex flex-wrap justify-content-center align-items-start">
                     <!--Admin Users-->
-                    <div class="col-3 adminCard py-4 position-sticky white-bg rounded-custom box-shadow">
+                    <div class="col-9 col-md-6 col-lg-4 col-xl-3 adminCard py-4 mb-5 mb-xl-0 sticky-xl-top white-bg rounded-custom box-shadow">
                         <img src="graphic/admin.png" class="card-img-top" alt="admin image">
                         <div class="card-body text-center">
                             <h5 class="card-title mb-4">
@@ -35,7 +35,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                     <!-- Admin info table -->
                     <?php include 'includes/queries/admin_user.php';
                       if (mysqli_num_rows($admin_query) > 0) { ?>
-                        <div class="col-8 offset-1 p-4 mb-0 rounded-custom white-bg box-shadow adminDashTable" id="adminTable">
+                        <div class="col-12 col-xl-8 offset-xl-1 p-4 mb-5 mb-xl-0 rounded-custom white-bg box-shadow adminDashTable" id="adminTable">
                             <h1 class="fs-1 mb-3 text-center text-shadow">Admins</h1>
                             <div class="table-container">
                               <table class="table">
@@ -67,7 +67,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                     <!-- User info table -->
                     <?php include 'includes/queries/user_table.php';
                       if (mysqli_num_rows($user_query) > 0) { ?>
-                        <div class="col-8 offset-4 p-4 mb-5 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="userTable">
+                        <div class="col-12 col-xl-8 offset-xl-4 p-4 mb-5 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="userTable">
                             <h1 class="fs-1 mb-3 text-center text-shadow">Users <span class="icon show">+</span><span class="icon hide">-</span></h1>
                             <div class="table-container" style="display: none;">
                               <table class="table">
@@ -106,7 +106,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                     <!-- Property info table -->
                     <?php include 'includes/queries/property_table.php';
                       if (mysqli_num_rows($prop_query) > 0) { ?>
-                        <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="propertyTable">
+                        <div class="col-12 col-xl-8 offset-xl-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="propertyTable">
                             <h1 class="fs-1 mb-3 text-center text-shadow">Properties <span class="icon show">+</span><span class="icon hide">-</span></h1>
                             <div class="table-container" style="display: none;">
                               <table class="table">
@@ -178,7 +178,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                     <!-- Reservation info table -->
                     <?php include 'includes/queries/res_table.php';
                       if (mysqli_num_rows($res_query) > 0) { ?>
-                        <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="reservationTable">
+                        <div class="col-12 col-xl-8 offset-xl-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="reservationTable">
 
                             <h1 class="fs-1 mb-3 text-center text-shadow">Reservations <span class="icon show">+</span><span class="icon hide">-</span></h1>
                             <div class="table-container" style="display: none;">
@@ -219,7 +219,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                         <!-- Profile Avatar table -->
                         <?php include 'includes/queries/avatar_table.php';
                           if (mysqli_num_rows($avatar_query) > 0) { ?>
-                            <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="avatarTable">
+                            <div class="col-12 col-xl-8 offset-xl-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="avatarTable">
                                 <h1 class="fs-1 mb-3 text-center text-shadow">Profile Avatars <span class="icon show">+</span><span class="icon hide">-</span></h1>
                                 <div class="table-container" style="display: none;">
                                   <table class="table">
@@ -258,7 +258,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                       <!-- Property Image table -->
                       <?php include 'includes/queries/image_table.php';
                         if (mysqli_num_rows($image_query) > 0) { ?>
-                          <div class="col-8 offset-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="imageTable">
+                          <div class="col-12 col-xl-8 offset-xl-4 p-4 mb-5 mt-4 rounded-custom white-bg box-shadow adminDashTable collapisbleTable" id="imageTable">
                               <h1 class="fs-1 mb-3 text-center text-shadow">Property Images <span class="icon show">+</span><span class="icon hide">-</span></h1>
                               <div class="table-container" style="display: none;">
                                 <table class="table">
