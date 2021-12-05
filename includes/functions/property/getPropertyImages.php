@@ -2,7 +2,9 @@
 
 function getPropertyImages($property)
 {
-    require_once dirname( dirname( dirname(__FILE__) ) ) . '/Inc.DBC.php';
+
+    include dirname( dirname( dirname(__FILE__) ) ) . '/Inc.DBC.php';
+
     if (mysqli_connect_errno()) {
         printf("Connect failed: %s\n", mysqli_connect_error());
         exit();
