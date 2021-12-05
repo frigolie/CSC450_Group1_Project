@@ -41,8 +41,16 @@ if(isset($_GET['user_id'])) {
       <div class="container mb-3">
 
         <?php
-           $image = getAvatar($user_id);
-           if ($image != '') { $profile_image = '/graphic/uploads/avatars/' . $image; } else { $profile_image = '/graphic/user.png'; }
+          $image = '';
+          $avatar_query = getAvatar($user_id);
+          if (mysqli_num_rows($avatar_query) > 0) {
+            while ($avatar = mysqli_fetch_assoc($avatar_query)) {
+              $image = $avatar['filename'];
+              $avatarID = $avatar['avatar_id'];
+            }
+          }
+          
+         if ($image != '') { $profile_image = '/graphic/uploads/avatars/' . $image; } else { $profile_image = '/graphic/user.png'; }
         ?>
         <div class="row py-1 justify-content-center align-items-start">
           <h1 class="mb-5 text-capitalize text-shadow"><?php echo $user['username']; ?>'s Profile</h1>

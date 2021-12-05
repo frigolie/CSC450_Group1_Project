@@ -34,7 +34,6 @@ if (isset($_SESSION['username'])) {
       <div class="row pb-5 justify-content-center">
 
         <?php
-
           include 'includes/queries/property_table.php';
           include 'includes/functions/image/getPropertyImages.php';
             if (mysqli_num_rows($prop_query) > 0) {
