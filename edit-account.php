@@ -89,45 +89,43 @@ if (isset($_SESSION['user_id'])) {
           <h3 class="mb-4 text-center">Get started below!</h3>
 
           <form method="POST" action="includes/inc.profile.php" enctype="multipart/form-data">
-              <!-- I'm not great with bootstrap. The formatting here for the name works, but the code itself is sloppy. I'll look into editing it to look better!-->
-                <div class="row">
-                  <div class="col-12 col-lg-6 mb-3">
-                    <label for="fName" class="form-label">First Name</label>
-                    <input type="text" class="form-control" name="fName" placeholder="First Name" required>
-                  </div>
-                  <div class="col-12 col-lg-6 mb-3">
-                    <label for="lName" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" name="lName" placeholder="Last Name" required>
-                  </div>
-                  <div class="col-12 col-lg-6 mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="example@email.com">
-                  </div>
-                  <div class="col-12 col-lg-6 mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" name="username" aria-describedby="usernameHelp" placeholder="">
-                  </div>
-                  <div class="col-12 col-lg-6 mb-3">
-                     <label for="passwordInput" class="form-label">Change Password</label>
-                     <input type="password" class="form-control" name="password" placeholder="New Password">
-                   </div>
-                   <div class="col-12 col-lg-6 mb-3">
-                     <label for="passwordInput" class="form-label">Re-enter New Password</label>
-                     <input type="password" class="form-control" name="confirmPassword" placeholder="Re-enter New Password">
-                   </div>
-                   <input type="hidden" name="userID" value="<?php if (isset($_SESSION['user_id'])) { echo $_SESSION['user_id']; } ?>" readonly />
-                </div>
-
-                <div class="pt-3 text-center">
-                  <button type="submit" name="updateUser" class="globalButton orangeButton">Update Account</button>
-                </div>
-                <div class="pt-3 text-center mt-3">
-                  <h3 class="mb-1 text-left">Want to delete your account? </h3>
-                  <h3><span class="dk-orange-text">Warning! </span> This action cannot be undone!</h3>
-                  <div class="mb-3">
-                    <button type="delete" name="deleteUser" class="globalButton redButton">Delete Account</button>
-                  </div>
+            <div class="row">
+              <div class="col-12 col-lg-6 mb-3">
+                <label for="fName" class="form-label">First Name</label>
+                <input type="text" class="form-control" name="fName" placeholder="First Name" value="<?php echo $user['fname']; ?>">
               </div>
+              <div class="col-12 col-lg-6 mb-3">
+                <label for="lName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" name="lName" placeholder="Last Name" value="<?php echo $user['lname']; ?>">
+              </div>
+              <div class="col-12 col-lg-6 mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" aria-describedby="emailHelp" value="<?php echo $user['email']; ?>">
+              </div>
+              <div class="col-12 col-lg-6 mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" aria-describedby="usernameHelp" value="<?php echo $user['username']; ?>">
+              </div>
+              <div class="col-12 col-lg-6 mb-3">
+                 <label for="passwordInput" class="form-label">Change Password</label>
+                 <input type="password" class="form-control" name="password" placeholder="New Password">
+               </div>
+               <div class="col-12 col-lg-6 mb-3">
+                 <label for="passwordInput" class="form-label">Re-enter New Password</label>
+                 <input type="password" class="form-control" name="confirmPassword" placeholder="Re-enter New Password">
+               </div>
+               <input type="hidden" name="userID" value="<?php if (isset($_SESSION['user_id'])) { echo $_SESSION['user_id']; } ?>" readonly />
+            </div>
+            <div class="pt-3 text-center">
+              <button type="submit" name="updateUser" class="globalButton orangeButton">Update Account</button>
+            </div>
+            <div class="pt-3 text-center mt-3">
+              <h3 class="mb-1 text-left">Want to delete your account? </h3>
+              <h3><span class="dk-orange-text">Warning! </span> This action cannot be undone!</h3>
+              <div class="mb-3">
+                <button type="delete" name="deleteUser" class="globalButton redButton">Delete Account</button>
+              </div>
+            </div>
             </form>
           </div>
         <?php }

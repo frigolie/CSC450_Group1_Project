@@ -8,13 +8,21 @@ if (isset($_POST["updateUser"])) {
     $lname = $_POST["lName"];
     $username = $_POST["username"];
     $email = $_POST["email"];
+    $password = $_POST["password"];
+    $confirmpassword = $_POST["confirmPassword"];
 
-    require_once  'Inc.DBC.php';
+    require_once 'Inc.DBC.php';
     require_once 'functions/user/updateUser.php';
+    require_once 'functions/user/loginFunctions.php';
 
-    updateUser($conn, $user_id, $fname, $lname, $email, $username);
+    if (pwdMatch($password, $confirmpassword) !== false) {
+        header("location: ../edit-account.php?user_id=" . $user_id . "&error=passwordsdontmatch");
+        exit();
+    }
 
-    header("location: ../edit-account.php?success=true");
+    updateUser($conn, $user_id, $fname, $lname, $email, $username, $password);
+
+    header("location: ../edit-account.php?user_id=" . $user_id . "success=true");
     exit();
 
 } else if (isset($_POST["deleteUser"])) {
