@@ -1,3 +1,8 @@
+<?php
+session_start();
+if (isset($_SESSION['user_id'])) {
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,7 +36,7 @@
                     <img src="graphic/admin.png" style="border-radius: 50%;height:225px;width:250px">
                   </div>
               </div>
-                <div class="col-12 col-md-6 reservationDetails text-start p-4 pt-3"> 
+                <div class="col-12 col-md-6 reservationDetails text-start p-4 pt-3">
                 <p class="w-100 userName">
                   <span class="userTitle" style="font-size:1.5em;font-weight:800">Name: </span>myName
                 </p>
@@ -206,3 +211,8 @@
     <?php include(getcwd( ) . "/footer.php"); ?>
   </body>
 </html>
+<?php } else if (isset($_SESSION['admin_id'])) {
+    header("Location: /adminProfile.php");
+} else {
+    header("Location: /login.php");
+} ?>

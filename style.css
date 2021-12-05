@@ -371,6 +371,7 @@ img.rounded-custom {
   border-radius: 15px;
 }
 
+
 /* =========================================
                    Footer Styles
       ========================================= */
@@ -508,6 +509,16 @@ img.rounded-custom {
   .navbar-collapse {
     background-color: transparent;
     box-shadow: none;
+  }
+
+  li.nav-item a::after {
+    content: '|';
+    font-weight: 200;
+    margin-left: 15px;
+  }
+
+  li.nav-item:last-of-type a::after {
+    content: '';
   }
 
   #messages {

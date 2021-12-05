@@ -1,3 +1,7 @@
+<?php
+session_start();
+if (isset($_SESSION['admin_id'])) {
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +15,7 @@
       Joshua Sibert
       Lor Xiong
       Written:     11/29/21
-      Revisions:   
+      Revisions:
       -->
 
       <!-- Page title -->
@@ -31,7 +35,7 @@
                     <img src=img src="graphic/admin.png" style="border-radius: 50%;height:225px;width:250px">
                   </div>
               </div>
-                <div class="col-12 col-md-6 reservationDetails text-start p-4 pt-3"> 
+                <div class="col-12 col-md-6 reservationDetails text-start p-4 pt-3">
                 <p class="w-100 adminName">
                   <span class="adminTitle" style="font-size:1.5em;font-weight:800">Admin name: </span>myName
                 </p>
@@ -157,3 +161,8 @@
     <?php include(getcwd( ) . "/footer.php"); ?>
   </body>
 </html>
+<?php } else if (isset($_SESSION['user_id'])) {
+    header("Location: /profile.php");
+} else {
+    header("Location: /login.php");
+} ?>

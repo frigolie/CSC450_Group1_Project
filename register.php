@@ -132,7 +132,7 @@
             });
         } else {
             swal({
-                title: "Successfully Register ",
+                title: "Successfully Registered",
                 icon: "success",
                 button: "OK",
             });
