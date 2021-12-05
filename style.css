@@ -413,8 +413,10 @@ img.rounded-custom {
               Admin Pages Styles
      ========================================= */
 
-.adminCard {
+.adminCard,
+.profileCard {
   top: 100px;
+  z-index: 10;
 }
 
 #black-overlay {
@@ -424,6 +426,7 @@ img.rounded-custom {
   min-width: 100vw;
   opacity: 0;
   transition: all .2s ease;
+  z-index: 20;
 }
 
 .close-btn i {
@@ -481,14 +484,20 @@ img.rounded-custom {
   filter: grayscale(0%);
 }
 
+.owner-icon {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+}
+
 /* =========================================
                   Profile Styles
       ========================================= */
 
   .profileImg {
-    height: 300px;
-    width: 300px;
-    background-size: contain;
+    height: 250px;
+    width: 250px;
+    background-size: cover;
     background-position: top center;
   }
 
