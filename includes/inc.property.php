@@ -1,7 +1,30 @@
 <?php
 session_start();
 
-if (isset($_POST["submit"])) {
+if (isset($_POST["createProperty"])) {
+
+    $name        = $_POST["propName"];
+    $description = $_POST["propDescription"];
+    $address     = $_POST["address1"];
+    $city        = $_POST["city"];
+    $state       = $_POST["state"];
+    $zip         = $_POST["zipCode"];
+    $bedrooms    = $_POST["bedrooms"];
+    $bathrooms   = $_POST["bathrooms"];
+    $kids        = $_POST["kidFriendly"];
+    $pets        = $_POST["petFriendly"];
+    $price       = $_POST["price"];
+    $owner_id    = $_POST["userID"];
+
+    require_once  'Inc.DBC.php';
+    require_once 'functions/property/createProperty.php';
+
+    createProperty($conn, $name, $description, $address, $city, $state, $zip, $bedrooms, $bathrooms, $kids, $pets, $price, $owner_id);
+
+    header("location: ../my-properties.php?success=true");
+    exit();
+
+} else if (isset($_POST["updateProperty"])) {
 
     $name        = $_POST["propName"];
     $description = $_POST["propDescription"];
@@ -24,7 +47,7 @@ if (isset($_POST["submit"])) {
     header("location: ../edit-property.php?property_id=" . $property_id . "&success=true");
     exit();
 
-} else if (isset($_POST["delete"])) {
+} else if (isset($_POST["deleteProperty"])) {
 
     $property_id = $_POST["propertyID"];
 
@@ -36,20 +59,7 @@ if (isset($_POST["submit"])) {
     header("location: ../my-properties.php?success=true");
     exit();
 
-} else if (isset($_POST['deleteImg'])) {
-
-    require_once  'Inc.DBC.php';
-    require_once 'functions/image/deleteImage.php';
-
-    $image_id = $_POST['deleteImgID'];
-    $property_id = $_POST['deletePropertyID'];
-
-    deleteImage($conn, $image_id, $property_id);
-
-    header("location: ../edit-property.php?property_id=" . $property_id . "&success=true");
-    exit();
-
-} else if (isset($_POST['upload'])) {
+} else if (isset($_POST['uploadImg'])) {
 
     require_once  'Inc.DBC.php';
     require_once 'functions/image/uploadImage.php';
@@ -67,7 +77,20 @@ if (isset($_POST["submit"])) {
     header("location: ../edit-property.php?property_id=" . $property_id . "&success=true");
     exit();
 
+} else if (isset($_POST['deleteImg'])) {
+
+    require_once  'Inc.DBC.php';
+    require_once 'functions/image/deleteImage.php';
+
+    $image_id = $_POST['deleteImgID'];
+    $property_id = $_POST['deletePropertyID'];
+
+    deleteImage($conn, $image_id, $property_id);
+
+    header("location: ../edit-property.php?property_id=" . $property_id . "&success=true");
+    exit();
+
 } else {
-    header("location: ../my-properties.php");
+    header("location: ../add-property.php");
     exit();
 }

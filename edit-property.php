@@ -46,7 +46,7 @@ if (isset($_SESSION['username'])){
         <div class="col-10 col-md-8 col-lg-7 px-5 py-5 white-bg box-shadow rounded-custom">
           <h2 class="mb-1 text-center">Update your <span class="dk-orange-text">property information</span> below. </h2>
 
-      <form method="POST" action="includes/inc.updateProperty.php" enctype="multipart/form-data">
+      <form method="POST" action="includes/inc.property.php" enctype="multipart/form-data">
             <div class="mb-3">
               <label for="propertyName" class="form-label">Property Name</label>
               <input type="text" class="form-control" name="propName" id="propName" aria-describedby="propHelp" value="<?php echo $property['name']; ?>" required>
@@ -182,7 +182,7 @@ if (isset($_SESSION['username'])){
           <input type="hidden" id="propertyID" name="propertyID" value="<?php echo $prop_id; ?>" readonly>
 
           <div class="pt-3 text-center">
-            <button type="submit" id="submit" value="Update" name="submit"  class="globalButton blueButton" style="height:50px;width:200px;font-size:1.4em;">Update</button>
+            <button type="submit" id="submit" value="Update" name="updateProperty"  class="globalButton blueButton" style="height:50px;width:200px;font-size:1.4em;">Update</button>
           </div>
 
           <div class="pt-3 text-center mt-3">
@@ -190,7 +190,7 @@ if (isset($_SESSION['username'])){
             <h3><span class="dk-orange-text">Warning! </span> This action cannot be undone!</h3>
 
             <div class="mb-3">
-              <button type="delete" name="delete" class="globalButton redButton" style="height:50px;width:200px;font-size:1.4em;" onclick="">Delete</button>
+              <button type="delete" name="deleteProperty" class="globalButton redButton" style="height:50px;width:200px;font-size:1.4em;" onclick="">Delete</button>
             </div>
           </div>
           </form>
@@ -204,7 +204,7 @@ if (isset($_SESSION['username'])){
             $i = 1;
             foreach($images as $img) { ?>
               <div class="col-12 col-md-6">
-                <form id="img<?php echo $i; ?>" method="POST" action="includes/inc.updateProperty.php" enctype="multipart/form-data" class="text-center">
+                <form id="img<?php echo $i; ?>" method="POST" action="includes/inc.property.php" enctype="multipart/form-data" class="text-center">
                   <input type="hidden" name="deleteImgID" value="<?php echo $img['image_id']; ?>" readonly />
                   <input type="hidden" name="deletePropertyID" value="<?php echo $prop_id; ?>" readonly />
                   <img class="w-100 rounded-custom" src="/graphic/uploads/property_images/<?php echo $img['filename']; ?>">
@@ -217,11 +217,11 @@ if (isset($_SESSION['username'])){
             ?>
 
             <div class="col-12">
-              <form method="POST" action="includes/inc.updateProperty.php" enctype="multipart/form-data" class="d-flex w-100 align-items-center">
+              <form method="POST" action="includes/inc.property.php" enctype="multipart/form-data" class="d-flex w-100 align-items-center">
                 <input type="file" id="img" name="img" accept="image/png, image/jpeg">
                 <input type="hidden" name="imageUserID" value="<?php if (isset($_SESSION['user_id'])) { echo $_SESSION['user_id']; } ?>" readonly>
                 <input type="hidden" name="imagePropertyID" value="<?php echo $prop_id; ?>" readonly>
-                <button type="submit" value="Add Images" name="upload"  class="globalButton blueButton">Add Image</button>
+                <button type="submit" value="Add Images" name="uploadImg" class="globalButton blueButton">Add Image</button>
               </form>
             </div>
 
