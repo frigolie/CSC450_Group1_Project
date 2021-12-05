@@ -45,7 +45,7 @@ if(isset($_GET['user_id'])) {
            if ($image != '') { $profile_image = '/graphic/uploads/avatars/' . $image; } else { $profile_image = '/graphic/user.png'; }
         ?>
         <div class="row py-1 justify-content-center align-items-start">
-          <h1 class="mb-5 text-capitalize"><?php echo $user['username']; ?>'s Profile</h1>
+          <h1 class="mb-5 text-capitalize text-shadow"><?php echo $user['username']; ?>'s Profile</h1>
           <div class="col-9 col-md-6 col-lg-4 py-4 mb-5 mb-xl-0 sticky-xl-top text-center bg-white rounded-custom box-shadow profileCard">
             <div class="row">
               <div class="col-12">
@@ -78,9 +78,9 @@ if(isset($_GET['user_id'])) {
 
                 if (mysqli_num_rows($user_props) > 0) {
                   if (mysqli_num_rows($user_props) == 1) {
-                    echo '<h2>' . mysqli_num_rows($user_props) . ' Listed Property</h2>';
+                    echo '<h2 class="text-shadow">' . mysqli_num_rows($user_props) . ' Listed Property</h2>';
                   } else {
-                    echo '<h2>' . mysqli_num_rows($user_props) . ' Listed Properties</h2>';
+                    echo '<h2 class="text-shadow">' . mysqli_num_rows($user_props) . ' Listed Properties</h2>';
                   }
                   $i = 1;
                   while ($prop = mysqli_fetch_assoc($user_props)) {
@@ -116,7 +116,7 @@ if(isset($_GET['user_id'])) {
 
                 <?php  }
                 } else {
-                  echo '<h2>No Properties Listed</h2>';
+                  echo '<h2 class="text-shadow">No Properties Listed</h2>';
                 }
               ?>
             </div>

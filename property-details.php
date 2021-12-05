@@ -61,9 +61,34 @@ session_start();
                       ?>
                       </div>
 
-                      <a href="/messages.php?recipient_id=<?php echo $property['owner_id'] ?>&property_id=<?php echo $property['property_id'] ?>">
-                        <button class="globalButton orangeButton my-2">Contact Host</button>
-                      </a>
+                      <div class="w-100 d-flex mt-4 align-items-center justify-content-center flex-wrap">
+                        <?php
+                        include 'includes/functions/avatar/getAvatar.php';
+                        include 'includes/functions/property/getOwnerInfo.php';
+
+                        $owner_query = getOwnerInfo($property['owner_id']);
+
+                        if (mysqli_num_rows($owner_query) > 0) {
+                          $i = 1;
+                          while ($owner = mysqli_fetch_assoc($owner_query)) {
+
+                          $image = getAvatar($property['owner_id']);
+                          if ($image != '') { $profile_image = '/graphic/uploads/avatars/' . $image; } else { $profile_image = '/graphic/user.png'; }
+
+                          ?>
+                          <a href="/view-profile.php?user_id=<?php echo $owner['user_id']; ?>">
+                            <div class="rounded-circle owner-icon me-3 lt-gray-bg box-shadow" style="background-image:url('<?php echo $profile_image; ?>');">
+                            </div>
+                          </a>
+                          <h5 class="lt-gray-text text-shadow fw-bold me-3">Property Listed by <a href="/view-profile.php?user_id=<?php echo $owner['user_id']; ?>"><span class="blue-text"><?php echo $owner['username']; ?></span></a></h5>
+                          <?php if (isset($_SESSION['username'])) { ?>
+                            <a href="/messages.php?recipient_id=<?php echo $property['owner_id'] ?>&property_id=<?php echo $property['property_id'] ?>">
+                              <button class="globalButton orangeButton my-2">Contact Host</button>
+                            </a>
+                        <?php }
+                          }
+                        } ?>
+                      </div>
                     </div>
 
                     <div class="col-12 col-lg-5 px-3 py-5 mt-2">
