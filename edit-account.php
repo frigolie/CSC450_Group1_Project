@@ -146,7 +146,7 @@ if (isset($_SESSION['user_id'])) {
     header("Location: /edit-account.php?user_id=".$_SESSION['user_id']);
   }
 } else if (isset($_SESSION['admin_id'])) { // redirect admin to admin profile edit page
-    header("Location: /editAdmin.php");
+    header("Location: /editAdmin.php?admin_id=".$_SESSION['admin_id']);
 } else { // redirect logged out users
     header("Location: /login.php");
 }?>

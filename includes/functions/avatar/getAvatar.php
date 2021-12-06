@@ -12,14 +12,6 @@ function getAvatar($user_id)
 
     $sql = "SELECT * FROM avatar WHERE user_id=$user_id";
     $avatar_query = mysqli_query($conn, $sql);
-    // $avatar = '';
-    //
-    // if (mysqli_num_rows($avatar_query) == 1) {
-    //   $i = 1;
-    //   while ($rows = mysqli_fetch_assoc($avatar_query)) {
-    //     $avatar = $rows['filename'];
-    //     $i++;
-    //   }
-    // }
+
     return $avatar_query;
   }

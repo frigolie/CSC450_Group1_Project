@@ -1,7 +1,18 @@
 <?php
 session_start();
 include  "includes/Inc.DBC.php";
-if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
+if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {
+include 'includes/functions/admin/getAdminAvatar.php';
+
+$imageURL = getAdminAvatar($_SESSION['admin_id']);
+
+if($imageURL != '') {
+  $admin_avatar = '/graphic/uploads/avatars/admin/' . $imageURL;
+} else {
+  $admin_avatar = '/graphic/admin.png';
+}
+
+  ?>
 
     <!DOCTYPE html>
     <html>
@@ -22,18 +33,19 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                   <div class="row w-100 d-flex flex-wrap justify-content-center align-items-start">
                     <!--Admin Users-->
                     <div class="col-9 col-md-6 col-lg-4 col-xl-3 adminCard py-4 mb-5 mb-xl-0 sticky-xl-top white-bg rounded-custom box-shadow">
-                        <img src="graphic/admin.png" class="card-img-top" alt="admin image">
+                        <img class="rounded-circle w-100" src="<?php echo $admin_avatar; ?>" class="card-img-top" alt="admin image">
                         <div class="card-body text-center">
                             <h5 class="card-title mb-4">
                                 <?= $_SESSION['name'] ?>
                             </h5>
-                            <a href="/edit-account.php?id=<?= $_SESSION['admin_id'] ?>" class="globalButton blueButton w-100 mt-5">Edit Account</a>
+                            <a href="/editAdmin.php?admin_id=<?= $_SESSION['admin_id'] ?>" class="globalButton blueButton w-100 mt-5">Edit Account</a>
                             <a href="/logout.php" class="globalButton redButton w-100 mt-5">Logout</a>
                         </div>
                     </div>
 
                     <!-- Admin info table -->
-                    <?php include 'includes/queries/admin_user.php';
+                    <?php
+                    include 'includes/queries/admin_user.php';
                       if (mysqli_num_rows($admin_query) > 0) { ?>
                         <div class="col-12 col-xl-8 offset-xl-1 p-4 mb-5 mb-xl-0 rounded-custom white-bg box-shadow adminDashTable" id="adminTable">
                             <h1 class="fs-1 mb-3 text-center text-shadow">Admins</h1>
@@ -45,17 +57,20 @@ if (isset($_SESSION['username']) && isset($_SESSION['admin_id'])) {   ?>
                                         <th scope="col">Name</th>
                                         <th scope="col">Username</th>
                                         <th scope="col">Role</th>
+                                        <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     $i = 1;
-                                    while ($rows = mysqli_fetch_assoc($admin_query)) { ?>
+                                    while ($rows = mysqli_fetch_assoc($admin_query)) {
+                                      ?>
                                         <tr>
                                             <th scope="row"><?= $rows['admin_id'] ?></th>
                                             <td><?= $rows['name'] ?></td>
                                             <td><?= $rows['username'] ?></td>
                                             <td><?= $rows['role'] ?></td>
+                                            <td><a class="blue-text" href="/adminProfile.php?admin_id=<?php echo $rows['admin_id']; ?>">View Profile</a></td>
                                         </tr>
                                     <?php $i++;
                                     } ?>
