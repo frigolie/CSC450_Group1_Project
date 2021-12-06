@@ -49,7 +49,7 @@ if(isset($_GET['user_id'])) {
               $avatarID = $avatar['avatar_id'];
             }
           }
-          
+
          if ($image != '') { $profile_image = '/graphic/uploads/avatars/' . $image; } else { $profile_image = '/graphic/user.png'; }
         ?>
         <div class="row py-1 justify-content-center align-items-start">
@@ -70,11 +70,17 @@ if(isset($_GET['user_id'])) {
                   <p class="w-100 userStays">
                     <h4 class="display-inline">Hosted Stays: <span class="fw-light"><?php //echo $numPastStays; ?># (awaiting res system)</span></h4>
                   </p>
-                <?php if (isset($_SESSION['username'])) { ?>
+                <?php if (isset($_SESSION['username'])) {
+                  if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $user_id) { ?>
+                    <a class="w-100 d-inline-block text-center" href="/edit-account.php?user_id=<?php echo $_SESSION['user_id']; ?>">
+                        <button class="globalButton orangeButton my-2 me-2">Edit Profile</button>
+                    </a>
+                <?php } else { ?>
                   <a class="w-100 d-inline-block text-center" href="/messages.php?recipient_id=<?php echo $user_id; ?>">
                       <button class="globalButton orangeButton my-2 me-2">Send Message</button>
                   </a>
-                <?php } ?>
+              <?php }
+                } ?>
               </div>
             </div>
           </div>
