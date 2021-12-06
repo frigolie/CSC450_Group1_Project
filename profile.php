@@ -40,7 +40,13 @@ if (isset($_SESSION['user_id'])) {
             $i = 1;
               while ($user = mysqli_fetch_assoc($user_query)) {
                 if($user['user_id'] == $user_id) {
-                 $image = getAvatar($user_id);
+                  $image = '';
+                  $avatar_query = getAvatar($user['user_id']);
+                  if (mysqli_num_rows($avatar_query) > 0) {
+                    while ($avatar = mysqli_fetch_assoc($avatar_query)) {
+                      $image = $avatar['filename'];
+                    }
+                  }
                  if ($image != '') { $profile_image = '/graphic/uploads/avatars/' . $image; } else { $profile_image = '/graphic/user.png'; }
                 ?>
       <div class="row py-1 justify-content-center">

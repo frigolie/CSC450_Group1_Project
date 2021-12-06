@@ -71,8 +71,13 @@ session_start();
                         if (mysqli_num_rows($owner_query) > 0) {
                           $i = 1;
                           while ($owner = mysqli_fetch_assoc($owner_query)) {
-
-                          $image = getAvatar($property['owner_id']);
+                          $image = '';
+                          $avatar_query = getAvatar($property['owner_id']);
+                          if (mysqli_num_rows($avatar_query) > 0) {
+                            while ($avatar = mysqli_fetch_assoc($avatar_query)) {
+                              $image = $avatar['filename'];
+                            }
+                          }
                           if ($image != '') { $profile_image = '/graphic/uploads/avatars/' . $image; } else { $profile_image = '/graphic/user.png'; }
 
                           ?>
