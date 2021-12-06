@@ -55,7 +55,7 @@ session_start();
                             <button class="globalButton orangeButton w-100">
                                 <?php
                                 if (isset($_SESSION['user_id'])) {
-                                    echo "<a class='white-text' href='profile.php?user_id=" . $_SESSION['user_id'] . "'>View Profile</a>";
+                                    echo "<a class='white-text' href='view-profile.php?user_id=" . $_SESSION['user_id'] . "'>View Profile</a>";
                                 } else if (isset($_SESSION['admin_id'])) {
                                     echo "<a class='white-text' href='adminProfile.php?admin_id=" . $_SESSION['admin_id'] . "'>View Profile</a>";
                                 } else {

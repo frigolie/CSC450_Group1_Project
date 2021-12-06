@@ -9,7 +9,7 @@ if (isset($_SESSION['admin_id'])) {
   <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- adminProfile.php - Admin/host profile page
+      <!-- adminProfile.php - Admin profile page
       CSC450 - Computer Science Capstone
       Group 1:
       Elise Frigoli
@@ -85,7 +85,7 @@ if (isset($_SESSION['admin_id'])) {
     header("Location: /adminProfile.php?admin_id=".$_SESSION['admin_id']);
   }
  } else if (isset($_SESSION['user_id'])) {
-    header("Location: /profile.php");
+    header("Location: /view-profile.php?user_id=".$_SESSION['user_id']);
 } else {
     header("Location: /login.php");
 } ?>
