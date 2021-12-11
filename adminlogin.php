@@ -82,16 +82,10 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_id'])) {   ?>
         var password = $("#password").val();
         var role = $("#role").val();
         if (username == '' || password == '' || role == '') {
-            swal({
+        swal({
                 title: "Fields Empty!!",
                 text: "Please check the missing field!!",
                 icon: "warning",
-                button: "OK",
-            });
-        } else {
-            swal({
-                title: "Successfully Logged In",
-                icon: "success",
                 button: "OK",
             });
         }
