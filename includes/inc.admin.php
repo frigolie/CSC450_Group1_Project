@@ -41,7 +41,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['role
             } else { header("Location: ../adminlogin.php?error=Incorect Username or password");
             }
         } else {
-            header("Location: ../adminlogin.php?error=Incorect Username or password");
+            header("Location: ../adminlogin.php?error=Please enter your username or password again");
         }
     }
 } else {
