@@ -33,16 +33,19 @@ if (isset($_POST["submit"])) {
         exit();
     }
     if (invalidEmail($email) !== false) {
-        header("location: ../register.php?error=invalidEmail");
+      $_SESSION['status'] = "invalid email";
+        header("location: ../register.php?error=invalidEmail&fname=$fname&lname=$lname&email=$email&username=$username");
         exit();
     }
 
     if (pwdMatch($password, $confirmpassword) !== false) {
-        header("location: ../register.php?error=passwordsdontmatch");
+       $_SESSION['status'] = "passwords don't match";
+        header("location: ../register.php?error=passwordsdontmatch&fname=$fname&lname=$lname&email=$email&username=$username");
         exit();
     }
     if (uidExists($conn, $username, $email) !== false) {
-        header("location: ../register.php?error=usernametaken");
+        $_SESSION['status'] = "username has been taken";
+        header("location: ../register.php?error=usernametaken&fname=$fname&lname=$lname&email=$email&username=$username");
         exit();
     }
 
