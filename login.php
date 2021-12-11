@@ -27,14 +27,35 @@
     <section class="container-fluid initialPageContent greenMountains pb-5">
         <div class="row pb-5 justify-content-center">
             <div class="col-10 col-md-8 col-lg-6 px-5 py-5 white-bg box-shadow rounded-custom">
+                
+                 <?php
+                session_start();
+
+                if (isset($_SESSION['status'])) {
+                ?>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong></strong> <?php echo $_SESSION['status']; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php
+                    unset($_SESSION['status']);
+                }
+
+                ?>
                 <h2 class="mb-4 text-center">Log in to <span class="dk-orange-text">access your account</span>.</h2>
 
 
 
                 <form method="POST" action="includes/inc.login.php">
-                    <div class="mb-3">
+                      <div class="mb-3">
                         <h4><label for="userName" class="form-label">Username</label></h4>
-                        <input type="text" id="username" class="form-control" placeholder="Email or Username" name="username" required>
+                        <?php
+                        if (isset($_GET['username'])) {
+                            $username = $_GET['username'];
+                            echo '<input type="text" id="username" class="form-control" placeholder="Email or Username" name="username" value="' . $username . '" required>';
+                        } else {
+                            echo '<input type="text" id="username" class="form-control" placeholder="Email or Username" name="username" required>';
+                        } ?>
                     </div>
                     <div class="mb-3">
                         <h4><label for="passwordInput" class="form-label">Password</label></h4>
@@ -42,16 +63,7 @@
                     </div><br>
                     <!-- my html was spacing out after working for more than 6 hours straight, but we should use a line break other than <br> -->
 
-                    <div class="mb-3">
-                        <!-- could use a better name -->
-                        <h5><input type="checkbox" id="remember" name="remember" value=" ">
-                            <label for="remember">Remember me on this device</label>
-                        </h5>
-                    </div>
-                    <div id="passHelp" class="form-text">
-                        <h5> Forgot your password? Click <a href="#">here</a>
-                        </h5>
-                    </div>
+                    
                     <div class="form-text mt-3">
                         <h5> Trying to access your admin dashboard? Click <a href="/adminlogin.php">here</a>
                         </h5>
@@ -77,7 +89,6 @@
 
 </html>
 
-
 <!-- JavaScript Form Validation using Sweet Alert -->
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -96,13 +107,6 @@
                 icon: "warning",
                 button: "OK",
             });
-        } else {
-            swal({
-                title: "Successfully Logged In",
-                icon: "success",
-                button: "OK",
-            });
         }
-
     })
 </script>

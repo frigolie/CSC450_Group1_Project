@@ -26,6 +26,22 @@
         <div class="row pb-5 justify-content-center">
 
             <div class="col-10 col-md-8 col-lg-6 px-5 py-5 white-bg box-shadow rounded-custom">
+                
+                     <?php
+                session_start();
+
+                if (isset($_SESSION['status'])) {
+                ?>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong></strong> <?php echo $_SESSION['status']; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php
+                    unset($_SESSION['status']);
+                }
+
+                ?>
+                
                 <h2 class="mb-1 text-center">Creating an account is <span class="dk-orange-text">quick and easy</span>.</h2>
                 <h3 class="mb-4 text-center">Get started below!</h3>
 
@@ -37,29 +53,53 @@
 
                         <!-- I'm not great with bootstrap. The formatting here for the name works, but the code itself is sloppy. I'll look into editing it to look better!-->
                         <div class="row">
-                            <div class="col">
+                           <div class="col">
                                 <label for="fName" class="form-label">First Name</label>
-                                <input type="text" id="fname" class="form-control" placeholder="First Name" name="fname" required>
+                                <?php
+                                if (isset($_GET['fname'])) {
+                                    $fname = $_GET['fname'];
+                                    echo '<input type="text" id="fname" class="form-control" placeholder="First Name" name="fname" value="' . $fname . '" required>';
+                                } else {
+                                    echo '<input type="text" id="fname" class="form-control" placeholder="First Name" name="fname" required>';
+                                } ?>
+
                             </div>
 
-                            <div class="col">
+                             <div class="col">
                                 <label for="lName" class="form-label">Last Name</label>
-                                <input type="text" id="lname" class="form-control" placeholder="Last Name" name="lname" required>
+                                <?php
+                                if (isset($_GET['lname'])) {
+                                    $lname = $_GET['lname'];
+                                    echo '<input type="text" id="lname" class="form-control" placeholder="Last Name" name="lname" value="' . $lname . '" required>';
+                                } else {
+                                    echo '<input type="text" id="lname" class="form-control" placeholder="Last Name" name="lname" required>';
+                                } ?>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mb-3">
+                  <div class="mb-3">
                         <label for="emailInput" class="form-label">Email</label>
-                        <input type="email" id="email" class="form-control" placeholder="example@email.com" name="email" required>
+                        <?php
+                        if (isset($_GET['email'])) {
+                            $email = $_GET['email'];
+                            echo '<input type="email" id="email" class="form-control" placeholder="example@email.com" name="email" value="' . $email . '" required>';
+                        } else {
+                            echo '<input type="email" id="email" class="form-control" placeholder="example@email.com" name="email" required>';
+                        } ?>
                         <div id="emailHelp" class="form-text">
                             Don't worry, we'll never share your email with anyone else.</div>
                     </div>
 
-                    <div class="mb-3">
+                   <div class="mb-3">
                         <label for="usernameInput" class="form-label">Username</label>
-                        <input type="text" id="username" class="form-control" placeholder="Username" name="username" required>
-
+                        <?php
+                        if (isset($_GET['username'])) {
+                            $username = $_GET['username'];
+                            echo '<input type="text" id="username" class="form-control" placeholder="Username" name="username" value="' . $username . '" required>';
+                        } else {
+                            echo '<input type="text" id="username" class="form-control" placeholder="Username" name="username" required>';
+                        } ?>
                     </div>
 
                     <div class="mb-3">
@@ -106,7 +146,6 @@
 
 
 
-
 <!-- JavaScript Form Validation using Sweet Alert -->
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -128,12 +167,6 @@
                 title: "Fields Empty!!",
                 text: "Please check the missing field!!",
                 icon: "warning",
-                button: "OK",
-            });
-        } else {
-            swal({
-                title: "Successfully Registered",
-                icon: "success",
                 button: "OK",
             });
         }
