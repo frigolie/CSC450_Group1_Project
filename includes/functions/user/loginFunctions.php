@@ -118,6 +118,10 @@ function createUser($conn, $fname, $lname, $email, $username, $password)
     mysqli_stmt_bind_param($stmt, "sssss", $fname, $lname, $email, $username, $hashedPwd);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
+     session_start();
+     $_SESSION['status'] = "Successfully Register";
+    header("location: ../register.php?error=none");
+    exit();
 }
 
 
@@ -140,15 +144,19 @@ function loginUser($conn, $username, $password)
     $uidExist = uidExists($conn, $username, $username);
 
     if ($uidExist === false) {
-        header("location: ../login.php?error=wronglogin");
+       session_start();
+        $_SESSION['status'] = " Please enter your username again";
+        header("location: ../login.php?error=wronglogin&username=$username");
         exit();
     }
     $pwdHashed = $uidExist["password"];
     $checkPwd = password_verify($password, $pwdHashed);
 
     if ($checkPwd === false) {
-        header("location: ../login.php?error=wronglogin");
+       $_SESSION['status'] = "Please enter your password again";
+        header("location: ../login.php?error=wrongpassword&username=$username");
         exit();
+
     } else if ($checkPwd === true) {
         session_start();
         $_SESSION["user_id"] = $uidExist["user_id"];
