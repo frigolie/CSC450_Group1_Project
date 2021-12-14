@@ -9,7 +9,7 @@ function getPastReservations($user_id)
       exit();
   }
 
-  $sql = "SELECT * FROM reservation WHERE guest_id=$user_id AND checkIn < NOW();";
+  $sql = "SELECT * FROM property INNER JOIN reservation ON property.property_id=reservation.property_id WHERE guest_id=$user_id AND checkIn < NOW();";
   $past_res = mysqli_query($conn, $sql);
 
   return $past_res;

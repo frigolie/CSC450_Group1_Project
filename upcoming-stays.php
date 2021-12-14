@@ -63,7 +63,7 @@ if (isset($_SESSION['user_id'])) {
                   </div>
                   <div class="col-12 col-md-6 reservationDetails text-start p-4 pt-3">
                     <p class="w-100 reservationNames">
-                      <span class="reservationTitle">Name on Reservation: </span><?php echo $f_stay['fname'] . " " . $f_stay['lname']; ?>
+                      <span class="reservationTitle">Name of Guest: </span><?php echo $f_stay['fname'] . " " . $f_stay['lname']; ?>
                     </p>
                     <p class="w-100 reservationDates">
                       <span class="reservationTitle">Dates of Stay: </span><?php echo date_format($checkIn,"m/d/Y") . " - " . date_format($checkOut,"m/d/Y"); ?>
@@ -131,7 +131,7 @@ if (isset($_SESSION['user_id'])) {
                   </div>
                   <div class="col-12 col-md-6 reservationDetails text-start p-4 pt-3">
                     <p class="w-100 reservationNames">
-                      <span class="reservationTitle">Name on Reservation: </span><?php echo $p_stay['fname'] . " " . $p_stay['lname']; ?>
+                      <span class="reservationTitle">Name of Guest: </span><?php echo $p_stay['fname'] . " " . $p_stay['lname']; ?>
                     </p>
                     <p class="w-100 reservationDates">
                       <span class="reservationTitle">Dates of Stay: </span><?php echo date_format($checkIn,"m/d/Y") . " - " . date_format($checkOut,"m/d/Y"); ?>
