@@ -222,7 +222,7 @@ if($imageURL != '') {
                                             <th scope="row"><?= $res['id'] ?></th>
                                             <td><?= $res['fname'] ?> <?= $res['lname'] ?></td>
                                             <td><?= $res['name'] ?></td>
-                                            <td><?= date_format($checkIn,"d/m/Y"); ?> - <?= date_format($checkOut,"d/m/Y"); ?></td>
+                                            <td><?= date_format($checkIn,"m/d/Y"); ?> - <?= date_format($checkOut,"m/d/Y"); ?></td>
                                             <td><?= $res['adults'] ?></td>
                                             <td><?= $res['kids'] ?></td>
                                             <td><?= $res['pets'] ?></td>
