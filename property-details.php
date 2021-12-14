@@ -16,6 +16,9 @@ session_start();
       Lor Xiong
       Written:     10/20/21
       Revisions:   11/27/21 - Hooking up the front end to the back end
+                   12/14/21 - Displaying whether Kids or Pets are welcome
+                            - Conditionally showing the pre-reservation form only to logged in users
+                            - Updating the fields of the pre-reservation form based on property options for kids/pets
       -->
 
       <!-- Page title -->

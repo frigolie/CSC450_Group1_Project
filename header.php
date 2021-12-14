@@ -21,6 +21,7 @@ session_start();
                             - Updating the listing images to be equalized in height
                    10/19/21 - Adding logo
                    11/26/21 - Changing the welcome messaging in the top nav based on user login status
+                   12/14/21 - Updating welcome messaging to use names instead of usernames
       -->
     <!-- Boostrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
