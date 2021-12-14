@@ -46,6 +46,8 @@ session_start();
                       <h4 class="text-start lt-gray-text mt-3">
                         <?php echo $property['bedrooms']; if($property['bedrooms'] != 'Studio') { echo ' Bed'; if($property['bedrooms'] != '1') { echo 's'; } } ?>,
                         <?php echo $property['bathrooms']; echo ' Bath'; if($property['bathrooms'] != '1') { echo 's'; }?>
+                        <?php if($property['kids'] == '1') { echo ' - Child Friendly'; } else { echo ' - Children Not Allowed'; } ?>
+                        <?php if($property['pets'] == '1') { echo ' - Pet Friendly'; } else { echo ' - Pets Not Allowed'; } ?>
                       </h4>
                       <p class="lt-gray-text text-start"><?php echo $property['description']; ?></p>
 
