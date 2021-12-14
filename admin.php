@@ -201,24 +201,33 @@ if($imageURL != '') {
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
+                                        <th scope="col">Name</th>
                                         <th scope="col">Property</th>
                                         <th scope="col">Dates</th>
                                         <th scope="col">Adults</th>
                                         <th scope="col">Kids</th>
                                         <th scope="col">Pets</th>
                                         <th scope="col">Price</th>
+                                        <th scope="col">Comments</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     $i = 1;
-                                    while ($rows = mysqli_fetch_assoc($res_query)) { ?>
+                                    while ($res = mysqli_fetch_assoc($res_query)) {
+                                      $checkIn = date_create($res['checkIn']);
+                                      $checkOut = date_create($res['checkOut']);
+                                      ?>
                                         <tr>
-                                            <th scope="row"><?= $i // $rows['reservation_id'] ?></th>
-                                            <td><?= $rows['fname'] ?></td>
-                                            <td><?= $rows['lname'] ?></td>
-                                            <td><?= $rows['email'] ?></td>
-                                            <td><?= $rows['username'] ?></td>
+                                            <th scope="row"><?= $res['id'] ?></th>
+                                            <td><?= $res['fname'] ?> <?= $res['lname'] ?></td>
+                                            <td><?= $res['Properties'] ?></td>
+                                            <td><?= date_format($checkIn,"d/m/Y"); ?> - <?= date_format($checkOut,"d/m/Y"); ?></td>
+                                            <td><?= $res['adults'] ?></td>
+                                            <td><?= $res['kids'] ?></td>
+                                            <td><?= $res['pets'] ?></td>
+                                            <td>$</td>
+                                            <td><?= $res['Comments'] ?></td>
                                         </tr>
                                     <?php $i++;
                                     } ?>
