@@ -221,12 +221,12 @@ if($imageURL != '') {
                                         <tr>
                                             <th scope="row"><?= $res['id'] ?></th>
                                             <td><?= $res['fname'] ?> <?= $res['lname'] ?></td>
-                                            <td><?= $res['Properties'] ?></td>
+                                            <td><?= $res['name'] ?></td>
                                             <td><?= date_format($checkIn,"d/m/Y"); ?> - <?= date_format($checkOut,"d/m/Y"); ?></td>
                                             <td><?= $res['adults'] ?></td>
                                             <td><?= $res['kids'] ?></td>
                                             <td><?= $res['pets'] ?></td>
-                                            <td>$</td>
+                                            <td>$<?= $res['total_price'] ?></td>
                                             <td><?= $res['Comments'] ?></td>
                                         </tr>
                                     <?php $i++;
