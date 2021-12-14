@@ -35,6 +35,7 @@ session_start();
               $prop_id = htmlspecialchars($_GET['property_id']);
               while ($property = mysqli_fetch_assoc($prop_query)) {
                 if($property['property_id'] == $prop_id) {
+                  $propertyPrice = $property['price'];
                   $images = getPropertyImages($property['property_id']);
                   if ($images[0]['filename'] != '') { $featImg = '/graphic/uploads/property_images/' . $images[0]['filename']; } else { $featImg = '/graphic/ha_square.png'; } ?>
 
@@ -101,25 +102,45 @@ session_start();
                     <div class="col-12 col-lg-5 px-3 py-5 mt-2">
                       <h3 class="mt-2 mt-lg-5 mb-3 lt-gray-text text-center text-shadow">Reserve this Property</h3>
                       <div class="white-bg rounded-custom box-shadow p-4">
-                        <form>
-                          <div class="form-group">
-                            <label for="numberGuests">How many guests?</label>
-                            <input type="number" id="numberGuests" name="quantity" min="1">
+                        <?php if (isset($_SESSION['user_id'])) { ?>
+                          <form method="GET" action="/make-reservation.php">
+                          <div class="form-group d-flex flex-wrap justify-content-between">
+                            <label for="numAdults" class="w-75">How many Adults? (18yrs and over)</label>
+                            <input class="mb-3 w-15" type="number" id="numAdults" name="quantity" min="1" max="10" step="1" value="1" required>
+                            <?php if($property['kids'] == '1') { ?>
+                              <label for="numKids" class="w-75">How many Children? (18yrs and under)</label>
+                              <input class="mb-3 w-15" type="number" id="numKids" name="quantity" min="0" max="10" step="1" value="0" required>
+                            <?php } ?>
+                            <?php if($property['pets'] == '1') { ?>
+                              <label for="pets" class="mb-3">Will you bring Pets?</label>
+                              <div>
+                                <input type="radio" id="noPets" name="pets" value="No" checked="checked">
+                                <label for="noPets" class="me-3">No</label>
+                                <input type="radio" id="yesPets" name="pets" value="Yes">
+                                <label for="yesPets">Yes</label>
+                              </div>
+                            <?php } ?>
                           </div>
                           <div class="mb-3">
                              <label for="checkIn" class="form-label">Check-in:</label>
-                             <input type="date" class="form-control" id="checkIn" placeholder="mm/dd/yyyy" required>
+                             <input name="checkIn" type="date" class="form-control dateField" id="checkIn" placeholder="mm/dd/yyyy" required>
                           </div>
                           <div class="mb-5">
-                             <label for="checkIn" class="form-label">Check-out:</label>
-                             <input type="date" class="form-control" id="checkIn" placeholder="mm/dd/yyyy" required>
+                             <label for="checkOut" class="form-label">Check-out:</label>
+                             <input name="checkOut" type="date" class="form-control dateField" id="checkOut" placeholder="mm/dd/yyyy" required>
                           </div>
-                          <h4 class="mb-2">Cost Estimate: $123.45</h4>
-                          <h4>Due Now: $98.76</h4>
+                          <input type="hidden" name="propertyID" id="propertyID" value="<?php echo $property['property_id']; ?>" readonly />
+                          <input type="hidden" name="resPrice" id="resPrice" value="<?php echo $property['price']; ?>" readonly />
+                          <h4 class="mb-2" id="cost-estimate">Price Per Day: $<?php echo $property['price']; ?></h4>
                           <div class="pt-4 pb-4 text-center">
                             <button type="submit" class="globalButton blueButton">Book Now!</button>
                           </div>
                         </form>
+                      <?php } else if (isset($_SESSION['admin_id'])) { ?>
+                          <h4 class="text-center m-4">View all system reservations in the <a class="orange-text" href="/admin.php">admin dashboard</a>.</h4>
+                      <?php } else { ?>
+                          <h4 class="text-center m-4">You must be logged in to create a reservation. <a class="blue-text" href="/login.php">Log&nbsp;in</a> to your account now to book your next&nbsp;adventure!</h4>
+                      <?php } ?>
                       </div>
                     </div>
 
@@ -145,5 +166,24 @@ session_start();
       var clickedImg = $(this).attr('src');
       $('.featured-img').css('background-image', "url('" + clickedImg + "')");
     });
+
+    $('.dateField').change(function() {
+      var startDate = new Date($('#checkIn').val());
+      var endDate = new Date($('#checkOut').val());
+      if(startDate != '' && endDate != '') {
+        if (startDate > endDate){
+          alert('Check-out date must be later than check-in!');
+          $('#checkOut').val('');
+        } else if (startDate < endDate) {
+          var time_difference = endDate.getTime() - startDate.getTime();
+          var numDays = time_difference / (1000 * 60 * 60 * 24);
+
+          var price = (<?php echo $propertyPrice; ?> * numDays);
+          $('#resPrice').val(price);
+          $('#cost-estimate').text('Cost Estimate: $' + price);
+        }
+      }
+    });
+
   });
 </script>
