@@ -19,6 +19,7 @@ include  "includes/Inc.DBC.php";
       Written:     10/20/21
       Revisions:   11/26/21 - Connecting to the back end
                    11/27/21 - Adding images to property cards
+                   12/14/21 - Removing extra button & adding empty property notification
       -->
 
       <!-- Page title -->
@@ -32,13 +33,12 @@ include  "includes/Inc.DBC.php";
         <div class="row py-1 justify-content-between">
           <div class="col-12 d-lg-flex align-items-center mb-5">
             <h1 class="mb-2">My Properties</h1>
-            <a href="/add-property.php">
-              <button class="globalButton blueButton ms-lg-4">Add New Listing!</button>
-            </a>
           </div>
 
-          <?php include 'includes/queries/property_table.php';
+          <?php
+            include 'includes/queries/property_table.php';
             include 'includes/functions/image/getPropertyImages.php';
+
             if (mysqli_num_rows($prop_query) > 0) {
             $i = 1;
               while ($property = mysqli_fetch_assoc($prop_query)) {
@@ -66,7 +66,11 @@ include  "includes/Inc.DBC.php";
                 <?php $i++;
                 }
               }
-            } ?>
+            }
+            if($i <= 1) { // If the query never looped because the user has no properties in the system
+              echo '<h2 class="white-text text-center text-shadow">You currently have no listed properties.</h2>';
+            }
+             ?>
 
         </div>
       </div>
