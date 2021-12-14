@@ -45,8 +45,10 @@ session_start();
                 <div class="col-7 col-lg-8 loginContainer d-flex align-items-center justify-content-center justify-content-lg-end">
                     <div class="row w-100">
                         <div class="d-none d-lg-flex col-lg-6 align-items-center justify-content-center justify-content-lg-end">
-                            <?php if (isset($_SESSION['username'])) {
-                              echo '<p class="text-center mb-3 mb-lg-0">Welcome back, ' . $_SESSION['username'] . '!</p>';
+                            <?php if (isset($_SESSION['user_id'])) {
+                              echo '<p class="text-center mb-3 mb-lg-0">Welcome back, ' . $_SESSION['fname'] . '!</p>';
+                            } else if (isset($_SESSION['admin_id'])) {
+                              echo '<p class="text-center mb-3 mb-lg-0">Welcome back, ' . $_SESSION['name'] . '!</p>';
                             } else {
                               echo '<p class="text-center mb-3 mb-lg-0">Login or create an account to begin!</p>';
                             } ?>
