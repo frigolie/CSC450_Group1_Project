@@ -1,6 +1,10 @@
 <?php
 session_start();
 if (isset($_SESSION['user_id'])) {
+  if(isset($_GET['reservation_id'])) {
+
+    $res_id = htmlspecialchars($_GET['reservation_id']);
+    include 'includes/functions/reservation/getReservationByID.php';
 ?>
 
     <!DOCTYPE html>
@@ -43,6 +47,11 @@ if (isset($_SESSION['user_id'])) {
                         unset($_SESSION['status']);
                     }
 
+                    $res_query = getReservationByID($res_id);
+
+                    if (mysqli_num_rows($res_query) > 0) {
+                      while ($res = mysqli_fetch_assoc($res_query)) {
+                        $price = $res['price'];
                     ?>
                     <h3 class="mb-4 text-center">Update your reservation details below</h3>
 
@@ -52,11 +61,11 @@ if (isset($_SESSION['user_id'])) {
                           <div class="row">
                               <div class="col">
                                   <label for="fName" class="form-label">First Name</label>
-                                  <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required>
+                                  <input type="text" class="form-control" id="fname" name="fname" value="<?php echo $res['fname']; ?>" required>
                               </div>
                               <div class="col">
                                   <label for="lName" class="form-label">Last Name</label>
-                                  <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" required>
+                                  <input type="text" class="form-control" id="lname" name="lname" value="<?php echo $res['lname']; ?>" required>
                               </div>
                           </div>
                         </div>
@@ -64,11 +73,11 @@ if (isset($_SESSION['user_id'])) {
                             <div class="row">
                                 <div class="col">
                                     <label for="checkIn" class="form-label">Check-in date</label>
-                                    <input type="date" class="form-control" id="checkIn" name="checkIn" aria-describedby="checkIn" required>
+                                    <input type="date" class="form-control dateField" id="checkIn" name="checkIn" aria-describedby="checkIn" value="<?php echo $res['checkIn']; ?>" required>
                                 </div>
                                 <div class="col">
                                     <label for="checkOut" class="form-label">Check-out date</label>
-                                    <input type="date" class="form-control" id="checkOut" name="checkOut" aria-describedby="checkOut" required>
+                                    <input type="date" class="form-control dateField" id="checkOut" name="checkOut" aria-describedby="checkOut" value="<?php echo $res['checkOut']; ?>" required>
                                 </div>
                             </div>
                         </div>
@@ -78,54 +87,32 @@ if (isset($_SESSION['user_id'])) {
                         <div class="from-group mb-3">
                             <div class="row">
                                 <div class="col">
-                                    <label for="adults" class="form-label">Adults (18 yrs+)</label>
-                                    <select name="adults" id="adults" class="form-control" style="width: 150px" required>
-                                        <option value="">--Select Guests--</option>
-                                        <option value="1">1 adult</option>
-                                        <option value="2">2 adults</option>
-                                        <option value="3">3 adults</option>
-                                        <option value="4">4 adults</option>
-                                        <option value="5">5 adults</option>
-                                        <option value="6">6 adults</option>
-                                        <option value="7">7 adults</option>
-                                        <option value="8">8 adults</option>
-                                        <option value="9">9 adults</option>
-                                        <option value="10">10 adults</option>
-                                        <option value="11">11 adults</option>
-                                        <option value="12">12 adults</option>
-                                    </select>
+                                    <label for="adults" class="form-label">Adults (18 yrs+)</label><br>
+                                    <input class="mb-3" type="number" id="adults" name="adults" min="1" max="10" step="1" value="<?php echo $res['adults']; ?>" required>
                                 </div>
+                                <?php if ($res['kids_allowed'] == 1) { ?>
                                 <div class="col">
-                                    <label for="kids" class="form-label">Children</label>
-                                    <select name="kids" id="kids" class="form-control" required>
-                                        <option value="0">Children Not Allowed</option>
-                                        <option value="" selected="selected" disabled>--Select Guests--</option>
-                                        <option value="1">1 child</option>
-                                        <option value="2">2 children</option>
-                                        <option value="3">3 children</option>
-                                        <option value="4">4 children</option>
-                                        <option value="5">5 children</option>
-                                        <option value="6">6 children</option>
-                                        <option value="7">7 children</option>
-                                        <option value="8">8 children</option>
-                                        <option value="9">9 children</option>
-                                        <option value="10">10 children</option>
-                                        <option value="11">11 children</option>
-                                        <option value="12">12 children</option>
-                                    </select>
+                                    <label for="kids" class="form-label">Children</label><br>
+                                    <input class="mb-3" type="number" id="kids" name="kids" min="0" max="10" step="1" value="<?php echo $res['kids_reserved']; ?>" required>
                                 </div>
-                                <div class="col">
-                                    <label for="pets" class="form-label">Pets</label>
-                                    <select name="pets" id="pets" class="form-control" style="width: 150px" required>
-                                        <option value="0">Pets Not Allowed</option>
-                                        <option value="" selected="selected" disabled>--Select--</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </div>
+                              <?php  } else { ?>
+                                <input type="hidden" name="kids" value="0" />
+                              <?php  } ?>
+                              <div class="col">
+                                  <label for="pets" class="form-label">Pets</label>
+                                  <select name="pets" id="pets" class="form-control" style="width: 150px" required>
+                                    <option value="" selected="selected" disabled>--Select--</option>
+                                    <?php   if ($res['pets_allowed'] == 1) { ?>
+                                      <option value="Yes" <?php if ($res['pets_reserved'] == "Yes") { echo "selected='selected'"; }?>>Yes</option>
+                                      <option value="No" <?php if ($res['pets_reserved'] == "No") { echo "selected='selected'"; }?>>No</option>
+                                      <?php  } else { ?>
+                                      <option value="No">Pets Not Allowed</option>
+                                      <?php  } ?>
+                                  </select>
+                              </div>
                             </div>
                         </div>
-                        <!-- Easy html fix, align dropdown boxes in select -->
+
                         <br>
                         <h3>Contact</h3>
                         <h6>This is how the host will contact you</h6>
@@ -134,31 +121,22 @@ if (isset($_SESSION['user_id'])) {
                             <div class="row">
                                 <div class="col">
                                     <label for="phone" class="form-label">phone</label>
-                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="(xxx)xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" style="width:250px" required>
-                                </div>
-                                <div class="col">
-                                    <label for="Properties" class="form-label">Properties</label>
-                                    <select name="Properties" id="Properties" class="form-control" style="width: 250px" required>
-                                        <option value="">--Select Properties--</option>
-                                        <option value="Downtown Penthouse">Downtown Penthouse</option>
-                                        <option value="Oceanside Cabana">Oceanside Cabana</option>
-                                        <option value="Mountain Cabin">Mountain Cabin</option>
-                                        <option value="Classical Townhouse">Classical Townhouse</option>
-                                        <option value="Victorian Manor">Victorian Manor</option>
-                                        <option value="Country Cottage">Country Cottage</option>
-                                        <option value="Mid-Century Ranch House">Mid-Century Ranch House</option>
-                                    </select>
+                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="(xxx)xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<?php echo $res['phone']; ?>" required>
                                 </div>
                             </div>
                         </div>
                         <br>
                         <div class="mb-3">
                             <label for="textAreaInput" class="form-label">Comments</label>
-                            <textarea rows="4" cols="50" class="form-control" name="Comments" id="Comments" placeholder="Add any additional requests here..."></textarea>
+                            <textarea rows="4" cols="50" class="form-control" name="comments" id="comments" placeholder="Add any additional requests here..."><?php echo $res['comments']; ?></textarea>
                         </div>
+                        <input type="hidden" name="id" value="<?php echo $res['id']; ?>" readonly />
+                        <input type="hidden" name="total_price" value="<?php echo $res['total_price']; ?>" readonly />
+                        <h3 class="my-3">Total Cost for this reservation at <?php echo $res['name']; ?> is <span class="dk-orange-text" id="cost-estimate">$<?php echo $res['price']; ?></span></h3>
+
 
                         <div class="pt-3 text-center">
-                            <button type="update" id="update" class="globalButton blueButton">Update Reservation</button>
+                            <button type="updateReservation" id="updateReservation" name="updateReservation" class="globalButton blueButton">Update Reservation</button>
                             <div class="pt-3 text-center mt-3">
                                 <h3 class="mb-1 text-left">Want to delete your reservation? </h3>
                                 <h3><span class="dk-orange-text">Warning! </span> This action cannot be undone!</h3>
@@ -168,11 +146,40 @@ if (isset($_SESSION['user_id'])) {
                             </div>
                         </div>
                     </form>
+                  <?php  } // End while res query
+                }  // End if res query ?>
         </section>
         <?php include(getcwd() . "/footer.php"); ?>
     </body>
 
     </html>
+
+    <script>
+      $( document ).ready(function() {
+        calculatePrice();
+        $('.dateField').change(function() {
+          calculatePrice();
+        });
+      });
+
+      function calculatePrice() {
+        var startDate = new Date($('#checkIn').val());
+        var endDate = new Date($('#checkOut').val());
+        if(startDate != '' && endDate != '') {
+          if (startDate > endDate){
+            alert('Check-out date must be later than check-in!');
+            $('#checkOut').val('');
+          } else if (startDate < endDate) {
+            var time_difference = endDate.getTime() - startDate.getTime();
+            var numDays = time_difference / (1000 * 60 * 60 * 24);
+
+            var price = (<?php echo $price; ?> * numDays);
+            $('#total_price').val(price);
+            $('#cost-estimate').text('$' + price);
+          }
+        }
+      }
+    </script>
 
     <!-- JavaScript Form Validation using Sweet Alert -->
 
@@ -205,7 +212,10 @@ if (isset($_SESSION['user_id'])) {
 
         })
     </script>
-<?php } else if (isset($_SESSION['admin_id'])) { // redirect admin
+<?php } else {
+    header("Location: /upcoming-reservations.php");
+  }
+ } else if (isset($_SESSION['admin_id'])) { // redirect admin
     header("Location: /admin.php");
 } else { // redirect logged out users
     header("Location: /login.php");

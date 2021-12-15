@@ -55,7 +55,7 @@ if (isset($_SESSION['user_id'])) {
       Joshua Sibert
       Lor Xiong
       Written:     10/20/21
-      Revisions:   12/14/21 - Connecting to DB
+      Revisions:   12/14/21 - Connecting to the database
       -->
 
         <!-- Page title -->
