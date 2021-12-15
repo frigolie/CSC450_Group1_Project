@@ -28,7 +28,7 @@ session_start();
     <section class="container pb-5">
       <div class="row mt-5 mb-0 my-lg-5">
         <div class="col-12 col-md-5">
-          <h1 class="text-shadow">Vacation Rentals <span class="dk-orange-text">without the&nbsp;Stress</span></h1>
+          <h1 class="text-shadow">Vacation Rentals <span class="orange-text">without the&nbsp;Stress</span></h1>
         </div>
         <div class="col-12 col-md-7 p-4 white-bg rounded-custom box-shadow">
           <p>Tired of needing a vacation from the vacation-planning process? So were we! That's why we created this app, your gateway to a world of adventure. Communicate directly with the rental owners to avoid vital information getting lost in the corporate noise of travel booking agencies. See photos of your actual property so you know what to expect at your destination before ever stepping out on your journey.</p>
