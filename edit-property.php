@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['user_id'])) {
   if(isset($_GET['property_id'])) {
     $prop_id = htmlspecialchars($_GET['property_id']);
 
@@ -235,9 +235,6 @@ if (isset($_SESSION['username'])) {
                     header("Location: /my-properties.php");
                 }
               } // While there are results from the prop query
-              else {
-                  header("Location: /my-properties.php");
-              }
             } // If there are results from the prop query
             else {
                 header("Location: /my-properties.php");

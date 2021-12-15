@@ -108,11 +108,11 @@ session_start();
                         <?php if (isset($_SESSION['user_id'])) { ?>
                           <form method="GET" action="/make-reservation.php">
                           <div class="form-group d-flex flex-wrap justify-content-between">
-                            <label for="numAdults" class="w-75">How many Adults? (18yrs and over)</label>
-                            <input class="mb-3 w-15" type="number" id="numAdults" name="quantity" min="1" max="10" step="1" value="1" required>
+                            <label for="adults" class="w-75">How many Adults? (18yrs and over)</label>
+                            <input class="mb-3 w-15" type="number" id="adults" name="adults" min="1" max="10" step="1" value="1" required>
                             <?php if($property['kids'] == '1') { ?>
-                              <label for="numKids" class="w-75">How many Children? (18yrs and under)</label>
-                              <input class="mb-3 w-15" type="number" id="numKids" name="quantity" min="0" max="10" step="1" value="0" required>
+                              <label for="kids" class="w-75">How many Children? (18yrs and under)</label>
+                              <input class="mb-3 w-15" type="number" id="kids" name="kids" min="0" max="10" step="1" value="0" required>
                             <?php } ?>
                             <?php if($property['pets'] == '1') { ?>
                               <label for="pets" class="mb-3">Will you bring Pets?</label>
@@ -132,15 +132,14 @@ session_start();
                              <label for="checkOut" class="form-label">Check-out:</label>
                              <input name="checkOut" type="date" class="form-control dateField" id="checkOut" placeholder="mm/dd/yyyy" required>
                           </div>
-                          <input type="hidden" name="propertyID" id="propertyID" value="<?php echo $property['property_id']; ?>" readonly />
-                          <input type="hidden" name="resPrice" id="resPrice" value="<?php echo $property['price']; ?>" readonly />
+                          <input type="hidden" name="property_id" id="property_id" value="<?php echo $property['property_id']; ?>" readonly />
                           <h4 class="mb-2" id="cost-estimate">Price Per Day: $<?php echo $property['price']; ?></h4>
                           <div class="pt-4 pb-4 text-center">
                             <button type="submit" class="globalButton blueButton">Book Now!</button>
                           </div>
                         </form>
                       <?php } else if (isset($_SESSION['admin_id'])) { ?>
-                          <h4 class="text-center m-4">View all system reservations in the <a class="orange-text" href="/admin.php">admin dashboard</a>.</h4>
+                          <h4 class="text-center m-4">View all reservations in the <a class="orange-text" href="/admin.php">admin dashboard</a>.</h4>
                       <?php } else { ?>
                           <h4 class="text-center m-4">You must be logged in to create a reservation. <a class="blue-text" href="/login.php">Log&nbsp;in</a> to your account now to book your next&nbsp;adventure!</h4>
                       <?php } ?>

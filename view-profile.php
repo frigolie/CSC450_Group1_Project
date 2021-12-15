@@ -8,6 +8,7 @@ if(isset($_GET['user_id'])) {
     include 'includes/functions/property/countProperties.php';
     include 'includes/functions/property/getProperties.php';
     include 'includes/functions/image/getPropertyImages.php';
+    include 'includes/functions/reservation/getPastStays.php';
 
       if (mysqli_num_rows($user_query) > 0) {
       $i = 1;
@@ -50,6 +51,14 @@ if(isset($_GET['user_id'])) {
             }
           }
 
+          $past_stays = getPastStays($user_id);
+          if (mysqli_num_rows($past_stays) > 0) {
+            $numPastStays = 0;
+            while ($p_stay = mysqli_fetch_assoc($past_stays)) {
+              $numPastStays++;
+            }
+          }
+
          if ($image != '') { $profile_image = '/graphic/uploads/avatars/' . $image; } else { $profile_image = '/graphic/user.png'; }
         ?>
         <div class="row py-1 justify-content-center align-items-start">
@@ -68,7 +77,7 @@ if(isset($_GET['user_id'])) {
                     <h4 class="display-inline">Member Since: <span class="fw-light"><?php $year = date("F j, Y", strtotime($user['creation_date'])); echo $year; ?></span></h4>
                   </p>
                   <p class="w-100 userStays">
-                    <h4 class="display-inline">Hosted Stays: <span class="fw-light"><?php //echo $numPastStays; ?># (awaiting res system)</span></h4>
+                    <h4 class="display-inline">Hosted Stays: <span class="fw-light"><?php echo $numPastStays; ?></span></h4>
                   </p>
                 <?php if (isset($_SESSION['username'])) {
                   if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $user_id) { ?>
