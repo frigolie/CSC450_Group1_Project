@@ -30,20 +30,21 @@ if (isset($_POST["createReservation"])) {
     exit();
 } else if (isset($_POST["updateReservation"])) {
 
-    $id = $_POST['id'];
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $checkIn = $_POST['checkIn'];
-    $checkOut = $_POST['checkOut'];
-    $adults = $_POST['adults'];
-    $kids  = $_POST['kids'];
-    $pets   = $_POST['pets'];
-    $phone  = $_POST['phone'];
-    $comments = $_POST['comments'];
-    $total_price = $_POST['total_price'];
-    $card_type  = $_POST['card_type'];
-    $card_number  = $_POST['card_number'];
-    $card_code = $_POST['card_code'];
+      $fname = $_POST['fname'];
+      $lname = $_POST['lname'];
+      $html_checkIn =$_POST['checkIn'];
+      $checkIn=date("Y-m-d H:i:s",strtotime($html_checkIn));
+      $html_checkOut =$_POST['checkOut'];
+      $checkOut=date("Y-m-d H:i:s",strtotime($html_checkOut));
+      $adults = $_POST['adults'];
+      $kids  = $_POST['kids'];
+      $pets   = $_POST['pets'];
+      $phone  = $_POST['phone'];
+      $comments = $_POST['comments'];
+      $total_price = $_POST['total_price'];
+      $card_type  = $_POST['card_type'];
+      $card_number  = $_POST['card_number'];
+      $card_code = $_POST['card_code'];
 
     require_once 'functions/reservation/updateReservation.php';
     require_once  'Inc.DBC.php';

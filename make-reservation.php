@@ -1,6 +1,44 @@
 <?php
 session_start();
 if (isset($_SESSION['user_id'])) {
+  if(isset($_GET['property_id'])) {
+
+    $prop_id = htmlspecialchars($_GET['property_id']);
+    include 'includes/functions/property/getPropertyByID.php';
+
+    $adults = '';
+    $kids = '';
+    $pets = '';
+    $checkIn = '';
+    $checkOut = '';
+    $price = '';
+
+  if(isset($_GET['adults'])) {
+    $adults = htmlspecialchars($_GET['adults']);
+  }
+  if(isset($_GET['kids'])) {
+    $kids = htmlspecialchars($_GET['kids']);
+  }
+  if(isset($_GET['pets'])) {
+    $pets = htmlspecialchars($_GET['pets']);
+  }
+  if(isset($_GET['checkIn'])) {
+    $checkIn = htmlspecialchars($_GET['checkIn']);
+  }
+  if(isset($_GET['checkOut'])) {
+    $checkOut = htmlspecialchars($_GET['checkOut']);
+  }
+
+  $property_query = getPropertyByID($prop_id);
+
+  if (mysqli_num_rows($property_query) > 0) {
+    while ($property = mysqli_fetch_assoc($property_query)) {
+      $property_name = $property['name'];
+      $pets_allowed = $property['pets'];
+      $kids_allowed = $property['kids'];
+      $price = $property['price'];
+    }
+  }
 ?>
 
     <!DOCTYPE html>
@@ -66,70 +104,50 @@ if (isset($_SESSION['user_id'])) {
                             <div class="row">
                                 <div class="col">
                                     <label for="checkIn" class="form-label">Check-in date</label>
-                                    <input type="date" class="form-control dateField" id="checkIn" name="checkIn" aria-describedby="checkIn" required>
+                                    <input type="date" class="form-control dateField" id="checkIn" name="checkIn" aria-describedby="checkIn" required <?php if ($checkIn != '') { echo "value='" . $checkIn . "'"; }?>>
                                 </div>
                                 <div class="col">
                                     <label for="checkOut" class="form-label">Check-out date</label>
-                                    <input type="date" class="form-control dateField" id="checkOut" name="checkOut" aria-describedby="checkOut" required>
+                                    <input type="date" class="form-control dateField" id="checkOut" name="checkOut" aria-describedby="checkOut" required <?php if ($checkOut != '') { echo "value='" . $checkOut . "'"; }?>>
                                 </div>
                             </div>
                         </div>
                         <br>
-                        <h3>Guests</h3>
+                        <h4>Guests</h4>
                         <br>
                         <div class="from-group mb-3">
                             <div class="row">
                                 <div class="col">
-                                    <label for="adults" class="form-label">Adults (18 yrs+)</label>
-                                    <select name="adults" id="adults" class="form-control" style="width: 150px" required>
-                                        <option value="" selected="selected" disabled>--Select Guests--</option>
-                                        <option value="1">1 adult</option>
-                                        <option value="2">2 adults</option>
-                                        <option value="3">3 adults</option>
-                                        <option value="4">4 adults</option>
-                                        <option value="5">5 adults</option>
-                                        <option value="6">6 adults</option>
-                                        <option value="7">7 adults</option>
-                                        <option value="8">8 adults</option>
-                                        <option value="9">9 adults</option>
-                                        <option value="10">10 adults</option>
-                                        <option value="11">11 adults</option>
-                                        <option value="12">12 adults</option>
-                                    </select>
+                                    <label for="adults" class="form-label">Adults (18 yrs+)</label><br>
+                                    <input class="mb-3" type="number" id="adults" name="adults" min="1" max="10" step="1" <?php if ($adults != '') { echo "value='" . $adults . "'"; }?> required>
                                 </div>
+                                <?php if ($kids_allowed == 1) { ?>
                                 <div class="col">
-                                    <label for="kids" class="form-label">Children</label>
-                                    <select name="kids" id="kids" class="form-control" required>
-                                        <option value="0">Children Not Allowed</option>
-                                        <option value="" selected="selected" disabled>--Select Guests--</option>
-                                        <option value="1">1 child</option>
-                                        <option value="2">2 children</option>
-                                        <option value="3">3 children</option>
-                                        <option value="4">4 children</option>
-                                        <option value="5">5 children</option>
-                                        <option value="6">6 children</option>
-                                        <option value="7">7 children</option>
-                                        <option value="8">8 children</option>
-                                        <option value="9">9 children</option>
-                                        <option value="10">10 children</option>
-                                        <option value="11">11 children</option>
-                                        <option value="12">12 children</option>
-                                    </select>
+                                    <label for="kids" class="form-label">Children</label><br>
+                                    <input class="mb-3" type="number" id="kids" name="kids" min="0" max="10" step="1" <?php if ($kids != '') { echo "value='" . $kids . "'"; }?> required>
                                 </div>
+                              <?php  } else { ?>
+                                <input type="hidden" name="kids" value="0" />
+                              <?php  } ?>
+
                                 <div class="col">
                                     <label for="pets" class="form-label">Pets</label>
                                     <select name="pets" id="pets" class="form-control" style="width: 150px" required>
-                                        <option value="0">Pets Not Allowed</option>
-                                        <option value="" selected="selected" disabled>--Select--</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
+                                      <option value="" selected="selected" disabled>--Select--</option>
+                                      <?php   if ($pets_allowed == 1) { ?>
+                                        <option value="Yes" <?php if ($pets == "Yes") { echo "selected='selected'"; }?>>Yes</option>
+                                        <option value="No" <?php if ($pets == "No") { echo "selected='selected'"; }?>>No</option>
+                                        <?php  } else { ?>
+                                        <option value="No">Pets Not Allowed</option>
+                                        <?php  } ?>
                                     </select>
                                 </div>
+
                             </div>
                         </div>
 
                         <br>
-                        <h3>Contact</h3>
+                        <h4>Contact</h4>
                         <h6>This is how the host will contact you</h6>
                         <br>
                         <div class="mb-3">
@@ -139,9 +157,9 @@ if (isset($_SESSION['user_id'])) {
                                     <input type="tel" class="form-control" id="phone" name="phone" placeholder="(xxx)xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" style="width:250px" required>
                                 </div>
                                 <div class="col">
-                                  <input type="text" name="property_id" id="property_id" value="6" readonly>
-                                  <input type="text" name="guest_id" id="guest_id" value="<?php echo $_SESSION['user_id']; ?>" readonly>
-                                  <input type="text" name="total_price" id="total_price" value="24" readonly>
+                                  <input type="hidden" name="property_id" id="property_id" value="<?php echo $prop_id; ?>" readonly>
+                                  <input type="hidden" name="guest_id" id="guest_id" value="<?php echo $_SESSION['user_id']; ?>" readonly>
+                                  <input type="hidden" name="total_price" id="total_price" value="" readonly>
                                 </div>
                             </div>
                         </div>
@@ -150,8 +168,9 @@ if (isset($_SESSION['user_id'])) {
                             <label for="comments" class="form-label">Comments</label>
                             <textarea rows="4" cols="50" class="form-control" name="comments" id="comments" placeholder="Add any additional requests here..."></textarea>
                         </div>
+                        <h3 class="my-3">Total Cost for your vacation to <?php echo $property_name; ?> is <span class="dk-orange-text" id="cost-estimate">$<?php echo $price; ?></span></h3>
                         <div class="row">
-                          <h3 class="col-12 mb-3">Payment Information</h3>
+                          <h4 class="col-12 mb-3">Payment Information</h4>
                           <div class="col-12 col-lg-6 mb-3">
                             <label for="card_type">Card Type</label><br>
                             <input type="radio" id="masterCard" name="card_type" value="MasterCard" checked="checked">
@@ -182,24 +201,29 @@ if (isset($_SESSION['user_id'])) {
     </html>
     <script>
       $( document ).ready(function() {
+        calculatePrice();
         $('.dateField').change(function() {
-          var startDate = new Date($('#checkIn').val());
-          var endDate = new Date($('#checkOut').val());
-          if(startDate != '' && endDate != '') {
-            if (startDate > endDate){
-              alert('Check-out date must be later than check-in!');
-              $('#checkOut').val('');
-            } else if (startDate < endDate) {
-              var time_difference = endDate.getTime() - startDate.getTime();
-              var numDays = time_difference / (1000 * 60 * 60 * 24);
-
-              var price = (<?php echo '10';//$propertyPrice; ?> * numDays);
-              $('#total_price').val(price);
-              $('#cost-estimate').text('Cost Estimate: $' + price);
-            }
-          }
+          calculatePrice();
         });
       });
+
+      function calculatePrice() {
+        var startDate = new Date($('#checkIn').val());
+        var endDate = new Date($('#checkOut').val());
+        if(startDate != '' && endDate != '') {
+          if (startDate > endDate){
+            alert('Check-out date must be later than check-in!');
+            $('#checkOut').val('');
+          } else if (startDate < endDate) {
+            var time_difference = endDate.getTime() - startDate.getTime();
+            var numDays = time_difference / (1000 * 60 * 60 * 24);
+
+            var price = (<?php echo $price; ?> * numDays);
+            $('#total_price').val(price);
+            $('#cost-estimate').text('$' + price);
+          }
+        }
+      }
     </script>
     <!-- JavaScript Form Validation using Sweet Alert -->
 
@@ -207,7 +231,7 @@ if (isset($_SESSION['user_id'])) {
 
     <!-- JavaScript Form Validation using Sweet Alert for  Reservation-->
     <script>
-        $("#submit").click(function() {
+        $("#createReservation").click(function() {
 
             var fname = $("#fname").val();
             var lname = $("#lname").val();
@@ -232,7 +256,10 @@ if (isset($_SESSION['user_id'])) {
 
         })
     </script>
-<?php } else if (isset($_SESSION['admin_id'])) { // redirect admin
+<?php } else {
+  header("Location: /view-properties.php");
+}
+} else if (isset($_SESSION['admin_id'])) { // redirect admin
     header("Location: /admin.php");
 } else { // redirect logged out users
     header("Location: /login.php");
