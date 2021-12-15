@@ -72,10 +72,10 @@ if (isset($_SESSION['username'])) {
                     <div class="from-group mb-3">
                         <div class="row">
                             <div class="col">
-                                <label for="adults" class="form-label">Adults</label>
+                                <label for="adults" class="form-label">Adults (18 yrs+)</label>
                                 <select name="adults" id="adults" class="form-control" style="width: 150px" required>
                                     <option value="">--Select Guests--</option>
-                                    <option value="1">1 adults</option>
+                                    <option value="1">1 adult</option>
                                     <option value="2">2 adults</option>
                                     <option value="3">3 adults</option>
                                     <option value="4">4 adults</option>
@@ -91,26 +91,28 @@ if (isset($_SESSION['username'])) {
                             </div>
                             <div class="col">
                                 <label for="kids" class="form-label">Children</label>
-                                <select name="kids" id="kids" class="form-control" style="width: 150px" required>
-                                    <option value="">--Select Guests--</option>
-                                    <option value="1">1 kids</option>
-                                    <option value="2">2 kids</option>
-                                    <option value="3">3 kids</option>
-                                    <option value="4">4 kids</option>
-                                    <option value="5">5 kids</option>
-                                    <option value="6">6 kids</option>
-                                    <option value="7">7 kids</option>
-                                    <option value="8">8 kids</option>
-                                    <option value="9">9 kids</option>
-                                    <option value="10">10 kids</option>
-                                    <option value="11">11 kids</option>
-                                    <option value="12">12 kids</option>
+                                <select name="kids" id="kids" class="form-control" required>
+                                    <option value="0">Children Not Allowed</option>
+                                    <option value="" selected="selected" disabled>--Select Guests--</option>
+                                    <option value="1">1 child</option>
+                                    <option value="2">2 children</option>
+                                    <option value="3">3 children</option>
+                                    <option value="4">4 children</option>
+                                    <option value="5">5 children</option>
+                                    <option value="6">6 children</option>
+                                    <option value="7">7 children</option>
+                                    <option value="8">8 children</option>
+                                    <option value="9">9 children</option>
+                                    <option value="10">10 children</option>
+                                    <option value="11">11 children</option>
+                                    <option value="12">12 children</option>
                                 </select>
                             </div>
                             <div class="col">
                                 <label for="pets" class="form-label">Pets</label>
                                 <select name="pets" id="pets" class="form-control" style="width: 150px" required>
-                                    <option value="">--Select--</option>
+                                    <option value="0">Pets Not Allowed</option>
+                                    <option value="" selected="selected" disabled>--Select--</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
                                 </select>

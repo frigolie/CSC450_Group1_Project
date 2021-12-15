@@ -21,6 +21,7 @@ session_start();
                             - Updating the listing images to be equalized in height
                    10/19/21 - Adding logo
                    11/26/21 - Changing the welcome messaging in the top nav based on user login status
+                   12/14/21 - Updating welcome messaging to use names instead of usernames
       -->
     <!-- Boostrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -45,8 +46,10 @@ session_start();
                 <div class="col-7 col-lg-8 loginContainer d-flex align-items-center justify-content-center justify-content-lg-end">
                     <div class="row w-100">
                         <div class="d-none d-lg-flex col-lg-6 align-items-center justify-content-center justify-content-lg-end">
-                            <?php if (isset($_SESSION['username'])) {
-                              echo '<p class="text-center mb-3 mb-lg-0">Welcome back, ' . $_SESSION['username'] . '!</p>';
+                            <?php if (isset($_SESSION['user_id'])) {
+                              echo '<p class="text-center mb-3 mb-lg-0">Welcome back, ' . $_SESSION['fname'] . '!</p>';
+                            } else if (isset($_SESSION['admin_id'])) {
+                              echo '<p class="text-center mb-3 mb-lg-0">Welcome back, ' . $_SESSION['name'] . '!</p>';
                             } else {
                               echo '<p class="text-center mb-3 mb-lg-0">Login or create an account to begin!</p>';
                             } ?>
