@@ -139,7 +139,7 @@ session_start();
                           </div>
                         </form>
                       <?php } else if (isset($_SESSION['admin_id'])) { ?>
-                          <h4 class="text-center m-4">View all system reservations in the <a class="orange-text" href="/admin.php">admin dashboard</a>.</h4>
+                          <h4 class="text-center m-4">View all reservations in the <a class="orange-text" href="/admin.php">admin dashboard</a>.</h4>
                       <?php } else { ?>
                           <h4 class="text-center m-4">You must be logged in to create a reservation. <a class="blue-text" href="/login.php">Log&nbsp;in</a> to your account now to book your next&nbsp;adventure!</h4>
                       <?php } ?>
