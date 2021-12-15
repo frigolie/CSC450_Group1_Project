@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['user_id'])) {
 ?>
 
     <!DOCTYPE html>
@@ -17,11 +17,11 @@ if (isset($_SESSION['username'])) {
       Joshua Sibert
       Lor Xiong
       Written:     10/20/21
-      Revisions:
+      Revisions:   12/14/21 - Connecting to the database
       -->
 
         <!-- Page title -->
-        <title>update Reservation</title>
+        <title>Update Reservation</title>
     </head>
 
     <body>
@@ -44,29 +44,21 @@ if (isset($_SESSION['username'])) {
                     }
 
                     ?>
-                    <h2 class="mb-1 text-center">Your <span class="dk-orange-text">adventure begins</span> here! </h2>
                     <h3 class="mb-4 text-center">Update your reservation details below</h3>
 
-
-                    <!-- Bootstrap Sample Form - to be replaced once forms are created -->
-                    <!-- <form> -->
                     <form method="POST" action="includes/inc.reservation.php">
                         <div class="mb-3">
-
-                            <!-- I'm not great with bootstrap. The formatting here for the name works, but the code itself is sloppy. I'll look into editing it to look better!-->
-                            <br>
-                            <h3>Reservation Details</h3>
-                            <br>
-                            <div class="row">
-                                <div class="col">
-                                    <label for="fName" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required>
-                                </div>
-                                <div class="col">
-                                    <label for="lName" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" required>
-                                </div>
-                            </div>
+                          <h3>Reservation Details</h3>
+                          <div class="row">
+                              <div class="col">
+                                  <label for="fName" class="form-label">First Name</label>
+                                  <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required>
+                              </div>
+                              <div class="col">
+                                  <label for="lName" class="form-label">Last Name</label>
+                                  <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" required>
+                              </div>
+                          </div>
                         </div>
                         <div class="mb-3">
                             <div class="row">
@@ -213,6 +205,8 @@ if (isset($_SESSION['username'])) {
 
         })
     </script>
-<?php } else {
+<?php } else if (isset($_SESSION['admin_id'])) { // redirect admin
+    header("Location: /admin.php");
+} else { // redirect logged out users
     header("Location: /login.php");
 } ?>
