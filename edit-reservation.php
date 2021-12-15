@@ -141,7 +141,7 @@ if (isset($_SESSION['user_id'])) {
                                 <h3 class="mb-1 text-left">Want to delete your reservation? </h3>
                                 <h3><span class="dk-orange-text">Warning! </span> This action cannot be undone!</h3>
                                 <div class="mb-3">
-                                    <button type="delete" class="globalButton redButton">Delete Reservation</button>
+                                    <button type="delete" name="deleteReservation" id="deleteReservation" class="globalButton redButton">Delete Reservation</button>
                                 </div>
                             </div>
                         </div>

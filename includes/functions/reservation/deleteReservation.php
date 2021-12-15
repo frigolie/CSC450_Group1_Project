@@ -11,7 +11,7 @@ session_start();
         exit();
     }
 
-    $sql = "DELETE FROM reservation WHERE id";
+    $sql = "DELETE FROM reservation WHERE id=?";
 
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -23,7 +23,7 @@ session_start();
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     session_start();
-    $_SESSION['status'] = "Successfully delete your reservation";
+    $_SESSION['status'] = "Reservation successfully deleted.";
     header("location:../edit-reservation.php?success=true");
     exit();
 }
