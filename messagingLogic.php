@@ -1,5 +1,6 @@
 <?php
-    $theUser = $_SESSION["user_id"];
+    $theUser = '15';
+    //$theUser = $_SESSION['user_id'];
 
     //for getting all the users in the drop down 'To:' menu
     function getUsers(){
@@ -15,38 +16,28 @@
             $tempUser = $rows['user_id'];
 
             //list one option at a time
-            echo "<option value='user_id'>$firstName $lastName</option>";
+            echo "<option value='$tempUser'>$firstName $lastName</option>";
         }
         $conn->close();
     }//end of getUsers()
 
     //for listing the messages in a user's inbox
     function listMessages(){
+        global $theUser;
         require 'Inc.DBC.php';
         //get data from message_recipient table
-        $sql = "SELECT recipient_id, message_id 
-        FROM message_recipient
+        $sql = "SELECT recipient_id, createDate, creator_id, subject, id
+        FROM message
         WHERE recipient_id = '$theUser'";
-        $resultSet = $conn->query($sql);
+        $resultSet = $conn->query($sql) or die($conn->error);
 
         while($rows = $resultSet->fetch_assoc()){
-            //set the first variables
+            //set the variables
             $recipient_id = $rows['recipient_id'];
-            $message_id = $rows['message_id'];
-
-            //get other info needed specific to this user
-            $sql = 
-            "SELECT id, creator_id, create_date, subject
-            FROM message
-            WHERE id='$message_id'";
-            $messageInfo = $conn->query($sql);
-            $extraData = $messageInfo->fetch_assoc();
-
-            //set the next set of variables
-            $linkValue = $extraData['id']; //need for hyperlink to carry this identifier
-            $creator_id = $extraData['creator_id'];
-            $create_date = $extraData['create_date'];
-            $subject = $extraData['subject'];
+            $createDate = $rows['createDate'];
+            $creator_id = $rows['creator_id'];
+            $subject = $rows['subject'];
+            $linkValue = $rows['id'];
 
             //get sender's name
             $sql =
@@ -61,14 +52,106 @@
             $lastName = $nameData['lname'];
 
             //print results of queries
+            //echo "<form method='POST'>";
             echo "<tr>"; 
-            echo "<th scope="row"><input type="checkbox" id="msg1" name="msg1" value=""></th>";
+            echo "<th scope='row'><input name='msg1' type='checkbox' id='msg1' value='$linkValue'></th>";
             echo "<td>$firstName $lastName</td>";
-            echo "<td>$create_date</td>";
-            echo "<td><a class="open-message-btn blue-text" data-value='$linkValue'>$subject</a></td>";
+            echo "<td>$createDate</td>";
+            echo "<td><button type='submit' class='open-message-btn blue-text' name='viewMessage' value='$linkValue'>$subject</button></td>";
             echo "</tr>";
+            //echo "</form>";
         }
         $conn->close();
     }//end of listMessages()
 
+    function sendMessage($recipient, $theSubject, $content, $sender){
+        require 'Inc.DBC.php';
+        global $theUser;
+        $date = date("Y-m-d");//gets date from computer(not sure if this is correct format for date in database)
+        if(!empty($recipient) || !empty($theSubject) || !empty($content) ||
+        !empty($date) || !empty($sender)){
+            //echo 'debug', $recipient, $theSubject, $content, $sender, $date;
+
+            //prepared statement for message table
+            $INSERT = "INSERT INTO message (subject, creator_id, messageBody, createDate, recipient_id)
+            VALUES(?, ?, ?, $date, ?)";
+
+            if($stmt = $conn->prepare($INSERT)){
+                //echo 'executed';
+            }
+            else{
+               die("Errormessage: ". $conn->error);
+            }
+            $stmt->bind_param("sisi", $theSubject, $sender, $content, $recipient);
+
+            //execute prepared statement for message table
+            $stmt->execute();
+            $stmt->close();
+        }
+        else{
+            echo nope;
+            die();
+        }
+    }//end of sendMessage()
+
+    function selectMessage($messageId){
+        global $theUser;
+        require 'Inc.DBC.php';
+
+        //get the data from the database
+        $sql = "SELECT * FROM message WHERE id = '$messageId'";
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+        $_SESSION['subject'] = $row['subject'];
+        $_SESSION['body'] = $row['messageBody'];
+        $tempID = $row['creator_id'];
+        $_SESSION['id'] = $messageId;
+
+        //get the person's name
+        $sql = "SELECT * FROM user WHERE '$tempID' = user_id";
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+        $name = $row['fname'] . " " . $row['lname'];
+        $_SESSION['sender'] = $name;
+        
+    }//end of selectMessage
+
+    function displayMessage(){
+        require 'Inc.DBC.php';
+        if(!empty($_SESSION['sender'])){
+            $sender = $_SESSION['sender'];
+            $subject = $_SESSION['subject'];
+            $body = $_SESSION['body'];
+            $id = $_SESSION['id'];
+        }
+        else{
+            $sender = '';
+            $subject = '';
+            $body = '';
+        }
+        
+
+        echo "<div class='col-3 col-md-2 mb-4 d-flex align-items-center'>";
+        echo "<h4 class='mb-0'>From:</h4>";
+        echo "</div>";
+        echo "<div class='col-9 col-md-10 mb-4'>";
+        echo "<p class='form-control mb-0'>$sender</p>";
+        echo "</div>";
+
+        echo "<h4 class='mb-0'>Subject:</h4>";
+        echo "</div>";
+        echo "<div class='col-9 col-md-10 mb-4'>";
+        echo "<p class='form-control mb-0'>$subject</p>";
+        echo "</div>";
+
+        echo "<div class='col-12 mb-4'>";
+        echo "<textarea class='w-100 p-3' rows='5' disabled>$body</textarea>";
+        echo "</div>";
+    }
+
+    function deleteMessage(){
+        require 'Inc.DBC.php';
+        $messageId = $_SESSION['id'];
+        mysqli_query($conn, "DELETE FROM message WHERE id = '$messageId'");
+    }
 ?>

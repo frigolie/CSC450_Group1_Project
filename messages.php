@@ -21,16 +21,19 @@ if (isset($_SESSION['username'])) {
 
       <!-- Page title -->
     <title>Message Center</title>
+    <?php require 'messagingLogic.php'?>
   </head>
   <body>
   <?php include(getcwd( ) . "/header.php"); ?>
 
-    <section class="container-fluid initialPageContent fireTower pb-5">
+  <section class="container-fluid initialPageContent fireTower pb-5">
       <div class="row pb-5 justify-content-center">
 
         <div class="col-12 px-5 py-5 pt-3 mx-auto" id="messages">
           <h1 class="mb-4 text-left text-shadow">Messages</h1>
 
+          <!--- VIEW MESSAGES -->
+        <form method="POST">
           <div class="inbox-visible">
             <a class="globalButton blueButton mb-2 me-2 d-md-inline-block new-message-btn">
               Create New
@@ -40,9 +43,9 @@ if (isset($_SESSION['username'])) {
               Select All
             </a>
 
-            <a class="globalButton redButton mb-2 me-2 d-md-inline-block">
+            <button  type="submit" name="deleteSelected" class="globalButton redButton mb-2 me-2 d-md-inline-block">
               Delete
-            </a>
+            </button>
           </div>
 
           <div class="mt-5 p-4 white-bg box-shadow rounded-custom message-container">
@@ -58,26 +61,35 @@ if (isset($_SESSION['username'])) {
                   </tr>
                 </thead>
                 <tbody>
-                  <?php include 'messagingLogic';
-                  listMessages(); ?><!--- get all messages from database -->
+                  <?php listMessages(); ?><!--- get all messages from database -->
                 </tbody>
               </table>
             </div>
+        </form>
+
+            <?php
+              require 'Inc.DBC.php';
+              //for deleting messages
+              if(isset($_POST['viewMessage'])){
+                selectMessage($_POST['viewMessage']);
+              }
+              if(isset($_POST['deleteSelected'])){
+                $checkbox = $_POST['msg1'];
+                mysqli_query($conn, "DELETE FROM message WHERE id ='" . $checkbox . "'");
+              }
+            ?>
 
             <!--- NEW MESSAGE FORM -->
             <div class="w-100 new-msg-visible pt-2 px-3" id="new-message-container">
                 <h3 class="text-center mb-4">Compose New Message</h3>
-                <form id="new-message" class="row" action="sendMessage.php" method="POST">
+                <form id="new-message" class="row" method="POST">
                   <div class="col-3 col-md-2 mb-4 d-flex align-items-center">
                     <label for="recipient"><h4 class="mb-0">To:</h4></label>
                   </div>
                   <div class="col-9 col-md-10 mb-4">
                     <select class="form-select" id="recipient" name="recipient" required>
                       <option selected>--Select A User--</option>
-                      <?php 
-                      include 'messagingLogic.php';
-                      getUsers(); 
-                      ?><!--- get all users from database -->
+                      <?php getUsers(); ?><!--- get all users from database -->
                     </select>
                   </div>
 
@@ -96,7 +108,7 @@ if (isset($_SESSION['username'])) {
                   </div>
 
                   <div class="col-12 mb-3">
-                    <button class="globalButton blueButton mb-2 me-2 d-md-inline-block inbox-btn" type="submit">
+                    <button class="globalButton blueButton mb-2 me-2 d-md-inline-block inbox-btn" name="submit" type="submit">
                       Send
                     </button>
                     <a class="globalButton redButton mb-2 me-2 d-md-inline-block inbox-btn">
@@ -106,38 +118,38 @@ if (isset($_SESSION['username'])) {
                 </form>
             </div>
 
+            <?php
+              //for sending the message
+              if(isset($_POST['submit'])){
+                sendMessage($_POST['recipient'], $_POST['subject'], $_POST['content'], $theUser);
+              }
+            ?>
+
+            <!--- VIEW MESSAGE FORM -->
             <div class="w-100 open-msg-visible pt-2 px-3" id="open-message-container">
               <div class="row">
-                <div class="col-3 col-md-2 mb-4 d-flex align-items-center">
-                  <h4 class="mb-0">From:</h4>
-                </div>
-                <div class="col-9 col-md-10 mb-4">
-                  <p class="form-control mb-0">sender@email.com</p>
-                </div>
-
-                <div class="col-3 col-md-2 mb-4 d-flex align-items-center">
-                  <h4 class="mb-0">Subject:</h4>
-                </div>
-                <div class="col-9 col-md-10 mb-4">
-                  <p class="form-control mb-0">Sample Subject Line</p>
-                </div>
-
-                <div class="col-12 mb-4">
-                  <textarea class="w-100 p-3" rows="5" disabled>Var alma caila terpellië nó, engë nurtalom timpinen ar tol. Ollo rangwë caimasan hos nó, vá nurmë lissë hérincë fum. Hen to laurëa racinë, nú cuilë celayur valinor war, má óla manwa laurëa tengwo. Nu luhta lucië nainanyéna axa. Cíla yávë aráto sú ran. Hwarma lindelëa pel sí, hérë hravan lis oi. Írë né nénar sindar. Rin nessa atalantëa up, yulmë fairë axa et.
-                  </textarea>
-                </div>
-
+                <!--- DISPLAYING MESSAGE -->
+                <?php displayMessage()?>
+                <form method="post">
                 <div class="col-12 mb-3">
                   <a class="globalButton blueButton mb-2 me-2 d-md-inline-block new-message-btn">
                     Reply
                   </a>
-                  <a class="globalButton redButton mb-2 me-2 d-md-inline-block inbox-btn">
+                  <button type="submit" name="deleteThisOne" class="globalButton redButton mb-2 me-2 d-md-inline-block inbox-btn">
                     Delete
-                  </a>
+                  </button>
                   <a class="globalButton orangeButton mb-2 me-2 d-md-inline-block inbox-btn">
                     Return to Inbox
                   </a>
                 </div>
+                </form>
+                
+                <?php
+                  if(isset($_POST['deleteThisOne'])){
+                    deleteMessage();
+                  }
+                ?>
+
               </div>
             </div>
           </div>
@@ -162,9 +174,6 @@ if (isset($_SESSION['username'])) {
             $('.inbox-visible').hide();
             $('.new-msg-visible').hide();
             $('.open-msg-visible').show();
-
-            //keep value from hyperlink
-            
           });
 
           $('.inbox-btn').click(function(){
@@ -186,8 +195,6 @@ if (isset($_SESSION['username'])) {
           });
         });
     </script>
-
-    <?php include(getcwd( ) . "/footer.php"); ?>
   </body>
 </html>
 <?php } else {
