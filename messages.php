@@ -35,13 +35,13 @@ if (isset($_SESSION['username'])) {
           <!--- VIEW MESSAGES -->
         <form method="POST">
           <div class="inbox-visible">
-            <a class="globalButton blueButton mb-2 me-2 d-md-inline-block new-message-btn">
+            <button type="button" class="globalButton blueButton mb-2 me-2 d-md-inline-block new-message-btn">
               Create New
-            </a>
+            </button>
 
-            <a class="globalButton orangeButton mb-2 me-2 d-md-inline-block" id="select-all">
+            <button type="button" class="globalButton orangeButton mb-2 me-2 d-md-inline-block" id="select-all">
               Select All
-            </a>
+            </button>
 
             <button  type="submit" name="deleteSelected" class="globalButton redButton mb-2 me-2 d-md-inline-block">
               Delete
@@ -111,9 +111,9 @@ if (isset($_SESSION['username'])) {
                     <button class="globalButton blueButton mb-2 me-2 d-md-inline-block inbox-btn" name="submit" type="submit">
                       Send
                     </button>
-                    <a class="globalButton redButton mb-2 me-2 d-md-inline-block inbox-btn">
+                    <button type="button" class="globalButton redButton mb-2 me-2 d-md-inline-block inbox-btn">
                       Cancel
-                    </a>
+                    </button>
                   </div>
                 </form>
             </div>
@@ -132,15 +132,15 @@ if (isset($_SESSION['username'])) {
                 <?php displayMessage()?>
                 <form method="post">
                 <div class="col-12 mb-3">
-                  <a class="globalButton blueButton mb-2 me-2 d-md-inline-block new-message-btn">
+                  <button type="button" class="globalButton blueButton mb-2 me-2 d-md-inline-block new-message-btn">
                     Reply
-                  </a>
+                  </button>
                   <button type="submit" name="deleteThisOne" class="globalButton redButton mb-2 me-2 d-md-inline-block inbox-btn">
                     Delete
                   </button>
-                  <a class="globalButton orangeButton mb-2 me-2 d-md-inline-block inbox-btn">
+                  <button class="globalButton orangeButton mb-2 me-2 d-md-inline-block inbox-btn">
                     Return to Inbox
-                  </a>
+                  </button>
                 </div>
                 </form>
                 
