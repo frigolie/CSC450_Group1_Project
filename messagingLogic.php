@@ -1,6 +1,5 @@
 <?php
-    $theUser = '15';
-    //$theUser = $_SESSION['user_id'];
+    $theUser = $_SESSION['user_id'];
 
     //for getting all the users in the drop down 'To:' menu
     function getUsers(){
